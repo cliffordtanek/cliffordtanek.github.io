@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi-Agent Pathfinding — Clifford Tan</title>
+<meta name="description" content="Navigation for large groups of NPCs across procedurally generated terrain under fog of war — aimed at real-time strategy, stealth and open-world exploration.">
+<meta property="og:title" content="Multi-Agent Pathfinding — Clifford Tan">
+<meta property="og:description" content="Navigation for large groups of NPCs across procedurally generated terrain under fog of war — aimed at real-time strategy, stealth and open-world exploration.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='monospace'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="project-page">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#design">Design</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme" title="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16"><path class="sun" d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m11.32 0 1.41 1.41M4.93 4.93l1.41 1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/><path class="moon" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <header class="project-head">
+    <p class="eyebrow-plain">AI research project · 2024</p>
+    <h1>Multi-Agent Pathfinding</h1>
+    <p class="project-summary">Navigation for large groups of NPCs across procedurally generated terrain under fog of war — aimed at real-time strategy, stealth and open-world exploration.</p>
+  </header>
+
+  <div class="project-hero" data-label="Multi-Agent Pathfinding">
+    <img src="../assets/img/pathfinding.png" alt="Multi-Agent Pathfinding" loading="eager">
+  </div>
+
+  <div class="project-layout">
+    <div class="project-body">
+    <section class="prose-block">
+      <h2>The problem</h2>
+      <p>Pathfinding one agent is a solved problem. Pathfinding fifty, through terrain they haven&#x27;t seen yet, without them clumping, oscillating or walking through each other, is not — and running A* per agent per frame doesn&#x27;t scale.</p>
+    </section>
+    <section class="prose-block">
+      <h2>The approach</h2>
+      <p>We combined three techniques rather than picking one. Flow fields let the whole group share a single navigation solve instead of computing a path each. Potential fields handle dynamic obstacle avoidance and keep agents from overlapping. Heat maps prioritise which areas are worth exploring, so agents under fog of war spread out to cover ground instead of all following the same trail.</p>
+    </section>
+    <section class="prose-block">
+      <h2>Where it applies</h2>
+      <p>The combination suits genres where a crowd has to look deliberate — RTS unit groups, stealth AI sweeping a space, open-world NPCs exploring terrain the player has also never seen.</p>
+    </section>
+    <section class="prose-block">
+      <h2>Play &amp; watch</h2>
+      <div class="embed embed-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/O11_lbwOUPo"
+                title="Multi-Agent Pathfinding — video" loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </section>
+    <section class="prose-block">
+      <h2>Gallery</h2>
+      <div class="gallery">
+      <figure class="shot">
+        <div class="shot-frame" data-label="Agents navigating under fog of war">
+          <img src="../assets/img/pathfinding.png" alt="Multi-Agent Pathfinding — Agents navigating under fog of war" loading="lazy">
+        </div>
+        <figcaption>Agents navigating under fog of war</figcaption>
+      </figure>
+      </div>
+    </section>
+    </div>
+
+  <aside class="project-meta">
+    <div class="pm-rows">
+      <div class="pm-row"><span class="pm-k">Role</span><span class="pm-v">Group project — AI systems</span></div>
+      <div class="pm-row"><span class="pm-k">Type</span><span class="pm-v">University research project</span></div>
+      <div class="pm-row"><span class="pm-k">Output</span><span class="pm-v">Implementation + written report</span></div>
+    </div>
+    <div class="pm-tech">
+      <h4>Tech &amp; tools</h4>
+      <ul class="tags"><li>C++</li><li>SFML</li><li>ImGui</li><li>Visual Studio</li><li>Flow fields</li><li>Potential fields</li><li>Heat maps</li></ul>
+    </div>
+    <div class="pm-links">
+        <a href="https://www.youtube.com/watch?v=O11_lbwOUPo" target=_blank rel=noopener>Watch demo ↗</a>
+    </div>
+  </aside>
+  </div>
+
+  <nav class="pager" aria-label="Project navigation">
+    <a class="pg pg-prev" href="magique.html"><span class="pg-k">← Previous</span><span class="pg-v">Magique</span></a>
+    <a class="pg pg-next" href="seam-carving.html"><span class="pg-k">Next →</span><span class="pg-v">Content-Aware Image Resizing with Seam Carving</span></a>
+  </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Clifford Tan</span>
+    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
