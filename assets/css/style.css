@@ -473,3 +473,212 @@ a { color: inherit; }
 ::selection { background: var(--accent); color: #fff; }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* ============================================================
+   PROJECT DETAIL PAGES
+   ============================================================ */
+
+.project-page main { padding: 48px 0 40px; }
+
+.back {
+  display: inline-block; font-family: var(--mono); font-size: 12px;
+  letter-spacing: .06em; color: var(--text-dim); text-decoration: none;
+  margin-bottom: 40px; transition: color .2s var(--ease);
+}
+.back:hover { color: var(--accent); }
+
+.project-head { max-width: 760px; margin-bottom: 44px; }
+
+.eyebrow-plain {
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 18px;
+}
+
+.project-head h1 {
+  font-size: clamp(32px, 5.5vw, 54px); line-height: 1.06;
+  letter-spacing: -0.03em; font-weight: 600; margin: 0 0 20px;
+}
+
+.project-summary {
+  font-size: clamp(16px, 2vw, 19px); line-height: 1.6;
+  color: var(--text-mid); margin: 0;
+}
+
+/* hero image */
+.project-hero {
+  aspect-ratio: 21 / 9; margin-bottom: 56px;
+  background: var(--bg-alt); border: 1px solid var(--line);
+  border-radius: var(--r); overflow: hidden;
+  position: relative; display: grid; place-items: center;
+}
+.project-hero::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 15%, transparent 74%);
+          mask-image: radial-gradient(ellipse at center, #000 15%, transparent 74%);
+}
+.project-hero::after {
+  content: attr(data-label); position: relative; z-index: 1;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--text-dim); padding: 0 20px; text-align: center;
+}
+.project-hero img {
+  position: absolute; inset: 0; z-index: 2;
+  width: 100%; height: 100%; object-fit: cover; background: transparent;
+}
+
+/* two-column body */
+.project-layout {
+  display: grid; grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 64px; align-items: start;
+}
+@media (max-width: 900px) {
+  .project-layout { grid-template-columns: 1fr; gap: 44px; }
+}
+
+.project-body { max-width: 720px; min-width: 0; }
+
+.prose-block { margin-bottom: 40px; }
+.prose-block h2 {
+  font-size: 13px; font-family: var(--mono); font-weight: 400;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--text-dim);
+  margin: 0 0 14px;
+}
+.prose-block p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--text-mid); }
+
+/* a section still carrying placeholder copy */
+.prose-block.todo {
+  border-left: 2px solid var(--accent);
+  padding: 4px 0 4px 18px; background: var(--accent-soft);
+  border-radius: 0 var(--r) var(--r) 0;
+}
+.prose-block.todo p { color: var(--accent); }
+
+.note {
+  font-size: 13.5px; color: var(--text-dim); font-style: italic;
+  border-top: 1px solid var(--line-soft); padding-top: 16px; margin: 0 0 40px;
+}
+
+/* meta sidebar */
+.project-meta {
+  position: sticky; top: 90px;
+  display: flex; flex-direction: column; gap: 26px;
+}
+@media (max-width: 900px) { .project-meta { position: static; } }
+
+.pm-rows {
+  display: grid; gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: var(--r); overflow: hidden;
+}
+.pm-row { background: var(--bg); padding: 12px 15px; }
+.pm-k {
+  display: block; font-family: var(--mono); font-size: 10px;
+  letter-spacing: .13em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 4px;
+}
+.pm-v { display: block; font-size: 14px; color: var(--text); line-height: 1.45; }
+
+.pm-tech h4 {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--text-dim);
+  margin: 0 0 11px; font-weight: 400;
+}
+
+.pm-links { display: flex; flex-direction: column; gap: 9px; }
+.pm-links a {
+  font-family: var(--mono); font-size: 12.5px; color: var(--accent);
+  text-decoration: none; border-bottom: 1px solid transparent;
+  align-self: flex-start; transition: border-color .2s var(--ease);
+}
+.pm-links a:hover { border-bottom-color: var(--accent); }
+
+/* embeds */
+.embed { margin-bottom: 18px; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.embed iframe { display: block; width: 100%; border: 0; }
+.embed-video iframe { aspect-ratio: 16 / 9; height: auto; }
+.embed-itch iframe { height: 167px; }
+
+/* gallery */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.shot { margin: 0; }
+.shot-frame {
+  aspect-ratio: 16 / 10; position: relative; overflow: hidden;
+  background: var(--bg-alt); border: 1px solid var(--line);
+  border-radius: var(--r); display: grid; place-items: center;
+}
+.shot-frame::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 20px 20px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 15%, transparent 76%);
+          mask-image: radial-gradient(ellipse at center, #000 15%, transparent 76%);
+}
+.shot-frame::after {
+  content: attr(data-label); position: relative; z-index: 1;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--text-dim); padding: 0 12px; text-align: center;
+}
+.shot-frame img {
+  position: absolute; inset: 0; z-index: 2;
+  width: 100%; height: 100%; object-fit: cover; background: transparent;
+}
+.shot figcaption {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  margin-top: 9px; letter-spacing: .03em;
+}
+
+/* prev / next */
+.pager {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+  border-radius: var(--r); overflow: hidden; margin-top: 72px;
+}
+.pg {
+  background: var(--bg); padding: 20px; text-decoration: none;
+  display: flex; flex-direction: column; gap: 5px;
+  transition: background-color .2s var(--ease);
+}
+.pg:hover { background: var(--bg-alt); }
+.pg-next { text-align: right; align-items: flex-end; }
+.pg-k {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+.pg-v { font-size: 15px; color: var(--text); font-weight: 500; }
+.pg:hover .pg-v { color: var(--accent); }
+@media (max-width: 560px) {
+  .pager { grid-template-columns: 1fr; }
+  .pg-next { text-align: left; align-items: flex-start; }
+}
+
+.site-footer a { color: inherit; text-decoration: none; }
+.site-footer a:hover { color: var(--accent); }
+
+/* ── index: cards become links ── */
+.card-link { text-decoration: none; color: inherit; display: block; }
+.card-link .card { height: 100%; }
+.card-link:hover .card {
+  border-color: var(--text-dim); transform: translateY(-2px);
+  box-shadow: 0 6px 24px -12px rgba(0,0,0,.18);
+}
+.card-more {
+  font-family: var(--mono); font-size: 11.5px; color: var(--accent);
+  margin-top: 2px; display: inline-flex; align-items: center; gap: 6px;
+}
+.card-link:hover .card-more .arr { transform: translateX(3px); }
+.card-more .arr { transition: transform .2s var(--ease); display: inline-block; }
+
+.level-link { text-decoration: none; color: inherit; display: block; transition: background-color .2s var(--ease); }
+.level-link:hover .level { background: var(--surface); }
+.level-link:hover .lv-name { color: var(--accent); }
+.lv-name { transition: color .2s var(--ease); }
+
+/* Images keep descriptive alt text for screen readers, but a missing file
+   would otherwise paint that text over the placeholder. Transparent colour
+   hides it visually while leaving it in the accessibility tree. */
+.thumb img, .shot-frame img, .project-hero img { color: transparent; font-size: 0; }

@@ -39,6 +39,40 @@ If you ever buy e.g. `cliffordtan.dev`: add a file named `CNAME` at the repo roo
 just the domain, point an `ALIAS`/`A` record at GitHub's Pages IPs, then set the domain under
 Settings → Pages.
 
+
+## Project detail pages
+
+Every project has its own page under `projects/` — real URLs you can send someone
+directly, e.g. `cliffordtanek.github.io/projects/magique.html`. Clicking a card on
+the home page (or a level design tile) opens it.
+
+The content for all 15 pages lives in **one file**: `tools/projects_data.py`.
+Edit the text there, then regenerate:
+
+```bash
+python3 tools/build_projects.py
+```
+
+That rewrites `projects/*.html`. The output is plain static HTML — GitHub Pages
+still needs no build step, this is only so you're not editing fifteen files by hand.
+
+Each page has: summary, hero image, body sections, YouTube/itch.io embeds, an
+image gallery, a metadata sidebar (role, team, duration, tech), report PDF links,
+and prev/next navigation.
+
+### Two pages need your words
+
+`portal-planet` and `bouncy-balloon` were still lorem ipsum on Weebly, so there was
+nothing to carry over. They're marked `NEEDS_YOUR_WORDS` in `projects_data.py` and
+render with a highlighted block on the page so you can't miss them. Write a few
+sentences on each and rebuild.
+
+### Report PDFs
+
+`tools/build_projects.py` only links a report if the file actually exists in
+`assets/docs/` — so a missing PDF is silently omitted rather than shipping a dead
+link. Run the fetch script first, then rebuild, and the links appear.
+
 ## Images
 
 The site expects screenshots at `assets/img/<name>.png`. **Any that are missing degrade
@@ -69,9 +103,10 @@ Aim for 16:9, around 1600×900, under ~300 KB each.
 
 ## Editing
 
-**Add a project** — copy any `<article class="card">` block in `index.html` and change the
-text. The `data-cat` attribute controls which filter chips show it; valid values are
-`systems`, `games`, `algorithms`, `mobile` (space-separated, a card can have several).
+**Add a project** — add an entry to `tools/projects_data.py` and run the build script
+for the detail page, then copy an `<article class="card">` block in `index.html` for the
+card. The `data-cat` attribute controls which filter chips show it (`systems`, `games`,
+`algorithms`, `mobile`, space-separated); `data-href` points at the detail page.
 
 **Add a filter chip** — add a `<button class="chip" data-filter="yourcat">` in the
 `.filters` div and use `yourcat` in a card's `data-cat`. The JS wires it up automatically.

@@ -76,6 +76,26 @@
     Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
   }
 
+  /* ---------- whole-card click -> project page ----------
+     The card isn't wrapped in an <a> because it contains its own links
+     (itch.io, trailers) and nested anchors are invalid HTML. Instead the
+     card carries data-href and we navigate on click, unless the click
+     landed on a real link or the user is selecting text. */
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest ? e.target.closest('[data-href]') : null;
+    if (!card) return;
+    if (e.target.closest('a, button')) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    var sel = window.getSelection && window.getSelection();
+    if (sel && String(sel).length > 0) return;
+    window.location.href = card.getAttribute('data-href');
+  });
+
+  /* keyboard access for the same cards */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-href]'), function (card) {
+    card.style.cursor = 'pointer';
+  });
+
   /* ---------- footer year ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
