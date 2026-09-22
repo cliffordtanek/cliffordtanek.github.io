@@ -1189,7 +1189,12 @@ body.cad-on [data-href] { cursor: none; }
 /* the pickbox — the square you select with */
 .cad-box {
   position: absolute; top: 0; left: 0;
-  width: 15px; height: 15px; margin: -8px 0 0 -8px;
+  /* The lines are translated to X and are 1px wide, so a line's true
+     centre is X + 0.5. An odd box offset by -7 spans X-7 … X+8, whose
+     centre is also X + 0.5 — dead centre, on whole pixels, so the
+     edges stay crisp. -8 put it half a pixel out, which at this size
+     you can see. */
+  width: 15px; height: 15px; margin: -7px 0 0 -7px;
   border: 1px solid var(--accent); opacity: 1;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 62%, transparent);
   transition: width .16s var(--ease), height .16s var(--ease),
@@ -1197,7 +1202,8 @@ body.cad-on [data-href] { cursor: none; }
               background-color .16s var(--ease);
 }
 .cad.pick .cad-box {
-  width: 26px; height: 26px; margin: -13px 0 0 -13px;
+  /* odd again, for the same reason: 27 with -13 centres on X + 0.5 */
+  width: 27px; height: 27px; margin: -13px 0 0 -13px;
   background: var(--accent-soft);
 }
 .cad.pick .cad-v, .cad.pick .cad-h { opacity: .85; }
