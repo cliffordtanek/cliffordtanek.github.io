@@ -673,7 +673,12 @@ a { color: inherit; }
 .card-link:hover .card-more .arr { transform: translateX(3px); }
 .card-more .arr { transition: transform .2s var(--ease); display: inline-block; }
 
-.level-link { text-decoration: none; color: inherit; display: block; transition: background-color .2s var(--ease); }
+/* The link is the grid item, so IT stretches to the row height — but a
+   plain block child doesn't, and the taller tile in a row left the
+   others short by however much longer its description was, showing the
+   grid's rule colour under them. Flex makes the panel fill its cell. */
+.level-link { text-decoration: none; color: inherit; display: flex; transition: background-color .2s var(--ease); }
+.level-link > .level { flex: 1 1 auto; min-width: 0; }
 .level-link:hover .level { background: var(--surface); }
 .level-link:hover .lv-name { color: var(--accent); }
 .lv-name { transition: color .2s var(--ease); }
@@ -1179,8 +1184,15 @@ body.cad-on [data-href] { cursor: none; }
    just look like one more gridline. Hence the stronger accent and a
    thin halo in the page colour, which separates them from whatever
    they cross — text, a screenshot, a dark card. */
+/* Ink, not accent. The accent means "you can act on this" everywhere
+   else on the page — links, chips, the scroll rule — so spending it on
+   a cursor that is always on screen both dilutes that meaning and
+   keeps a saturated colour in the corner of your eye all the time.
+   AutoCAD's own crosshair is plain white; the colour belongs to the
+   selection, not the instrument. The halo separates the line from
+   whatever it crosses. */
 .cad-v, .cad-h {
-  position: absolute; background: var(--accent); opacity: .55;
+  position: absolute; background: var(--text); opacity: .3;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 62%, transparent);
 }
 .cad-v { top: 0; bottom: 0; width: 1px; left: 0; }
@@ -1195,18 +1207,22 @@ body.cad-on [data-href] { cursor: none; }
      edges stay crisp. -8 put it half a pixel out, which at this size
      you can see. */
   width: 15px; height: 15px; margin: -7px 0 0 -7px;
-  border: 1px solid var(--accent); opacity: 1;
+  border: 1px solid var(--text); opacity: .65;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 62%, transparent);
   transition: width .16s var(--ease), height .16s var(--ease),
               margin .16s var(--ease), opacity .16s var(--ease),
+              border-color .16s var(--ease),
               background-color .16s var(--ease);
 }
+/* Colour arrives only when there is something to select — so the accent
+   still reads as "this does something" rather than as decoration. */
 .cad.pick .cad-box {
   /* odd again, for the same reason: 27 with -13 centres on X + 0.5 */
   width: 27px; height: 27px; margin: -13px 0 0 -13px;
+  border-color: var(--accent); opacity: 1;
   background: var(--accent-soft);
 }
-.cad.pick .cad-v, .cad.pick .cad-h { opacity: .85; }
+.cad.pick .cad-v, .cad.pick .cad-h { background: var(--accent); opacity: .6; }
 
 /* status readout, like the coordinate box in the corner of CAD */
 .cad-read {
