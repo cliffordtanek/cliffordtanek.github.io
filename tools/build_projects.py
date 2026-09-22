@@ -137,8 +137,11 @@ def gallery(p):
     if not items:
         return ""
     figs = []
-    for fname, caption in items:
-        figs.append(f"""      <figure class="shot">
+    for item in items:
+        fname, caption = item[0], item[1]
+        wide = len(item) > 2 and item[2] == "wide"
+        cls = "shot shot--wide" if wide else "shot"
+        figs.append(f"""      <figure class="{cls}">
         <div class="shot-frame" data-label="{E(caption)}">
           <img src="../assets/img/{E(p['slug'])}/{E(fname)}" alt="{E(p['title'])} — {E(caption)}" loading="lazy">
         </div>

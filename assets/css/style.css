@@ -970,7 +970,14 @@ a { color: inherit; }
   text-transform: uppercase; color: var(--text-dim);
 }
 
-.gallery { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); align-items: start; }
+/* auto-fit (not auto-fill) so a one- or two-image gallery expands to the
+   full column width instead of sitting in a narrow track — the level design
+   plans are the work, they need the room */
+.gallery {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: start;
+}
+.shot-frame img { max-height: 520px; }
 
 /* ── covers: fit the whole frame, don't crop it ── */
 .cover-media {
@@ -991,3 +998,7 @@ a { color: inherit; }
   background: radial-gradient(ellipse at center,
     rgba(0,0,0,.30) 0%, rgba(0,0,0,.16) 60%, rgba(0,0,0,0) 100%);
 }
+
+/* a drawing that has to be readable gets the whole column */
+.shot--wide { grid-column: 1 / -1; }
+.shot--wide .shot-frame img { max-height: 640px; }

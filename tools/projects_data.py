@@ -451,6 +451,7 @@ PROJECTS = [
     "video": False,
     "logo": 'logo.png',
     "gallery": [
+    ('01-floor-plan.jpg', 'Floor plan', 'wide'),
     ],
   },
   "youtube": None, "itch": None, "pdf": None, "links": [],
@@ -487,6 +488,8 @@ PROJECTS = [
     "video": False,
     "logo": 'logo.png',
     "gallery": [
+    ('01-site-plan.jpg', 'Site plan', 'wide'),
+    ('02-site-detail.jpg', 'Site detail', 'wide'),
     ],
   },
   "youtube": None, "itch": None, "pdf": None, "links": [],
@@ -529,7 +532,8 @@ PROJECTS = [
     "video": False,
     "logo": 'logo.png',
     "gallery": [
-    ('01-annotated-detail.jpg', 'Annotated detail'),
+    ('01-the-map.jpg', 'The full 150m × 150m map', 'wide'),
+    ('02-annotated-detail.jpg', 'Annotated detail', 'wide'),
     ],
   },
   "youtube": None, "itch": None, "pdf": None, "links": [],
@@ -568,6 +572,7 @@ PROJECTS = [
     "video": False,
     "logo": 'logo.png',
     "gallery": [
+    ('01-level-and-cadence.jpg', 'Level layout and intensity curve', 'wide'),
     ],
   },
   "youtube": None, "itch": None, "pdf": None, "links": [],
@@ -599,6 +604,7 @@ PROJECTS = [
     "video": False,
     "logo": 'logo.png',
     "gallery": [
+    ('01-level-and-cadence.jpg', 'Level layout and intensity curve', 'wide'),
     ],
   },
   "youtube": None, "itch": None, "pdf": None, "links": [],
@@ -629,6 +635,7 @@ PROJECTS = [
     "video": False,
     "logo": 'logo.png',
     "gallery": [
+    ('01-level-and-cadence.jpg', 'Level layout and intensity curve', 'wide'),
     ],
   },
   "youtube": "EXBzT5mT8F4", "itch": None, "pdf": None, "links": [],
