@@ -1,14 +1,30 @@
-# Source archives copied into assets/img/ — huge, and not part of the site.
-# Two of the videos exceed GitHub's hard 100 MB per-file limit, which would
-# make the push fail outright. The optimised web copies live in assets/img/
-# at the root, and those ARE tracked.
-assets/img/*/
+# ── Raw source archive ────────────────────────────────────────────────
+# Your original per-project folders ("1 Makan Mania", "2 Astro Cow", ...)
+# hold screenshots, videos, installers and Visual Studio source. Two of the
+# videos are over GitHub's hard 100 MB per-file limit, which makes a push
+# fail outright, and git keeps every blob in history forever — so one
+# accidental commit bloats the repo permanently.
+#
+# Matched by the leading digit in their names. The web assets live in
+# assets/img/<slug>/ (magique/, astro-cow/, ...) and ARE tracked.
+assets/img/[0-9]*/
 
-# Media that belongs on YouTube/itch, not in git
-*.mp4
+# Old flat layout. Every web asset now lives in assets/img/<slug>/, so
+# nothing loose at the top of assets/img/ should be tracked (the fetch
+# script is the one exception, and it has no image extension).
+# The stale files are still on your disk — safe to delete by hand.
+assets/img/*.png
+assets/img/*.jpg
+assets/img/*.jpeg
+assets/img_old/
+
+# Media that belongs on YouTube or itch, not in git
 *.mov
 *.exe
 *.msi
+
+# Source GIFs — the web copies are assets/img/<slug>/cover.mp4 + .webm
+assets/img/*/*.gif
 
 # Build noise
 __pycache__/

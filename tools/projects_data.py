@@ -9,6 +9,13 @@ no build step, this is only for your convenience when bulk-editing.
 Descriptions are based on your own Weebly copy, lightly tightened. Where the old
 site had no real text (Portal Planet, Bouncy Balloon were lorem ipsum) the entry
 is marked NEEDS_YOUR_WORDS.
+
+Assets live per project in assets/img/<slug>/ :
+    cover.mp4 + cover.webm + cover.jpg   animated cover (poster is the jpg)
+    cover.jpg                            static cover, when there is no footage
+    logo.png                             the title lockup, laid over the cover
+    01-*.jpg / 02-*.png ...              gallery, shown in filename order
+The "media" key below is generated from those folders.
 """
 
 WEEBLY = "https://cliffordtanek.weebly.com/uploads/1/2/4/8/124841696"
@@ -55,7 +62,13 @@ PROJECTS = [
      "close. Handling degenerate input turned out to be most of the work."),
   ],
   "note": "Some implementation detail is omitted — this was internal government work.",
-  "gallery": [],
+  "media": {
+    "cover": None,
+    "video": False,
+    "logo": None,
+    "gallery": [
+    ],
+  },
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -92,13 +105,17 @@ PROJECTS = [
      "between those two, and building the tuning knobs that let designers answer the question "
      "themselves."),
   ],
-  "gallery": [
-    ('magique.png', 'Cover art', None),
-    ('magique-menu.png', 'Main menu', None),
-    ('magique-gameplay.jpg', 'Gameplay', None),
-    ('magique-editor.jpg', 'Level editor', None),
-    ('magique-cutscene.jpg', 'Cutscene', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": True,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-main-menu.png', 'Main menu'),
+    ('02-gameplay.jpg', 'Gameplay'),
+    ('03-level-editor.jpg', 'Level editor'),
+    ('04-cutscene.jpg', 'Cutscene'),
+    ],
+  },
   "youtube": "PIk9CnEE8X8", "itch": "3039191", "pdf": None, "links": [],
 },
 
@@ -134,10 +151,14 @@ PROJECTS = [
      "The combination suits genres where a crowd has to look deliberate — RTS unit groups, stealth "
      "AI sweeping a space, open-world NPCs exploring terrain the player has also never seen."),
   ],
-  "gallery": [
-    ('pathfinding-cover.png', 'Flow field with agent cones', None),
-    ('pathfinding.png', 'Field detail', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": True,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-flow-field.png', 'Flow field with agent cones'),
+    ],
+  },
   "youtube": "O11_lbwOUPo", "itch": None,
   "pdf": ("multi-agent-pathfinding-report.pdf", "Full project report",
           f"{WEEBLY}/ai_proposal_team_wo_ai_ni.pdf"),
@@ -178,10 +199,14 @@ PROJECTS = [
      "get removed. It also does object removal — mark a region and the algorithm preferentially "
      "carves through it."),
   ],
-  "gallery": [
-    ('seam-carving-cover.jpg', 'Seams overlaid on the source image', None),
-    ('seam-carving.jpg', 'Seam detail', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": True,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-seams.jpg', 'Seams overlaid on the source image'),
+    ],
+  },
   "youtube": "9uLtq96a65Q", "itch": None,
   "pdf": ("seam-carving-report.pdf", "Full project report", None),
   "links": [],
@@ -217,13 +242,17 @@ PROJECTS = [
      "I led the team: concept, delegation, and making sure the pieces other people built actually "
      "fit together into one game. I also did the game design and contributed to UI/UX."),
   ],
-  "gallery": [
-    ('hole-in-the-wall.jpg', 'Cover', None),
-    ('hitw-menu.jpg', 'Main menu', None),
-    ('hitw-gamescreen.jpg', 'In-game pose matching', None),
-    ('hitw-gameover.jpg', 'Game over', None),
-    ('hitw-technical.png', 'Technical overview', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": True,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-main-menu.jpg', 'Main menu'),
+    ('02-pose-matching.jpg', 'In-game pose matching'),
+    ('03-game-over.jpg', 'Game over'),
+    ('04-technical-overview.png', 'Technical overview'),
+    ],
+  },
   "youtube": "4pKy15podqU", "itch": None, "pdf": None, "links": [],
 },
 
@@ -253,12 +282,16 @@ PROJECTS = [
      "speed, how many planets are in play, and how many animals you have to move — so the harder "
      "modes change the shape of the problem rather than just the reaction time it needs."),
   ],
-  "gallery": [
-    ('astro-cow.png', 'Main menu', None),
-    ('astro-cow-cover.jpg', 'Cover', None),
-    ('astro-cow-levels.jpg', 'Level select', None),
-    ('astro-cow-tutorial.jpg', 'Tutorial stage', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": True,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-main-menu.png', 'Main menu'),
+    ('02-level-select.jpg', 'Level select'),
+    ('03-tutorial.jpg', 'Tutorial'),
+    ],
+  },
   "youtube": "viZI0KF6UT0", "itch": "2202573", "pdf": None, "links": [],
 },
 
@@ -291,13 +324,17 @@ PROJECTS = [
      "interface. In a game where you're reading three things at once under time pressure, where "
      "information sits on screen is the difficulty."),
   ],
-  "gallery": [
-    ('makan-mania.png', 'Main menu', None),
-    ('makan-mania-normal.jpg', 'Standard mode', None),
-    ('makan-mania-spicy.jpg', 'Spicy mode — conveyor belt', None),
-    ('makan-mania-almanac.png', 'Recipe almanac', None),
-    ('makan-mania-cover.jpg', 'Cover', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": True,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-main-menu.png', 'Main menu'),
+    ('02-standard-mode.jpg', 'Standard mode'),
+    ('03-spicy-mode.jpg', 'Spicy mode — moving conveyor'),
+    ('04-almanac.png', 'Almanac'),
+    ],
+  },
   "youtube": "AyB548vUIBs", "itch": "2207708", "pdf": None, "links": [],
 },
 
@@ -327,12 +364,16 @@ PROJECTS = [
      "piece of luggage, the rulebook is formatted as a passport, and the tokens are planes and "
      "passengers. It means the theme lands before anyone has read a rule."),
   ],
-  "gallery": [
-    ('destination-dash.jpg', 'Cover', None),
-    ('destination-dash-1.jpg', 'Components', None),
-    ('destination-dash-2.jpg', 'Cards and tokens', None),
-    ('destination-dash-3.jpg', 'Packaging', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": False,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-cards-and-tokens.jpg', 'Cards and tokens'),
+    ('02-packaging.jpg', 'Packaging'),
+    ('03-cover.jpg', 'Cover'),
+    ],
+  },
   "youtube": None, "itch": None, "pdf": None,
   "links": [("BoardGameGeek listing", "https://boardgamegeek.com/boardgame/398559/destination-dash")],
 },
@@ -366,11 +407,15 @@ PROJECTS = [
      "visual design with the components so the two reinforced each other rather than the art being "
      "decoration on top of a ruleset."),
   ],
-  "gallery": [
-    ('peek-a-beak.jpg', 'Cover', None),
-    ('peek-a-beak-1.jpg', 'Board and cards', None),
-    ('peek-a-beak-2.jpg', 'Bird cards', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": False,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-bird-cards.jpg', 'Board and bird cards'),
+    ('02-cover.jpg', 'Cover'),
+    ],
+  },
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -401,9 +446,13 @@ PROJECTS = [
      "than one desk, a garden reachable from both the bedroom and the living room, and windows "
      "positioned so that every workspace has both daylight and something worth looking at."),
   ],
-  "gallery": [
-    ('12x16.jpg', 'Floor plan', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": False,
+    "logo": 'logo.png',
+    "gallery": [
+    ],
+  },
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -433,9 +482,13 @@ PROJECTS = [
      "carries a basketball court and a herb island that you reach by boat, which was the piece that "
      "made the plan stop feeling like a floor plan with trees drawn on it."),
   ],
-  "gallery": [
-    ('1000m2.jpg', 'Site plan', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": False,
+    "logo": 'logo.png',
+    "gallery": [
+    ],
+  },
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -471,10 +524,14 @@ PROJECTS = [
      "placing a single object made everything downstream easier — and the parts of the map I built "
      "before doing that are the parts that needed reworking."),
   ],
-  "gallery": [
-    ('pirate-adventure.jpg', 'The map', None),
-    ('pirate-adventure-detail.jpg', 'Annotated detail', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": False,
+    "logo": 'logo.png',
+    "gallery": [
+    ('01-annotated-detail.jpg', 'Annotated detail'),
+    ],
+  },
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -506,9 +563,13 @@ PROJECTS = [
      "Difficulty progression and visual coherence are the same problem. Incremental challenge only "
      "reads as fair if the environment stays consistent enough that the player can tell what's new."),
   ],
-  "gallery": [
-    ('swinging-skyway.jpg', 'Level and cadence', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": False,
+    "logo": 'logo.png',
+    "gallery": [
+    ],
+  },
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -533,9 +594,13 @@ PROJECTS = [
      "nothing here to carry over. Replace this section in tools/projects_data.py with a few "
      "sentences on what the level does and what you learned building it."),
   ],
-  "gallery": [
-    ('portal-planet.jpg', 'Level and cadence', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": False,
+    "logo": 'logo.png',
+    "gallery": [
+    ],
+  },
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -559,9 +624,13 @@ PROJECTS = [
      "nothing here to carry over. Replace this section in tools/projects_data.py with a few "
      "sentences on what the level does and what you learned building it."),
   ],
-  "gallery": [
-    ('bouncy-balloon.jpg', 'Level and cadence', None),
-  ],
+  "media": {
+    "cover": 'cover.jpg',
+    "video": False,
+    "logo": 'logo.png',
+    "gallery": [
+    ],
+  },
   "youtube": "EXBzT5mT8F4", "itch": None, "pdf": None, "links": [],
 },
 

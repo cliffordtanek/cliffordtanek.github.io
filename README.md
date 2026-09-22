@@ -103,45 +103,61 @@ of the site that comes from your background rather than a template:
   architectural ticks.
 - **Registration marks** — the small crosses at the top corners.
 
-## Images
+## Images and covers
 
-Web copies live flat in `assets/img/` — resized to 1600px max and compressed
-(37 files, ~5 MB total, down from ~37 MB of originals).
+Every project has its own folder, `assets/img/<slug>/`:
+
+```
+assets/img/magique/
+  cover.mp4        animated cover (h264)
+  cover.webm       same, VP9 — browsers pick whichever they support
+  cover.jpg        poster frame; also the static cover when there's no footage
+  logo.png         title lockup, laid over the cover
+  01-main-menu.png gallery, shown in filename order
+  02-gameplay.jpg
+```
+
+The caption under each gallery image is derived from its filename
+(`02-spicy-mode.jpg` → "Spicy mode"), so name files descriptively. Add or
+remove one, update the `media` block in `tools/projects_data.py`, and rebuild.
+
+**Covers are video, not GIF.** Your source GIFs were 4–10 MB each; as MP4 and
+WebM they're 116–500 KB, a 10–25× reduction for the same footage. They carry no
+`autoplay` attribute and `preload="none"`, so nothing downloads until a cover is
+near the viewport; offscreen covers pause. With `prefers-reduced-motion` they
+never play and the poster frame stands in.
+
+To add a cover for a project that doesn't have one, drop the GIF in and convert:
+
+```bash
+ffmpeg -t 8 -i in.gif -vf "scale='min(960,iw)':-2:flags=lanczos" \
+  -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -an \
+  -movflags +faststart assets/img/<slug>/cover.mp4
+ffmpeg -t 8 -i in.gif -vf "scale='min(960,iw)':-2:flags=lanczos" \
+  -c:v libvpx-vp9 -crf 36 -b:v 0 -an assets/img/<slug>/cover.webm
+ffmpeg -i assets/img/<slug>/cover.mp4 -frames:v 1 -q:v 4 assets/img/<slug>/cover.jpg
+```
+
+Road Network has no cover on purpose — its card runs the live parcellation demo.
 
 **Your source archive stays out of git.** `.gitignore` excludes
-`assets/img/*/` — the per-project folders holding original screenshots, videos,
-installers and Visual Studio source. That matters: two of those videos are over
-GitHub's hard 100 MB per-file limit and would make `git push` fail outright, and
-git keeps every blob in history forever, so a single accidental commit bloats the
+`assets/img/[0-9]*/` — your numbered folders ("1 Makan Mania", "2 Astro Cow"…)
+holding originals, videos, installers and Visual Studio source. Two of those
+videos exceed GitHub's hard 100 MB per-file limit and would make `git push` fail
+outright, and git keeps every blob forever, so one accidental commit bloats the
 repo permanently. The folders stay on your disk; they just don't ship.
 
-If you add a new screenshot, put the web copy in `assets/img/` at the top level
-(not in a subfolder) or git will ignore it.
+Loose files at the top of `assets/img/` are also ignored — that's the old flat
+layout, and those files are safe to delete by hand.
 
-Any image that *is* missing degrades gracefully — the tile shows a labelled
-hatched placeholder rather than a broken image.
+A missing cover degrades gracefully: the tile shows hatching and the project
+name rather than a broken image.
 
 One asset is still only on Weebly:
 
 ```bash
 bash assets/img/fetch-weebly-images.sh   # the pathfinding report PDF
 ```
-
-Filenames the HTML looks for:
-
-| File | Project |
-|---|---|
-| `parcellation.png` | Road Network for Urban Parcellation (URA) |
-| `magique.png` | Magique |
-| `pathfinding.png` | Multi-Agent Pathfinding |
-| `seam-carving.png` | Seam Carving |
-| `hole-in-the-wall.png` | Hole In The Wall |
-| `astro-cow.png` | Astro Cow |
-| `makan-mania.png` | Makan Mania |
-| `destination-dash.png` | Destination Dash |
-| `peek-a-beak.png` | Peek A Beak |
-
-Aim for 16:9, around 1600×900, under ~300 KB each.
 
 ## Editing
 

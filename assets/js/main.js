@@ -96,6 +96,42 @@
     card.style.cursor = 'pointer';
   });
 
+  /* ---------- cover videos ----------
+     They ship with preload="none" and no autoplay attribute, so nothing is
+     fetched until a cover is actually near the viewport. Offscreen covers
+     pause, which keeps a page of six of them off the CPU and the battery.
+     With prefers-reduced-motion we never play at all — the poster frame
+     stands in, which is why every cover has one. */
+  var covers = document.querySelectorAll('video.cover-media');
+
+  if (covers.length) {
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (still || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(covers, function (v) {
+        v.removeAttribute('autoplay');
+        try { v.pause(); } catch (e) { /* ignore */ }
+      });
+    } else {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var v = entry.target;
+          if (entry.isIntersecting) {
+            if (v.preload !== 'auto') v.preload = 'auto';
+            var pr = v.play();
+            // Autoplay can still be refused (low power mode, for one).
+            // The poster is already showing, so there is nothing to fix.
+            if (pr && pr.catch) pr.catch(function () {});
+          } else if (!v.paused) {
+            v.pause();
+          }
+        });
+      }, { rootMargin: '150px 0px', threshold: 0.1 });
+
+      Array.prototype.forEach.call(covers, function (v) { vio.observe(v); });
+    }
+  }
+
   /* ---------- footer year ---------- */
   var y = new Date().getFullYear();
   Array.prototype.forEach.call(document.querySelectorAll('#year, #year2'), function (el) {

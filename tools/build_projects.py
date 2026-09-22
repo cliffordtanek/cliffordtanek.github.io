@@ -102,14 +102,45 @@ def body_sections(p):
     return "\n".join(out)
 
 
+def cover(p, prefix="../assets/img/"):
+    """Animated cover (video) or static image, with the title lockup laid over it.
+    A missing cover leaves the hatched placeholder showing, which is a real state
+    — Road Network has no footage and runs the live demo instead."""
+    m = p.get("media") or {}
+    base = f"{prefix}{p['slug']}/"
+    inner = ""
+    if m.get("video"):
+        inner = (f'    <video class="cover-media" muted loop playsinline preload="none"\n'
+                 f'           poster="{base}cover.jpg" aria-label="{E(p["title"])} gameplay">\n'
+                 f'      <source src="{base}cover.webm" type="video/webm">\n'
+                 f'      <source src="{base}cover.mp4" type="video/mp4">\n'
+                 f'    </video>\n')
+    elif m.get("cover"):
+        inner = (f'    <img class="cover-media" src="{base}{m["cover"]}" alt="" loading="lazy">\n')
+    if m.get("logo"):
+        inner += (f'    <img class="cover-logo" src="{base}{m["logo"]}"\n'
+                  f'         alt="{E(p["title"])}" loading="lazy">\n')
+    if not inner:
+        return ""
+    has_media = bool(m.get("video") or m.get("cover"))
+    if has_media and m.get("logo"):
+        inner = inner.replace('    <img class="cover-logo"',
+                              '    <span class="cover-veil" aria-hidden="true"></span>\n'
+                              '    <img class="cover-logo"')
+    cls = "cover cover-hero" + (" has-media" if has_media else "")
+    return (f'  <div class="{cls}" data-label="{E(p["title"])}">\n'
+            f'{inner}  </div>')
+
+
 def gallery(p):
-    if not p["gallery"]:
+    items = (p.get("media") or {}).get("gallery") or []
+    if not items:
         return ""
     figs = []
-    for fname, caption, _src in p["gallery"]:
+    for fname, caption in items:
         figs.append(f"""      <figure class="shot">
         <div class="shot-frame" data-label="{E(caption)}">
-          <img src="../assets/img/{E(fname)}" alt="{E(p['title'])} — {E(caption)}" loading="lazy">
+          <img src="../assets/img/{E(p['slug'])}/{E(fname)}" alt="{E(p['title'])} — {E(caption)}" loading="lazy">
         </div>
         <figcaption>{E(caption)}</figcaption>
       </figure>""")
@@ -177,12 +208,7 @@ def pager(i):
 def page(p, i):
     sheet = "P-%02d" % (i + 1)
     desc = re.sub(r"\s+", " ", p["summary"]).replace("NEEDS_YOUR_WORDS — ", "")[:180]
-    hero = p["gallery"][0][0] if p["gallery"] else None
-    hero_html = ""
-    if hero:
-        hero_html = f"""  <div class="project-hero" data-label="{E(p['title'])}">
-    <img src="../assets/img/{E(hero)}" alt="{E(p['title'])}" loading="eager">
-  </div>"""
+    hero_html = cover(p)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
