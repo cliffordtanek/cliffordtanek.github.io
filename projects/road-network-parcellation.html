@@ -23,6 +23,8 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 
 <a class="skip" href="#main">Skip to content</a>
 
+<div class="paper" aria-hidden="true"></div>
+
 <span class="reg-mark reg-tl" aria-hidden="true"></span>
 <span class="reg-mark reg-tr" aria-hidden="true"></span>
 
@@ -72,13 +74,13 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
     </section>
     <p class="note">Some implementation detail is omitted — this was internal government work.</p>
     <section class="prose-block">
-      <h2>Live demo</h2>
+      <h2>How it works</h2>
       <div class="demo">
         <canvas class="demo-canvas" data-demo="parcellation"
                 aria-label="Live algorithm demo for Road Network for Urban Parcellation"></canvas>
         <div class="demo-bar">
-          <span class="demo-label">Running</span>
-          <span class="demo-note">Recursive subdivision, running live. Each split cuts the largest remaining parcel across its long axis; the gaps left behind are the road network. This is the same idea as the production algorithm, stripped to its core.</span>
+          <span class="demo-label">Sketch</span>
+          <span class="demo-note">An illustration of the idea, not the production code: a small JavaScript sketch written for this page that splits the largest remaining parcel across its long axis until every parcel is under a target area. The real implementation is Python against Singapore&#x27;s road network data.</span>
           <button class="demo-again" type="button">Regenerate</button>
         </div>
       </div>

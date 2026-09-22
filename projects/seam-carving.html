@@ -23,6 +23,8 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 
 <a class="skip" href="#main">Skip to content</a>
 
+<div class="paper" aria-hidden="true"></div>
+
 <span class="reg-mark reg-tl" aria-hidden="true"></span>
 <span class="reg-mark reg-tr" aria-hidden="true"></span>
 
@@ -80,13 +82,13 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
       <p>A real-time GUI for loading an image, dragging the target dimensions, and watching the seams get removed. It also does object removal — mark a region and the algorithm preferentially carves through it.</p>
     </section>
     <section class="prose-block">
-      <h2>Live demo</h2>
+      <h2>How it works</h2>
       <div class="demo">
         <canvas class="demo-canvas" data-demo="seamcarve"
                 aria-label="Live algorithm demo for Content-Aware Image Resizing with Seam Carving"></canvas>
         <div class="demo-bar">
-          <span class="demo-label">Running</span>
-          <span class="demo-note">Sobel energy map, then dynamic programming finds the cheapest top-to-bottom seam. The highlighted path is the one about to be removed. The image is generated procedurally so the demo ships no image payload.</span>
+          <span class="demo-label">Sketch</span>
+          <span class="demo-note">An illustration of the algorithm, written in JavaScript for this page — the project itself is C++/OpenCV, and the footage above is from it. Sobel energy map, then dynamic programming finds the cheapest top-to-bottom seam; the highlighted path is the one about to be removed.</span>
           <button class="demo-again" type="button">Regenerate</button>
         </div>
       </div>

@@ -1027,18 +1027,6 @@ a { color: inherit; }
 }
 .hero .wrap { position: relative; z-index: 2; }
 
-/* the parcellation running as a backdrop — the algorithm from the
-   URA work, subdividing the page it sits on. Masked away from the
-   text so it never fights the type. */
-.hero-plot {
-  position: absolute; top: 0; right: 0; bottom: 0; z-index: 1;
-  width: 62%; pointer-events: none; opacity: 0;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%, #000 100%);
-          mask-image: linear-gradient(90deg, transparent 0%, #000 45%, #000 100%);
-}
-.hero-plot canvas { width: 100%; height: 100%; display: block; }
-@media (max-width: 900px) { .hero-plot { display: none; } }
-
 /* construction lines — the setting-out marks you draw before the object */
 .hero-cx {
   position: absolute; z-index: 1; pointer-events: none;
@@ -1054,7 +1042,6 @@ a { color: inherit; }
 }
 
 body.intro-run .hero-grid { animation: draftGrid .9s var(--ease) forwards; }
-body.intro-run .hero-plot { animation: draftGrid 1.6s var(--ease) .5s forwards; }
 body.intro-run .hero-cx--h { animation: cxH .85s var(--ease) .15s forwards; }
 body.intro-run .hero-cx--v { animation: cxV .85s var(--ease) .25s forwards; }
 body.intro-run .hero h1 .ch {
@@ -1080,7 +1067,6 @@ body.intro-run .hero .eyebrow  { opacity: 0; animation: fadeUp .5s var(--ease) 1
 
 /* end state — animations removed so a backgrounded tab can't strand them */
 body.intro-done .hero-grid { opacity: .85; animation: none; }
-body.intro-done .hero-plot { opacity: .85; animation: none; }
 body.intro-done .hero-cx--h { opacity: .22; transform: scaleX(1); animation: none; }
 body.intro-done .hero-cx--v { opacity: .22; transform: scaleY(1); animation: none; }
 body.intro-done .hero h1 .ch,
@@ -1088,52 +1074,11 @@ body.intro-done .hero .dimension,
 body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; animation: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-grid, .hero-plot { opacity: .85; }
+  .hero-grid { opacity: .85; }
   .hero-cx--h { opacity: .22; transform: scaleX(1); }
   .hero-cx--v { opacity: .22; transform: scaleY(1); }
   .hero h1 .ch { opacity: 1 !important; animation: none !important; }
 }
-
-/* ============================================================
-   CAD CROSSHAIR — hero only, fine pointers only
-   ============================================================ */
-
-.xhair { position: absolute; inset: 0; z-index: 3; pointer-events: none;
-         opacity: 0; transition: opacity .25s var(--ease); }
-.xhair.on { opacity: 1; }
-.xhair .xh-v, .xhair .xh-h { position: absolute; background: var(--accent); opacity: .30; }
-.xhair .xh-v { top: 0; bottom: 0; width: 1px; left: 0; }
-.xhair .xh-h { left: 0; right: 0; height: 1px; top: 0; }
-.xhair .xh-read {
-  position: absolute; top: 0; left: 0;
-  font-family: var(--mono); font-size: 10px; letter-spacing: .1em;
-  color: var(--accent); opacity: .75; white-space: nowrap;
-}
-@media (pointer: coarse) { .xhair { display: none; } }
-
-/* ============================================================
-   THEME WIPE — a disc opening out of the toggle
-   ============================================================ */
-
-/* View Transitions path: kill the default cross-fade, the JS
-   clip-path animation does the work. Old sits under new. */
-::view-transition-old(root),
-::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-::view-transition-old(root) { z-index: 1; }
-::view-transition-new(root) { z-index: 2; }
-
-/* Fallback path: one disc, painted the colour we're moving to. */
-.theme-wipe {
-  position: fixed; z-index: 9999; pointer-events: none;
-  width: 0; height: 0; border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: #0e0e10;
-}
-.theme-wipe[data-to="light"] { background: #fbfbfa; }
-
-.theme-toggle { overflow: hidden; }
-.theme-toggle svg { transition: transform .5s var(--ease); }
-.theme-toggle:active svg { transform: rotate(180deg) scale(.9); }
 
 /* ============================================================
    SCROLL RULE — how far through the drawing you are
@@ -1172,3 +1117,121 @@ body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; anim
 @media (prefers-reduced-motion: reduce) {
   .card::before, .card::after { transition: none; }
 }
+
+/* ============================================================
+   DRAFTING PAPER — a faint fixed grid under the whole page, so
+   the site reads as one continuous sheet rather than the hero
+   being the only drawn thing. Deliberately near-invisible: at
+   this opacity it registers as paper texture, not as lines.
+   ============================================================ */
+.paper {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: .5;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 110px 110px, 110px 110px;
+}
+.paper::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 22px 22px, 22px 22px;
+  opacity: .55;
+}
+@media (prefers-reduced-motion: reduce) { .paper { opacity: .32; } }
+
+/* content sits above the paper */
+.site-header, main, .site-footer { position: relative; z-index: 2; }
+
+/* ============================================================
+   AUTOCAD CURSOR
+   Full-viewport crosshair, pickbox at the intersection, and a
+   status readout bottom-left. The native cursor is hidden only
+   while ours is live — see hero.js for the restore paths.
+   ============================================================ */
+
+body.cad-on,
+body.cad-on a,
+body.cad-on button,
+body.cad-on [data-href] { cursor: none; }
+
+.cad {
+  position: fixed; inset: 0; z-index: 9990; pointer-events: none;
+  opacity: 0; transition: opacity .18s var(--ease);
+}
+.cad.on { opacity: 1; }
+
+.cad-v, .cad-h { position: absolute; background: var(--accent); }
+.cad-v { top: 0; bottom: 0; width: 1px; left: 0; opacity: .20; }
+.cad-h { left: 0; right: 0; height: 1px; top: 0; opacity: .20; }
+
+/* the pickbox — the square you select with */
+.cad-box {
+  position: absolute; top: 0; left: 0;
+  width: 15px; height: 15px; margin: -8px 0 0 -8px;
+  border: 1px solid var(--accent); opacity: .85;
+  transition: width .16s var(--ease), height .16s var(--ease),
+              margin .16s var(--ease), opacity .16s var(--ease),
+              background-color .16s var(--ease);
+}
+.cad.pick .cad-box {
+  width: 26px; height: 26px; margin: -13px 0 0 -13px;
+  background: var(--accent-soft);
+}
+.cad.pick .cad-v, .cad.pick .cad-h { opacity: .34; }
+
+/* status readout, like the coordinate box in the corner of CAD */
+.cad-read {
+  position: fixed; left: 14px; bottom: 12px; z-index: 9991;
+  pointer-events: none; opacity: 0; transition: opacity .18s var(--ease);
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+  color: var(--text-dim);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: 5px 10px;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.cad-read.on { opacity: 1; }
+.cad-read .cr-sep { width: 1px; height: 10px; background: var(--line); }
+.cad-read .cr-hint { color: var(--accent); }
+@media (max-width: 900px) { .cad-read { display: none; } }
+
+/* ============================================================
+   PLOTTER SWEEP — the theme change is drawn, not faded.
+   A pen travels the viewport and the new sheet appears behind it.
+   ============================================================ */
+
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+/* The pen. A drop-shadow traces the edge of a clipped element, so
+   as the clip sweeps across, the shadow rides its leading edge —
+   which is the only way to paint a line over the transition, since
+   these pseudo-elements sit above every normal DOM layer. */
+::view-transition-new(root) {
+  filter:
+    drop-shadow(-1px 0 0 var(--accent))
+    drop-shadow(-3px 0 10px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+
+/* fallback panel for browsers without View Transitions.
+   The pen is drawn on the panel's own leading edge, so the two
+   can never drift out of sync the way two separate animations can. */
+.theme-wipe {
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  background: #0e0e10;
+}
+.theme-wipe[data-to="light"] { background: #fbfbfa; }
+.theme-wipe::after {
+  content: ''; position: absolute; top: 0; bottom: 0; right: -2px; width: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 18px 2px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.theme-toggle svg { transition: transform .5s var(--ease); }
+.theme-toggle:active svg { transform: rotate(180deg) scale(.9); }

@@ -23,6 +23,8 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 
 <a class="skip" href="#main">Skip to content</a>
 
+<div class="paper" aria-hidden="true"></div>
+
 <span class="reg-mark reg-tl" aria-hidden="true"></span>
 <span class="reg-mark reg-tr" aria-hidden="true"></span>
 
@@ -80,13 +82,13 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
       <p>The combination suits genres where a crowd has to look deliberate — RTS unit groups, stealth AI sweeping a space, open-world NPCs exploring terrain the player has also never seen.</p>
     </section>
     <section class="prose-block">
-      <h2>Live demo</h2>
+      <h2>How it works</h2>
       <div class="demo">
         <canvas class="demo-canvas" data-demo="flowfield"
                 aria-label="Live algorithm demo for Multi-Agent Pathfinding"></canvas>
         <div class="demo-bar">
-          <span class="demo-label">Running</span>
-          <span class="demo-note">One Dijkstra sweep from the goal builds the integration field, and every agent then just reads its own cell&#x27;s gradient. Cost is O(grid) once rather than O(agents x path). Separation forces keep them from stacking up.</span>
+          <span class="demo-label">Sketch</span>
+          <span class="demo-note">An illustration of the technique, written in JavaScript for this page — the project itself is C++/SFML, and the footage above is from it. One Dijkstra sweep from the goal builds the integration field; each agent then reads its own cell&#x27;s gradient, so cost is O(grid) once rather than O(agents x path).</span>
           <button class="demo-again" type="button">Regenerate</button>
         </div>
       </div>

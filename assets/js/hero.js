@@ -52,45 +52,77 @@
   }
 
   /* ---------------------------------------------------------
-     3. CAD crosshair — thin guides tracking the cursor, but only
-        over the hero, only with a real pointer, never on touch.
+     3. AutoCAD cursor — full-viewport crosshair with a pickbox at
+        the intersection, and a coordinate readout pinned bottom
+        left like the status bar.
+
+        Only on a fine pointer, never on touch, never with reduced
+        motion. The native cursor is hidden only once ours is
+        actually on screen, and restored whenever the pointer
+        leaves the window or the tab is hidden — so you can never
+        end up with no cursor at all.
      --------------------------------------------------------- */
-  function crosshair() {
+  function cadCursor() {
     if (REDUCED) return;
     if (!window.matchMedia('(pointer: fine)').matches) return;
 
-    var hero = document.querySelector('.hero');
-    if (!hero) return;
+    var el = document.createElement('div');
+    el.className = 'cad';
+    el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = '<span class="cad-v"></span><span class="cad-h"></span>' +
+                   '<span class="cad-box"></span>';
+    document.body.appendChild(el);
 
-    var wrap = document.createElement('div');
-    wrap.className = 'xhair';
-    wrap.setAttribute('aria-hidden', 'true');
-    wrap.innerHTML = '<span class="xh-v"></span><span class="xh-h"></span>' +
-                     '<span class="xh-read"></span>';
-    hero.appendChild(wrap);
+    var readout = document.createElement('div');
+    readout.className = 'cad-read';
+    readout.setAttribute('aria-hidden', 'true');
+    readout.innerHTML = '<span class="cr-xy">0, 0</span>' +
+                        '<span class="cr-sep"></span>' +
+                        '<span class="cr-hint">SNAP</span>';
+    document.body.appendChild(readout);
 
-    var v = wrap.querySelector('.xh-v'),
-        h = wrap.querySelector('.xh-h'),
-        read = wrap.querySelector('.xh-read');
-    var raf = null, mx = 0, my = 0;
+    var v = el.querySelector('.cad-v'),
+        h = el.querySelector('.cad-h'),
+        box = el.querySelector('.cad-box'),
+        xy = readout.querySelector('.cr-xy'),
+        hint = readout.querySelector('.cr-hint');
+
+    var raf = null, mx = 0, my = 0, live = false;
+
+    function show(on) {
+      live = on;
+      el.classList.toggle('on', on);
+      readout.classList.toggle('on', on);
+      document.body.classList.toggle('cad-on', on);
+    }
 
     function draw() {
       raf = null;
-      var r = hero.getBoundingClientRect();
-      var x = mx - r.left, y = my - r.top;
-      v.style.transform = 'translateX(' + x + 'px)';
-      h.style.transform = 'translateY(' + y + 'px)';
-      read.style.transform = 'translate(' + (x + 12) + 'px,' + (y + 12) + 'px)';
-      // read out as if it were a drawing, in millimetres
-      read.textContent = Math.round(x) + ', ' + Math.round(y);
+      v.style.transform = 'translateX(' + mx + 'px)';
+      h.style.transform = 'translateY(' + my + 'px)';
+      box.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      xy.textContent = Math.round(mx) + ', ' + Math.round(my + window.scrollY);
     }
 
-    hero.addEventListener('pointermove', function (e) {
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
       mx = e.clientX; my = e.clientY;
+      if (!live) show(true);
       if (!raf) raf = requestAnimationFrame(draw);
+
+      // the pickbox reacts to what is under it, the way AutoCAD's does
+      var t = e.target;
+      var over = t && t.closest && t.closest('a, button, [data-href], .chip, .demo-again');
+      el.classList.toggle('pick', !!over);
+      hint.textContent = over ? 'SELECT' : 'SNAP';
+    }, { passive: true });
+
+    // never strand the visitor without a cursor
+    document.addEventListener('pointerleave', function () { show(false); });
+    window.addEventListener('blur', function () { show(false); });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) show(false);
     });
-    hero.addEventListener('pointerenter', function () { wrap.classList.add('on'); });
-    hero.addEventListener('pointerleave', function () { wrap.classList.remove('on'); });
   }
 
   /* ---------------------------------------------------------
@@ -111,56 +143,51 @@
     try { localStorage.setItem('ct-theme', next); } catch (e) { /* ignore */ }
   }
 
-  function wipeTo(next, originEl) {
-    var r = originEl.getBoundingClientRect();
-    var x = r.left + r.width / 2;
-    var y = r.top + r.height / 2;
-    // radius needed to cover the furthest corner
-    var end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+  /* A pen plotter draws a sheet in one pass. The new theme is
+     revealed behind a travelling edge rather than expanding out of
+     the button — same API, but the motion belongs to the drawing
+     rather than to the widget.
 
-    if (REDUCED || !document.startViewTransition) {
-      fallbackWipe(next, x, y, end);
-      return;
-    }
+     The pen line itself is CSS: on the View Transitions path a
+     drop-shadow on the clipped snapshot traces the reveal edge
+     (normal DOM can't paint above those pseudo-elements), and on
+     the fallback path it rides the wipe panel's own edge. */
+  var SWEEP = 720;
+
+  function wipeTo(next) {
+    if (REDUCED) { applyTheme(next); return; }
+
+    if (!document.startViewTransition) { fallbackSweep(next); return; }
 
     var vt = document.startViewTransition(function () { applyTheme(next); });
     vt.ready.then(function () {
       root.animate(
-        { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)',
-                     'circle(' + end + 'px at ' + x + 'px ' + y + 'px)'] },
-        { duration: 620, easing: 'cubic-bezier(.22,.61,.36,1)',
+        { clipPath: ['inset(0 100% 0 0)', 'inset(0 0 0 0)'] },
+        { duration: SWEEP, easing: 'cubic-bezier(.62,.02,.34,1)',
           pseudoElement: '::view-transition-new(root)' }
       );
     }).catch(function () { /* transition skipped — theme still applied */ });
   }
 
-  /* One disc, painted in the incoming background colour, grows from
-     the button. The theme flips once it has covered the viewport, so
-     the switch itself is never visible. */
-  function fallbackWipe(next, x, y, end) {
-    if (REDUCED) { applyTheme(next); return; }
+  /* No View Transitions: a panel in the incoming colour wipes across,
+     the theme flips underneath it, then it wipes off the far side. */
+  function fallbackSweep(next) {
+    var panel = document.createElement('span');
+    panel.className = 'theme-wipe';
+    panel.dataset.to = next;
+    document.body.appendChild(panel);
 
-    var disc = document.createElement('span');
-    disc.className = 'theme-wipe';
-    disc.dataset.to = next;
-    disc.style.left = x + 'px';
-    disc.style.top = y + 'px';
-    document.body.appendChild(disc);
-
-    var anim = disc.animate(
-      { width: ['0px', end * 2 + 'px'], height: ['0px', end * 2 + 'px'] },
-      { duration: 520, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'forwards' }
-    );
-    anim.finished.then(function () {
+    panel.animate(
+      { transform: ['translateX(-100%)', 'translateX(0%)'] },
+      { duration: SWEEP * 0.55, easing: 'cubic-bezier(.62,.02,.34,1)', fill: 'forwards' }
+    ).finished.then(function () {
       applyTheme(next);
-      return disc.animate({ opacity: [1, 0] },
-        { duration: 220, easing: 'ease-out', fill: 'forwards' }).finished;
-    }).then(function () {
-      disc.remove();
-    }).catch(function () {
-      applyTheme(next);
-      disc.remove();
-    });
+      return panel.animate(
+        { transform: ['translateX(0%)', 'translateX(100%)'] },
+        { duration: SWEEP * 0.55, easing: 'cubic-bezier(.62,.02,.34,1)', fill: 'forwards' }
+      ).finished;
+    }).then(function () { panel.remove(); })
+      .catch(function () { applyTheme(next); panel.remove(); });
   }
 
   function wireToggle() {
@@ -168,7 +195,7 @@
     if (!btn) return;
     // hero.js owns the toggle; main.js only sets the initial value
     btn.addEventListener('click', function () {
-      wipeTo(currentTheme() === 'dark' ? 'light' : 'dark', btn);
+      wipeTo(currentTheme() === 'dark' ? 'light' : 'dark');
     });
   }
 
@@ -177,7 +204,7 @@
   function boot() {
     splitName();
     wireToggle();
-    crosshair();
+    cadCursor();
     // let the first paint settle before starting, so the animation
     // doesn't compete with layout and font loading
     requestAnimationFrame(function () { requestAnimationFrame(intro); });

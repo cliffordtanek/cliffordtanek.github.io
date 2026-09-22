@@ -184,12 +184,12 @@ def demo_block(p):
     kind, note = p["demo"]
     note = re.sub(r"\s+", " ", note).strip()
     return f"""    <section class="prose-block">
-      <h2>Live demo</h2>
+      <h2>How it works</h2>
       <div class="demo">
         <canvas class="demo-canvas" data-demo="{E(kind)}"
                 aria-label="Live algorithm demo for {E(p['title'])}"></canvas>
         <div class="demo-bar">
-          <span class="demo-label">Running</span>
+          <span class="demo-label">Sketch</span>
           <span class="demo-note">{E(note)}</span>
           <button class="demo-again" type="button">Regenerate</button>
         </div>
@@ -238,6 +238,8 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 <body class="project-page">
 
 <a class="skip" href="#main">Skip to content</a>
+
+<div class="paper" aria-hidden="true"></div>
 
 <span class="reg-mark reg-tl" aria-hidden="true"></span>
 <span class="reg-mark reg-tr" aria-hidden="true"></span>

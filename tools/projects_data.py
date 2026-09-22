@@ -26,7 +26,7 @@ PROJECTS = [
 {
   "slug": "road-network-parcellation",
   "demo": ("parcellation",
-           "Recursive subdivision, running live. Each split cuts the largest remaining\n            parcel across its long axis; the gaps left behind are the road network. This\n            is the same idea as the production algorithm, stripped to its core."),
+           "An illustration of the idea, not the production code: a small JavaScript\n            sketch written for this page that splits the largest remaining parcel\n            across its long axis until every parcel is under a target area. The real\n            implementation is Python against Singapore's road network data."),
   "title": "Road Network for Urban Parcellation",
   "category": "Capstone · Urban Redevelopment Authority",
   "kind": "engineering",
@@ -122,7 +122,7 @@ PROJECTS = [
 {
   "slug": "multi-agent-pathfinding",
   "demo": ("flowfield",
-           "One Dijkstra sweep from the goal builds the integration field, and every agent\n            then just reads its own cell's gradient. Cost is O(grid) once rather than\n            O(agents x path). Separation forces keep them from stacking up."),
+           "An illustration of the technique, written in JavaScript for this page \u2014 the\n            project itself is C++/SFML, and the footage above is from it. One Dijkstra\n            sweep from the goal builds the integration field; each agent then reads its\n            own cell's gradient, so cost is O(grid) once rather than O(agents x path)."),
   "title": "Multi-Agent Pathfinding",
   "category": "AI research project",
   "kind": "engineering",
@@ -168,7 +168,7 @@ PROJECTS = [
 {
   "slug": "seam-carving",
   "demo": ("seamcarve",
-           "Sobel energy map, then dynamic programming finds the cheapest top-to-bottom\n            seam. The highlighted path is the one about to be removed. The image is\n            generated procedurally so the demo ships no image payload."),
+           "An illustration of the algorithm, written in JavaScript for this page \u2014 the\n            project itself is C++/OpenCV, and the footage above is from it. Sobel energy\n            map, then dynamic programming finds the cheapest top-to-bottom seam; the\n            highlighted path is the one about to be removed."),
   "title": "Content-Aware Image Resizing with Seam Carving",
   "category": "Algorithms study",
   "kind": "engineering",

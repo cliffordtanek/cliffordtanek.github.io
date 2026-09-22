@@ -118,10 +118,26 @@ subdivision from the URA work, masked away from the text so it never fights
 the type. On a fine pointer the hero also gets a CAD crosshair with a live
 coordinate readout.
 
-**Theme toggle** is a circular wipe out of the button, not an instant flip.
-It uses the View Transitions API where available and an expanding disc
-everywhere else; both are in `hero.js`. A tiny inline script in `<head>`
-applies the saved theme before first paint, so there's no white flash.
+**Theme toggle is a plotter pass.** A pen travels the viewport and the new
+sheet is drawn in behind it — a hard reveal edge, not a fade. On the View
+Transitions path the pen is a `drop-shadow` on the clipped snapshot, which
+traces its leading edge; normal DOM can't paint above those pseudo-elements,
+so that's the only way to get a line on top. Browsers without View Transitions
+get a panel that wipes across in the incoming colour with the pen drawn on its
+own edge, so the two can't drift out of sync.
+
+A tiny inline script in `<head>` applies the saved theme before first paint,
+so there's no white flash.
+
+**AutoCAD cursor**, site-wide on fine pointers: full-viewport crosshair,
+pickbox at the intersection that grows and fills over anything clickable, and
+a coordinate readout bottom-left like the status bar. The native cursor is
+hidden only while ours is live, and restored on pointer-leave, window blur and
+tab hide — so you can never end up with no cursor at all. Off entirely on
+touch and with reduced motion.
+
+**Drafting paper** (`.paper`) is a fixed grid under every page, so the site
+reads as one continuous sheet. Two scales, 22px and 110px, matching the hero.
 
 Also: a scroll-progress rule under the header, and registration ticks on the
 corners of a hovered card.
