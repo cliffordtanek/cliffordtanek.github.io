@@ -1084,7 +1084,9 @@ body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; anim
    SCROLL RULE — how far through the drawing you are
    ============================================================ */
 .scan {
-  position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  /* 2px, not 1: at one pixel it reads as part of the header border
+     rather than as a measurement of where you are. */
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
   display: block; pointer-events: none; overflow: hidden;
 }
 .scan i {
@@ -1126,7 +1128,12 @@ body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; anim
    ============================================================ */
 .paper {
   position: fixed; inset: 0; z-index: 1; pointer-events: none;
-  opacity: .5;
+  /* --paper is driven by scroll in main.js: full strength over the
+     hero, gone by the time the title has left the screen. The grid
+     belongs to the title sheet; below it the work should sit on
+     clean ground. The crosshair carries on regardless — it's the
+     instrument, not the paper. */
+  opacity: calc(.5 * var(--paper, 1));
   background-image:
     linear-gradient(var(--line) 1px, transparent 1px),
     linear-gradient(90deg, var(--line) 1px, transparent 1px);
@@ -1140,10 +1147,15 @@ body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; anim
   background-size: 22px 22px, 22px 22px;
   opacity: .55;
 }
-@media (prefers-reduced-motion: reduce) { .paper { opacity: .32; } }
+@media (prefers-reduced-motion: reduce) {
+  .paper { opacity: calc(.32 * var(--paper, 1)); }
+}
 
-/* content sits above the paper */
-.site-header, main, .site-footer { position: relative; z-index: 2; }
+/* Content sits above the paper. The header is NOT listed here — it is
+   position: sticky, and restating position would demote it to relative
+   and take the scroll rule off the top of the screen with it. Its own
+   z-index (50) already clears the paper. */
+main, .site-footer { position: relative; z-index: 2; }
 
 /* ============================================================
    AUTOCAD CURSOR
@@ -1163,15 +1175,23 @@ body.cad-on [data-href] { cursor: none; }
 }
 .cad.on { opacity: 1; }
 
-.cad-v, .cad-h { position: absolute; background: var(--accent); }
-.cad-v { top: 0; bottom: 0; width: 1px; left: 0; opacity: .20; }
-.cad-h { left: 0; right: 0; height: 1px; top: 0; opacity: .20; }
+/* The lines have to out-read the drafting grid behind them, or they
+   just look like one more gridline. Hence the stronger accent and a
+   thin halo in the page colour, which separates them from whatever
+   they cross — text, a screenshot, a dark card. */
+.cad-v, .cad-h {
+  position: absolute; background: var(--accent); opacity: .55;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 62%, transparent);
+}
+.cad-v { top: 0; bottom: 0; width: 1px; left: 0; }
+.cad-h { left: 0; right: 0; height: 1px; top: 0; }
 
 /* the pickbox — the square you select with */
 .cad-box {
   position: absolute; top: 0; left: 0;
   width: 15px; height: 15px; margin: -8px 0 0 -8px;
-  border: 1px solid var(--accent); opacity: .85;
+  border: 1px solid var(--accent); opacity: 1;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 62%, transparent);
   transition: width .16s var(--ease), height .16s var(--ease),
               margin .16s var(--ease), opacity .16s var(--ease),
               background-color .16s var(--ease);
@@ -1180,7 +1200,7 @@ body.cad-on [data-href] { cursor: none; }
   width: 26px; height: 26px; margin: -13px 0 0 -13px;
   background: var(--accent-soft);
 }
-.cad.pick .cad-v, .cad.pick .cad-h { opacity: .34; }
+.cad.pick .cad-v, .cad.pick .cad-h { opacity: .85; }
 
 /* status readout, like the coordinate box in the corner of CAD */
 .cad-read {
