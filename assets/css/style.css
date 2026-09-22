@@ -927,3 +927,67 @@ a { color: inherit; }
 /* the sheet number sits above the media */
 .cover .sheet-no { z-index: 5; }
 .cover .card-demo-tag { z-index: 5; }
+
+/* ============================================================
+   FIX — nothing gets cropped.
+
+   The earlier version used object-fit:cover on fixed-aspect frames.
+   That is fine for 16:9 footage and destroys everything else: the
+   Hole In The Wall screenshots are 1344x2992 phone captures, so a
+   4:3 cover-crop showed about 7% of each image.
+
+   Gallery images now display at their own aspect ratio, capped in
+   height. Covers letterbox instead of cropping.
+   ============================================================ */
+
+/* ── gallery: natural aspect, never cropped ── */
+.shot-frame {
+  aspect-ratio: auto;
+  display: flex; align-items: center; justify-content: center;
+  padding: 10px;
+  min-height: 140px;
+}
+.shot-frame::before,
+.shot-frame::after { content: none; }      /* no hatching behind a real image */
+
+.shot-frame img {
+  position: static; inset: auto;
+  width: auto; height: auto;
+  max-width: 100%; max-height: 420px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+/* an image that failed to load: put the placeholder back */
+.shot-frame:has(img[data-failed])::before,
+.shot-frame.no-img::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg, var(--line-soft) 0 1px, transparent 1px 7px);
+}
+.shot-frame.no-img::after {
+  content: attr(data-label); position: absolute;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+
+.gallery { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); align-items: start; }
+
+/* ── covers: fit the whole frame, don't crop it ── */
+.cover-media {
+  object-fit: contain;
+}
+/* a contained cover sits on a flat panel — hatching behind it reads as noise */
+.cover.has-media::before { content: none; }
+
+.cover-hero {
+  aspect-ratio: 16 / 9;
+  max-height: 440px;
+}
+.cover-hero .cover-logo { max-width: 42%; max-height: 52%; }
+
+/* the veil only makes sense over the artwork itself, and with a contained
+   cover it would tint the empty panel too — keep it soft */
+.cover-veil {
+  background: radial-gradient(ellipse at center,
+    rgba(0,0,0,.30) 0%, rgba(0,0,0,.16) 60%, rgba(0,0,0,0) 100%);
+}

@@ -97,37 +97,33 @@
   });
 
   /* ---------- cover videos ----------
-     They ship with preload="none" and no autoplay attribute, so nothing is
-     fetched until a cover is actually near the viewport. Offscreen covers
-     pause, which keeps a page of six of them off the CPU and the battery.
-     With prefers-reduced-motion we never play at all — the poster frame
-     stands in, which is why every cover has one. */
+     Playback is native: the markup carries autoplay + muted + loop +
+     playsinline, so the covers run even if this script never executes.
+     JS is only an optimisation on top — pause what's offscreen, and
+     stand down entirely when the visitor prefers reduced motion. */
   var covers = document.querySelectorAll('video.cover-media');
 
   if (covers.length) {
     var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (still || !('IntersectionObserver' in window)) {
+    if (still) {
       Array.prototype.forEach.call(covers, function (v) {
         v.removeAttribute('autoplay');
-        try { v.pause(); } catch (e) { /* ignore */ }
+        v.autoplay = false;
+        try { v.pause(); v.currentTime = 0; } catch (e) { /* ignore */ }
       });
-    } else {
+    } else if ('IntersectionObserver' in window) {
       var vio = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           var v = entry.target;
           if (entry.isIntersecting) {
-            if (v.preload !== 'auto') v.preload = 'auto';
             var pr = v.play();
-            // Autoplay can still be refused (low power mode, for one).
-            // The poster is already showing, so there is nothing to fix.
             if (pr && pr.catch) pr.catch(function () {});
           } else if (!v.paused) {
             v.pause();
           }
         });
-      }, { rootMargin: '150px 0px', threshold: 0.1 });
-
+      }, { rootMargin: '200px 0px', threshold: 0.01 });
       Array.prototype.forEach.call(covers, function (v) { vio.observe(v); });
     }
   }

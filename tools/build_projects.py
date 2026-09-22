@@ -110,7 +110,7 @@ def cover(p, prefix="../assets/img/"):
     base = f"{prefix}{p['slug']}/"
     inner = ""
     if m.get("video"):
-        inner = (f'    <video class="cover-media" muted loop playsinline preload="none"\n'
+        inner = (f'    <video class="cover-media" autoplay muted loop playsinline preload="metadata"\n'
                  f'           poster="{base}cover.jpg" aria-label="{E(p["title"])} gameplay">\n'
                  f'      <source src="{base}cover.webm" type="video/webm">\n'
                  f'      <source src="{base}cover.mp4" type="video/mp4">\n'
