@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,7 +43,7 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Game · Custom C/C++ engine · 2024</p>
+    <p class="eyebrow-plain">Game · Custom C/C++ engine · 2024 <span class="sheet-tag">P-02</span></p>
     <h1>Magique</h1>
     <p class="project-summary">A 2D thriller side-scrolling platformer following Amare, a boy escaping Maison de Magie — a circus where the performers are exploited by its ringmaster, Malachi. Built on an engine we wrote from scratch.</p>
   </header>
@@ -63,6 +66,7 @@
       <h2>Working across disciplines</h2>
       <p>The team spanned UX, game design and CS, which is the part I&#x27;d underestimated. Designers describe a jump in feel; programmers need it in numbers. A lot of the job was translating between those two, and building the tuning knobs that let designers answer the question themselves.</p>
     </section>
+
     <section class="prose-block">
       <h2>Play &amp; watch</h2>
       <div class="embed embed-video">
@@ -92,10 +96,22 @@
         <figcaption>Main menu</figcaption>
       </figure>
       <figure class="shot">
-        <div class="shot-frame" data-label="Logo">
-          <img src="../assets/img/magique-logo.png" alt="Magique — Logo" loading="lazy">
+        <div class="shot-frame" data-label="Gameplay">
+          <img src="../assets/img/magique-gameplay.jpg" alt="Magique — Gameplay" loading="lazy">
         </div>
-        <figcaption>Logo</figcaption>
+        <figcaption>Gameplay</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Level editor">
+          <img src="../assets/img/magique-editor.jpg" alt="Magique — Level editor" loading="lazy">
+        </div>
+        <figcaption>Level editor</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Cutscene">
+          <img src="../assets/img/magique-cutscene.jpg" alt="Magique — Cutscene" loading="lazy">
+        </div>
+        <figcaption>Cutscene</figcaption>
       </figure>
       </div>
     </section>
@@ -127,13 +143,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Magique</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2024</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-02</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

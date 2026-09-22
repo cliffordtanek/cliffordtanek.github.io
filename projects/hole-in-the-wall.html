@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,13 +43,13 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Android party game · 2024</p>
+    <p class="eyebrow-plain">Android party game · 2024 <span class="sheet-tag">P-05</span></p>
     <h1>Hole In The Wall</h1>
     <p class="project-summary">A two-player Android party game: one player calls out instructions, the other contorts to match a moving cutout while the phone camera judges whether they fit.</p>
   </header>
 
   <div class="project-hero" data-label="Hole In The Wall">
-    <img src="../assets/img/hole-in-the-wall.png" alt="Hole In The Wall" loading="eager">
+    <img src="../assets/img/hole-in-the-wall.jpg" alt="Hole In The Wall" loading="eager">
   </div>
 
   <div class="project-layout">
@@ -63,6 +66,7 @@
       <h2>My role</h2>
       <p>I led the team: concept, delegation, and making sure the pieces other people built actually fit together into one game. I also did the game design and contributed to UI/UX.</p>
     </section>
+
     <section class="prose-block">
       <h2>Play &amp; watch</h2>
       <div class="embed embed-video">
@@ -76,16 +80,28 @@
       <h2>Gallery</h2>
       <div class="gallery">
       <figure class="shot">
+        <div class="shot-frame" data-label="Cover">
+          <img src="../assets/img/hole-in-the-wall.jpg" alt="Hole In The Wall — Cover" loading="lazy">
+        </div>
+        <figcaption>Cover</figcaption>
+      </figure>
+      <figure class="shot">
         <div class="shot-frame" data-label="Main menu">
-          <img src="../assets/img/hole-in-the-wall.png" alt="Hole In The Wall — Main menu" loading="lazy">
+          <img src="../assets/img/hitw-menu.jpg" alt="Hole In The Wall — Main menu" loading="lazy">
         </div>
         <figcaption>Main menu</figcaption>
       </figure>
       <figure class="shot">
-        <div class="shot-frame" data-label="Title">
-          <img src="../assets/img/hitw-title.png" alt="Hole In The Wall — Title" loading="lazy">
+        <div class="shot-frame" data-label="In-game pose matching">
+          <img src="../assets/img/hitw-gamescreen.jpg" alt="Hole In The Wall — In-game pose matching" loading="lazy">
         </div>
-        <figcaption>Title</figcaption>
+        <figcaption>In-game pose matching</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Game over">
+          <img src="../assets/img/hitw-gameover.jpg" alt="Hole In The Wall — Game over" loading="lazy">
+        </div>
+        <figcaption>Game over</figcaption>
       </figure>
       <figure class="shot">
         <div class="shot-frame" data-label="Technical overview">
@@ -121,13 +137,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Hole In The Wall</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2024</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-05</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

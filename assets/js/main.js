@@ -97,6 +97,8 @@
   });
 
   /* ---------- footer year ---------- */
-  var year = document.getElementById('year');
-  if (year) year.textContent = new Date().getFullYear();
+  var y = new Date().getFullYear();
+  Array.prototype.forEach.call(document.querySelectorAll('#year, #year2'), function (el) {
+    el.textContent = y;
+  });
 })();

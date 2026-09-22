@@ -1,0 +1,17 @@
+# Source archives copied into assets/img/ — huge, and not part of the site.
+# Two of the videos exceed GitHub's hard 100 MB per-file limit, which would
+# make the push fail outright. The optimised web copies live in assets/img/
+# at the root, and those ARE tracked.
+assets/img/*/
+
+# Media that belongs on YouTube/itch, not in git
+*.mp4
+*.mov
+*.exe
+*.msi
+
+# Build noise
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

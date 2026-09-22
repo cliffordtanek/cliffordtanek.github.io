@@ -18,6 +18,8 @@ PROJECTS = [
 # ─────────────────────────── ENGINEERING ───────────────────────────
 {
   "slug": "road-network-parcellation",
+  "demo": ("parcellation",
+           "Recursive subdivision, running live. Each split cuts the largest remaining\n            parcel across its long axis; the gaps left behind are the road network. This\n            is the same idea as the production algorithm, stripped to its core."),
   "title": "Road Network for Urban Parcellation",
   "category": "Capstone · Urban Redevelopment Authority",
   "kind": "engineering",
@@ -91,15 +93,19 @@ PROJECTS = [
      "themselves."),
   ],
   "gallery": [
-    ("magique.png", "Cover art", f"{WEEBLY}/magique-cover_1.png"),
-    ("magique-menu.png", "Main menu", f"{WEEBLY}/mainmenu.png"),
-    ("magique-logo.png", "Logo", f"{WEEBLY}/magique-logo_orig.png"),
+    ('magique.png', 'Cover art', None),
+    ('magique-menu.png', 'Main menu', None),
+    ('magique-gameplay.jpg', 'Gameplay', None),
+    ('magique-editor.jpg', 'Level editor', None),
+    ('magique-cutscene.jpg', 'Cutscene', None),
   ],
   "youtube": "PIk9CnEE8X8", "itch": "3039191", "pdf": None, "links": [],
 },
 
 {
   "slug": "multi-agent-pathfinding",
+  "demo": ("flowfield",
+           "One Dijkstra sweep from the goal builds the integration field, and every agent\n            then just reads its own cell's gradient. Cost is O(grid) once rather than\n            O(agents x path). Separation forces keep them from stacking up."),
   "title": "Multi-Agent Pathfinding",
   "category": "AI research project",
   "kind": "engineering",
@@ -129,7 +135,8 @@ PROJECTS = [
      "AI sweeping a space, open-world NPCs exploring terrain the player has also never seen."),
   ],
   "gallery": [
-    ("pathfinding.png", "Agents navigating under fog of war", f"{WEEBLY}/multi-agents-pathfinding-name_orig.png"),
+    ('pathfinding-cover.png', 'Flow field with agent cones', None),
+    ('pathfinding.png', 'Field detail', None),
   ],
   "youtube": "O11_lbwOUPo", "itch": None,
   "pdf": ("multi-agent-pathfinding-report.pdf", "Full project report",
@@ -139,6 +146,8 @@ PROJECTS = [
 
 {
   "slug": "seam-carving",
+  "demo": ("seamcarve",
+           "Sobel energy map, then dynamic programming finds the cheapest top-to-bottom\n            seam. The highlighted path is the one about to be removed. The image is\n            generated procedurally so the demo ships no image payload."),
   "title": "Content-Aware Image Resizing with Seam Carving",
   "category": "Algorithms study",
   "kind": "engineering",
@@ -170,10 +179,11 @@ PROJECTS = [
      "carves through it."),
   ],
   "gallery": [
-    ("seam-carving.png", "The interactive tool", f"{WEEBLY}/title_orig.png"),
+    ('seam-carving-cover.jpg', 'Seams overlaid on the source image', None),
+    ('seam-carving.jpg', 'Seam detail', None),
   ],
   "youtube": "9uLtq96a65Q", "itch": None,
-  "pdf": ("seam-carving-report.pdf", "Full project report", f"{WEEBLY}/seam_carving_report.pdf"),
+  "pdf": ("seam-carving-report.pdf", "Full project report", None),
   "links": [],
 },
 
@@ -208,9 +218,11 @@ PROJECTS = [
      "fit together into one game. I also did the game design and contributed to UI/UX."),
   ],
   "gallery": [
-    ("hole-in-the-wall.png", "Main menu", f"{WEEBLY}/holeinthewall-mainmenu.png"),
-    ("hitw-title.png", "Title", f"{WEEBLY}/holeinthewall-title2_orig.png"),
-    ("hitw-technical.png", "Technical overview", f"{WEEBLY}/editor/holeinthewall-technicaloverview.png"),
+    ('hole-in-the-wall.jpg', 'Cover', None),
+    ('hitw-menu.jpg', 'Main menu', None),
+    ('hitw-gamescreen.jpg', 'In-game pose matching', None),
+    ('hitw-gameover.jpg', 'Game over', None),
+    ('hitw-technical.png', 'Technical overview', None),
   ],
   "youtube": "4pKy15podqU", "itch": None, "pdf": None, "links": [],
 },
@@ -242,8 +254,10 @@ PROJECTS = [
      "modes change the shape of the problem rather than just the reaction time it needs."),
   ],
   "gallery": [
-    ("astro-cow.png", "Main menu", f"{WEEBLY}/astro-cow-main-menu.png"),
-    ("astro-cow-logo.png", "Logo", f"{WEEBLY}/astrocow-logo_orig.png"),
+    ('astro-cow.png', 'Main menu', None),
+    ('astro-cow-cover.jpg', 'Cover', None),
+    ('astro-cow-levels.jpg', 'Level select', None),
+    ('astro-cow-tutorial.jpg', 'Tutorial stage', None),
   ],
   "youtube": "viZI0KF6UT0", "itch": "2202573", "pdf": None, "links": [],
 },
@@ -278,8 +292,11 @@ PROJECTS = [
      "information sits on screen is the difficulty."),
   ],
   "gallery": [
-    ("makan-mania.png", "Main menu", f"{WEEBLY}/makan-mania-main-menu.png"),
-    ("makan-mania-title.gif", "Title animation", f"{WEEBLY}/makan-mania-title-gif_orig.gif"),
+    ('makan-mania.png', 'Main menu', None),
+    ('makan-mania-normal.jpg', 'Standard mode', None),
+    ('makan-mania-spicy.jpg', 'Spicy mode — conveyor belt', None),
+    ('makan-mania-almanac.png', 'Recipe almanac', None),
+    ('makan-mania-cover.jpg', 'Cover', None),
   ],
   "youtube": "AyB548vUIBs", "itch": "2207708", "pdf": None, "links": [],
 },
@@ -311,8 +328,10 @@ PROJECTS = [
      "passengers. It means the theme lands before anyone has read a rule."),
   ],
   "gallery": [
-    ("destination-dash.png", "Components", f"{WEEBLY}/editor/cover.jpg"),
-    ("destination-dash-title.png", "Title", f"{WEEBLY}/destination-dash-title_orig.png"),
+    ('destination-dash.jpg', 'Cover', None),
+    ('destination-dash-1.jpg', 'Components', None),
+    ('destination-dash-2.jpg', 'Cards and tokens', None),
+    ('destination-dash-3.jpg', 'Packaging', None),
   ],
   "youtube": None, "itch": None, "pdf": None,
   "links": [("BoardGameGeek listing", "https://boardgamegeek.com/boardgame/398559/destination-dash")],
@@ -348,8 +367,9 @@ PROJECTS = [
      "decoration on top of a ruleset."),
   ],
   "gallery": [
-    ("peek-a-beak.png", "Components", f"{WEEBLY}/published/cover.jpg"),
-    ("peek-a-beak-title.png", "Title", f"{WEEBLY}/peak-a-beak-title_orig.png"),
+    ('peek-a-beak.jpg', 'Cover', None),
+    ('peek-a-beak-1.jpg', 'Board and cards', None),
+    ('peek-a-beak-2.jpg', 'Bird cards', None),
   ],
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
@@ -381,7 +401,9 @@ PROJECTS = [
      "than one desk, a garden reachable from both the bedroom and the living room, and windows "
      "positioned so that every workspace has both daylight and something worth looking at."),
   ],
-  "gallery": [("12x16.png", "Floor plan", f"{WEEBLY}/map-1_orig.png")],
+  "gallery": [
+    ('12x16.jpg', 'Floor plan', None),
+  ],
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -412,8 +434,7 @@ PROJECTS = [
      "made the plan stop feeling like a floor plan with trees drawn on it."),
   ],
   "gallery": [
-    ("1000m2.png", "Site plan", f"{WEEBLY}/map-3_orig.png"),
-    ("1000m2-title.png", "Title", f"{WEEBLY}/1000m2-title_orig.png"),
+    ('1000m2.jpg', 'Site plan', None),
   ],
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
@@ -450,7 +471,10 @@ PROJECTS = [
      "placing a single object made everything downstream easier — and the parts of the map I built "
      "before doing that are the parts that needed reworking."),
   ],
-  "gallery": [("pirate-adventure.png", "The map", f"{WEEBLY}/1-million-map.png")],
+  "gallery": [
+    ('pirate-adventure.jpg', 'The map', None),
+    ('pirate-adventure-detail.jpg', 'Annotated detail', None),
+  ],
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
 
@@ -483,7 +507,7 @@ PROJECTS = [
      "reads as fair if the environment stays consistent enough that the player can tell what's new."),
   ],
   "gallery": [
-    ("swinging-skyway.png", "Level and cadence", f"{WEEBLY}/swinging-skyway-level-and-cadence_orig.png"),
+    ('swinging-skyway.jpg', 'Level and cadence', None),
   ],
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
@@ -510,7 +534,7 @@ PROJECTS = [
      "sentences on what the level does and what you learned building it."),
   ],
   "gallery": [
-    ("portal-planet.png", "Level and cadence", f"{WEEBLY}/portal-planet-level-and-cadence_orig.png"),
+    ('portal-planet.jpg', 'Level and cadence', None),
   ],
   "youtube": None, "itch": None, "pdf": None, "links": [],
 },
@@ -536,7 +560,7 @@ PROJECTS = [
      "sentences on what the level does and what you learned building it."),
   ],
   "gallery": [
-    ("bouncy-balloon.png", "Level and cadence", f"{WEEBLY}/bouncy-balloon-level-and-cadence_orig.png"),
+    ('bouncy-balloon.jpg', 'Level and cadence', None),
   ],
   "youtube": "EXBzT5mT8F4", "itch": None, "pdf": None, "links": [],
 },

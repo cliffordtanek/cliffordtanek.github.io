@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,7 +43,7 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Game · CProcessing · 2023</p>
+    <p class="eyebrow-plain">Game · CProcessing · 2023 <span class="sheet-tag">P-07</span></p>
     <h1>Makan Mania</h1>
     <p class="project-summary">A pixel-art cooking arcade game. Take orders, mix ingredients, throw the finished dish at the customer before the timer runs out.</p>
   </header>
@@ -63,6 +66,7 @@
       <h2>My role</h2>
       <p>UI/UX — the layout of the kitchen, how orders are communicated at a glance, and the pixel art interface. In a game where you&#x27;re reading three things at once under time pressure, where information sits on screen is the difficulty.</p>
     </section>
+
     <section class="prose-block">
       <h2>Play &amp; watch</h2>
       <div class="embed embed-video">
@@ -86,10 +90,28 @@
         <figcaption>Main menu</figcaption>
       </figure>
       <figure class="shot">
-        <div class="shot-frame" data-label="Title animation">
-          <img src="../assets/img/makan-mania-title.gif" alt="Makan Mania — Title animation" loading="lazy">
+        <div class="shot-frame" data-label="Standard mode">
+          <img src="../assets/img/makan-mania-normal.jpg" alt="Makan Mania — Standard mode" loading="lazy">
         </div>
-        <figcaption>Title animation</figcaption>
+        <figcaption>Standard mode</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Spicy mode — conveyor belt">
+          <img src="../assets/img/makan-mania-spicy.jpg" alt="Makan Mania — Spicy mode — conveyor belt" loading="lazy">
+        </div>
+        <figcaption>Spicy mode — conveyor belt</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Recipe almanac">
+          <img src="../assets/img/makan-mania-almanac.png" alt="Makan Mania — Recipe almanac" loading="lazy">
+        </div>
+        <figcaption>Recipe almanac</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Cover">
+          <img src="../assets/img/makan-mania-cover.jpg" alt="Makan Mania — Cover" loading="lazy">
+        </div>
+        <figcaption>Cover</figcaption>
       </figure>
       </div>
     </section>
@@ -121,13 +143,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Makan Mania</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2023</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-07</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,13 +43,13 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Algorithms study · 2024</p>
+    <p class="eyebrow-plain">Algorithms study · 2024 <span class="sheet-tag">P-04</span></p>
     <h1>Content-Aware Image Resizing with Seam Carving</h1>
     <p class="project-summary">Resizing an image by removing the least important pixel paths through it rather than scaling — implemented three different ways and benchmarked against each other.</p>
   </header>
 
   <div class="project-hero" data-label="Content-Aware Image Resizing with Seam Carving">
-    <img src="../assets/img/seam-carving.png" alt="Content-Aware Image Resizing with Seam Carving" loading="eager">
+    <img src="../assets/img/seam-carving-cover.jpg" alt="Content-Aware Image Resizing with Seam Carving" loading="eager">
   </div>
 
   <div class="project-layout">
@@ -64,6 +67,18 @@
       <p>A real-time GUI for loading an image, dragging the target dimensions, and watching the seams get removed. It also does object removal — mark a region and the algorithm preferentially carves through it.</p>
     </section>
     <section class="prose-block">
+      <h2>Live demo</h2>
+      <div class="demo">
+        <canvas class="demo-canvas" data-demo="seamcarve"
+                aria-label="Live algorithm demo for Content-Aware Image Resizing with Seam Carving"></canvas>
+        <div class="demo-bar">
+          <span class="demo-label">Running</span>
+          <span class="demo-note">Sobel energy map, then dynamic programming finds the cheapest top-to-bottom seam. The highlighted path is the one about to be removed. The image is generated procedurally so the demo ships no image payload.</span>
+          <button class="demo-again" type="button">Regenerate</button>
+        </div>
+      </div>
+    </section>
+    <section class="prose-block">
       <h2>Play &amp; watch</h2>
       <div class="embed embed-video">
         <iframe src="https://www.youtube-nocookie.com/embed/9uLtq96a65Q"
@@ -76,10 +91,16 @@
       <h2>Gallery</h2>
       <div class="gallery">
       <figure class="shot">
-        <div class="shot-frame" data-label="The interactive tool">
-          <img src="../assets/img/seam-carving.png" alt="Content-Aware Image Resizing with Seam Carving — The interactive tool" loading="lazy">
+        <div class="shot-frame" data-label="Seams overlaid on the source image">
+          <img src="../assets/img/seam-carving-cover.jpg" alt="Content-Aware Image Resizing with Seam Carving — Seams overlaid on the source image" loading="lazy">
         </div>
-        <figcaption>The interactive tool</figcaption>
+        <figcaption>Seams overlaid on the source image</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Seam detail">
+          <img src="../assets/img/seam-carving.jpg" alt="Content-Aware Image Resizing with Seam Carving — Seam detail" loading="lazy">
+        </div>
+        <figcaption>Seam detail</figcaption>
       </figure>
       </div>
     </section>
@@ -97,6 +118,7 @@
     </div>
     <div class="pm-links">
         <a href="https://www.youtube.com/watch?v=9uLtq96a65Q" target=_blank rel=noopener>Watch demo ↗</a>
+        <a href="../assets/docs/seam-carving-report.pdf" >Full project report (PDF) ↗</a>
     </div>
   </aside>
   </div>
@@ -109,13 +131,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Content-Aware Image Resizing with Seam Carving</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2024</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-04</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

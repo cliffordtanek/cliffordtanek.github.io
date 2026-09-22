@@ -143,6 +143,25 @@ def embeds(p):
     </section>"""
 
 
+def demo_block(p):
+    if not p.get("demo"):
+        return ""
+    kind, note = p["demo"]
+    note = re.sub(r"\s+", " ", note).strip()
+    return f"""    <section class="prose-block">
+      <h2>Live demo</h2>
+      <div class="demo">
+        <canvas class="demo-canvas" data-demo="{E(kind)}"
+                aria-label="Live algorithm demo for {E(p['title'])}"></canvas>
+        <div class="demo-bar">
+          <span class="demo-label">Running</span>
+          <span class="demo-note">{E(note)}</span>
+          <button class="demo-again" type="button">Regenerate</button>
+        </div>
+      </div>
+    </section>"""
+
+
 def pager(i):
     prev_p = PROJECTS[i - 1] if i > 0 else None
     next_p = PROJECTS[i + 1] if i < len(PROJECTS) - 1 else None
@@ -156,6 +175,7 @@ def pager(i):
 
 
 def page(p, i):
+    sheet = "P-%02d" % (i + 1)
     desc = re.sub(r"\s+", " ", p["summary"]).replace("NEEDS_YOUR_WORDS — ", "")[:180]
     hero = p["gallery"][0][0] if p["gallery"] else None
     hero_html = ""
@@ -184,6 +204,9 @@ def page(p, i):
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 {nav()}
 
 <main id="main">
@@ -192,7 +215,7 @@ def page(p, i):
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">{E(p['category'])} · {E(p['year'])}</p>
+    <p class="eyebrow-plain">{E(p['category'])} · {E(p['year'])} <span class="sheet-tag">{sheet}</span></p>
     <h1>{E(p['title'])}</h1>
     <p class="project-summary">{E(p['summary'].replace('NEEDS_YOUR_WORDS — ', ''))}</p>
   </header>
@@ -202,6 +225,7 @@ def page(p, i):
   <div class="project-layout">
     <div class="project-body">
 {body_sections(p)}
+{demo_block(p)}
 {embeds(p)}
 {gallery(p)}
     </div>
@@ -214,14 +238,44 @@ def page(p, i):
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">{E(p['title'])}</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">{E(p['year'])}</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">{sheet}</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>
 """

@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,13 +43,13 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Level design · Residential · 2023</p>
+    <p class="eyebrow-plain">Level design · Residential · 2023 <span class="sheet-tag">P-10</span></p>
     <h1>12 × 16</h1>
     <p class="project-summary">A 12m × 16m residence for an isolated, work-from-home young adult — every essential living function on a very small plot, designed in two weeks.</p>
   </header>
 
   <div class="project-hero" data-label="12 × 16">
-    <img src="../assets/img/12x16.png" alt="12 × 16" loading="eager">
+    <img src="../assets/img/12x16.jpg" alt="12 × 16" loading="eager">
   </div>
 
   <div class="project-layout">
@@ -60,12 +63,13 @@
       <p>I wrote the occupant as a landscape architect working from home, which gave the layout a reason to have opinions. There are several workspaces at different levels of privacy rather than one desk, a garden reachable from both the bedroom and the living room, and windows positioned so that every workspace has both daylight and something worth looking at.</p>
     </section>
 
+
     <section class="prose-block">
       <h2>Gallery</h2>
       <div class="gallery">
       <figure class="shot">
         <div class="shot-frame" data-label="Floor plan">
-          <img src="../assets/img/12x16.png" alt="12 × 16 — Floor plan" loading="lazy">
+          <img src="../assets/img/12x16.jpg" alt="12 × 16 — Floor plan" loading="lazy">
         </div>
         <figcaption>Floor plan</figcaption>
       </figure>
@@ -95,13 +99,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">12 × 16</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2023</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-10</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

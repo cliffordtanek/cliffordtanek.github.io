@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,13 +43,13 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Level design · Residential · 2023</p>
+    <p class="eyebrow-plain">Level design · Residential · 2023 <span class="sheet-tag">P-11</span></p>
     <h1>1000 m²</h1>
     <p class="project-summary">A 20m × 20m house set inside a 1000 m² site, designed so the landscape and the building are one problem rather than two.</p>
   </header>
 
   <div class="project-hero" data-label="1000 m²">
-    <img src="../assets/img/1000m2.png" alt="1000 m²" loading="eager">
+    <img src="../assets/img/1000m2.jpg" alt="1000 m²" loading="eager">
   </div>
 
   <div class="project-layout">
@@ -60,20 +63,15 @@
       <p>Every space in the house connects to the outdoors through a window. Planting is used structurally — greenery divides the living area from the kitchen instead of a wall. The site carries a basketball court and a herb island that you reach by boat, which was the piece that made the plan stop feeling like a floor plan with trees drawn on it.</p>
     </section>
 
+
     <section class="prose-block">
       <h2>Gallery</h2>
       <div class="gallery">
       <figure class="shot">
         <div class="shot-frame" data-label="Site plan">
-          <img src="../assets/img/1000m2.png" alt="1000 m² — Site plan" loading="lazy">
+          <img src="../assets/img/1000m2.jpg" alt="1000 m² — Site plan" loading="lazy">
         </div>
         <figcaption>Site plan</figcaption>
-      </figure>
-      <figure class="shot">
-        <div class="shot-frame" data-label="Title">
-          <img src="../assets/img/1000m2-title.png" alt="1000 m² — Title" loading="lazy">
-        </div>
-        <figcaption>Title</figcaption>
       </figure>
       </div>
     </section>
@@ -101,13 +99,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">1000 m²</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2023</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-11</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

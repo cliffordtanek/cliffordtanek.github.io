@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,7 +43,7 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Game · Alpha Engine · 2023</p>
+    <p class="eyebrow-plain">Game · Alpha Engine · 2023 <span class="sheet-tag">P-06</span></p>
     <h1>Astro Cow</h1>
     <p class="project-summary">Pilot a UFO across rotating planets, abduct the livestock, dodge the asteroids, and deliver everything to the planet marked with a flag.</p>
   </header>
@@ -59,6 +62,7 @@
       <h2>Difficulty scaling</h2>
       <p>Three tiers, and they don&#x27;t just change one number. Easy through hard scales planet rotation speed, how many planets are in play, and how many animals you have to move — so the harder modes change the shape of the problem rather than just the reaction time it needs.</p>
     </section>
+
     <section class="prose-block">
       <h2>Play &amp; watch</h2>
       <div class="embed embed-video">
@@ -82,10 +86,22 @@
         <figcaption>Main menu</figcaption>
       </figure>
       <figure class="shot">
-        <div class="shot-frame" data-label="Logo">
-          <img src="../assets/img/astro-cow-logo.png" alt="Astro Cow — Logo" loading="lazy">
+        <div class="shot-frame" data-label="Cover">
+          <img src="../assets/img/astro-cow-cover.jpg" alt="Astro Cow — Cover" loading="lazy">
         </div>
-        <figcaption>Logo</figcaption>
+        <figcaption>Cover</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Level select">
+          <img src="../assets/img/astro-cow-levels.jpg" alt="Astro Cow — Level select" loading="lazy">
+        </div>
+        <figcaption>Level select</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Tutorial stage">
+          <img src="../assets/img/astro-cow-tutorial.jpg" alt="Astro Cow — Tutorial stage" loading="lazy">
+        </div>
+        <figcaption>Tutorial stage</figcaption>
       </figure>
       </div>
     </section>
@@ -117,13 +133,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Astro Cow</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2023</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-06</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

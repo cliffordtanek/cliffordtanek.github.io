@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,13 +43,13 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Level design · Platformer · 2023</p>
+    <p class="eyebrow-plain">Level design · Platformer · 2023 <span class="sheet-tag">P-13</span></p>
     <h1>Swinging Skyway</h1>
     <p class="project-summary">An easy-difficulty side-scrolling level built around a Spider-Man-style swinging mechanic, set in a burning city.</p>
   </header>
 
   <div class="project-hero" data-label="Swinging Skyway">
-    <img src="../assets/img/swinging-skyway.png" alt="Swinging Skyway" loading="eager">
+    <img src="../assets/img/swinging-skyway.jpg" alt="Swinging Skyway" loading="eager">
   </div>
 
   <div class="project-layout">
@@ -64,12 +67,13 @@
       <p>Difficulty progression and visual coherence are the same problem. Incremental challenge only reads as fair if the environment stays consistent enough that the player can tell what&#x27;s new.</p>
     </section>
 
+
     <section class="prose-block">
       <h2>Gallery</h2>
       <div class="gallery">
       <figure class="shot">
         <div class="shot-frame" data-label="Level and cadence">
-          <img src="../assets/img/swinging-skyway.png" alt="Swinging Skyway — Level and cadence" loading="lazy">
+          <img src="../assets/img/swinging-skyway.jpg" alt="Swinging Skyway — Level and cadence" loading="lazy">
         </div>
         <figcaption>Level and cadence</figcaption>
       </figure>
@@ -99,13 +103,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Swinging Skyway</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2023</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-13</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

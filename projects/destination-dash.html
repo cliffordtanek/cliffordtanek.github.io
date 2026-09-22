@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,13 +43,13 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Tabletop card game · 2023</p>
+    <p class="eyebrow-plain">Tabletop card game · 2023 <span class="sheet-tag">P-08</span></p>
     <h1>Destination Dash</h1>
     <p class="project-summary">You run a private jet company. Fly wealthy clients to all eight destinations before obstacles and fuel costs eat your fleet.</p>
   </header>
 
   <div class="project-hero" data-label="Destination Dash">
-    <img src="../assets/img/destination-dash.png" alt="Destination Dash" loading="eager">
+    <img src="../assets/img/destination-dash.jpg" alt="Destination Dash" loading="eager">
   </div>
 
   <div class="project-layout">
@@ -60,20 +63,33 @@
       <p>The physical components carry the theme as hard as the mechanics do. The box is styled as a piece of luggage, the rulebook is formatted as a passport, and the tokens are planes and passengers. It means the theme lands before anyone has read a rule.</p>
     </section>
 
+
     <section class="prose-block">
       <h2>Gallery</h2>
       <div class="gallery">
       <figure class="shot">
+        <div class="shot-frame" data-label="Cover">
+          <img src="../assets/img/destination-dash.jpg" alt="Destination Dash — Cover" loading="lazy">
+        </div>
+        <figcaption>Cover</figcaption>
+      </figure>
+      <figure class="shot">
         <div class="shot-frame" data-label="Components">
-          <img src="../assets/img/destination-dash.png" alt="Destination Dash — Components" loading="lazy">
+          <img src="../assets/img/destination-dash-1.jpg" alt="Destination Dash — Components" loading="lazy">
         </div>
         <figcaption>Components</figcaption>
       </figure>
       <figure class="shot">
-        <div class="shot-frame" data-label="Title">
-          <img src="../assets/img/destination-dash-title.png" alt="Destination Dash — Title" loading="lazy">
+        <div class="shot-frame" data-label="Cards and tokens">
+          <img src="../assets/img/destination-dash-2.jpg" alt="Destination Dash — Cards and tokens" loading="lazy">
         </div>
-        <figcaption>Title</figcaption>
+        <figcaption>Cards and tokens</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Packaging">
+          <img src="../assets/img/destination-dash-3.jpg" alt="Destination Dash — Packaging" loading="lazy">
+        </div>
+        <figcaption>Packaging</figcaption>
       </figure>
       </div>
     </section>
@@ -103,13 +119,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Destination Dash</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2023</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-08</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

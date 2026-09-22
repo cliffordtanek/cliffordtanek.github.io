@@ -73,16 +73,58 @@ sentences on each and rebuild.
 `assets/docs/` — so a missing PDF is silently omitted rather than shipping a dead
 link. Run the fetch script first, then rebuild, and the links appear.
 
+## Live demos
+
+Three project pages run a real algorithm in a canvas, and the home page's first
+card uses one as its thumbnail. All of it is in `assets/js/demos.js` (no libraries):
+
+| Demo | Page | What it does |
+|---|---|---|
+| `parcellation` | Road Network for Urban Parcellation + home card | Recursively splits a site across its long axis; the gaps are the roads |
+| `flowfield` | Multi-Agent Pathfinding | One Dijkstra sweep builds an integration field, agents read the gradient |
+| `seamcarve` | Seam Carving | Sobel energy, DP min-seam, remove, repeat on a procedural image |
+
+Each one pauses when scrolled offscreen, redraws on theme change, and renders a
+single static frame if the visitor has `prefers-reduced-motion` set. To add one to
+another page, give the project a `"demo": ("kind", "caption")` entry in
+`tools/projects_data.py` and rebuild.
+
+## Drafting language
+
+The visual details come from architectural drawing conventions, which is the part
+of the site that comes from your background rather than a template:
+
+- **Title block** — the footer is a drawing sheet title block (project / drawn by /
+  scale / date / sheet).
+- **Sheet numbers** — every project is `P-01` through `P-15`, shown on its card and
+  at the top of its page. They follow the order in `projects_data.py`.
+- **Poché hatching** — empty image slots are 45° hatched rather than a dot grid.
+- **Dimension line** — the annotation under your name in the hero, with skewed
+  architectural ticks.
+- **Registration marks** — the small crosses at the top corners.
+
 ## Images
 
-The site expects screenshots at `assets/img/<name>.png`. **Any that are missing degrade
-gracefully** — the card shows a labelled placeholder tile instead of a broken image, so the
-site looks intentional even with nothing in that folder.
+Web copies live flat in `assets/img/` — resized to 1600px max and compressed
+(37 files, ~5 MB total, down from ~37 MB of originals).
 
-To pull the originals off Weebly before it shuts down:
+**Your source archive stays out of git.** `.gitignore` excludes
+`assets/img/*/` — the per-project folders holding original screenshots, videos,
+installers and Visual Studio source. That matters: two of those videos are over
+GitHub's hard 100 MB per-file limit and would make `git push` fail outright, and
+git keeps every blob in history forever, so a single accidental commit bloats the
+repo permanently. The folders stay on your disk; they just don't ship.
+
+If you add a new screenshot, put the web copy in `assets/img/` at the top level
+(not in a subfolder) or git will ignore it.
+
+Any image that *is* missing degrades gracefully — the tile shows a labelled
+hatched placeholder rather than a broken image.
+
+One asset is still only on Weebly:
 
 ```bash
-bash assets/img/fetch-weebly-images.sh
+bash assets/img/fetch-weebly-images.sh   # the pathfinding report PDF
 ```
 
 Filenames the HTML looks for:

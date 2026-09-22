@@ -18,6 +18,9 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
+
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="../index.html">CT<span class="dot">.</span></a>
@@ -40,13 +43,13 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <header class="project-head">
-    <p class="eyebrow-plain">Tabletop board game · 2023</p>
+    <p class="eyebrow-plain">Tabletop board game · 2023 <span class="sheet-tag">P-09</span></p>
     <h1>Peek A Beak</h1>
     <p class="project-summary">A birdwatching competition in Sungei Buloh. Eight days to photograph fifteen elusive species — without scaring them off, and without losing your shots to the snakes.</p>
   </header>
 
   <div class="project-hero" data-label="Peek A Beak">
-    <img src="../assets/img/peek-a-beak.png" alt="Peek A Beak" loading="eager">
+    <img src="../assets/img/peek-a-beak.jpg" alt="Peek A Beak" loading="eager">
   </div>
 
   <div class="project-layout">
@@ -64,20 +67,27 @@
       <p>Bird reference came from birdsoftheworld.org. Most of my contribution was integrating the visual design with the components so the two reinforced each other rather than the art being decoration on top of a ruleset.</p>
     </section>
 
+
     <section class="prose-block">
       <h2>Gallery</h2>
       <div class="gallery">
       <figure class="shot">
-        <div class="shot-frame" data-label="Components">
-          <img src="../assets/img/peek-a-beak.png" alt="Peek A Beak — Components" loading="lazy">
+        <div class="shot-frame" data-label="Cover">
+          <img src="../assets/img/peek-a-beak.jpg" alt="Peek A Beak — Cover" loading="lazy">
         </div>
-        <figcaption>Components</figcaption>
+        <figcaption>Cover</figcaption>
       </figure>
       <figure class="shot">
-        <div class="shot-frame" data-label="Title">
-          <img src="../assets/img/peek-a-beak-title.png" alt="Peek A Beak — Title" loading="lazy">
+        <div class="shot-frame" data-label="Board and cards">
+          <img src="../assets/img/peek-a-beak-1.jpg" alt="Peek A Beak — Board and cards" loading="lazy">
         </div>
-        <figcaption>Title</figcaption>
+        <figcaption>Board and cards</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot-frame" data-label="Bird cards">
+          <img src="../assets/img/peek-a-beak-2.jpg" alt="Peek A Beak — Bird cards" loading="lazy">
+        </div>
+        <figcaption>Bird cards</figcaption>
       </figure>
       </div>
     </section>
@@ -104,13 +114,43 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© <span id="year">2026</span> Clifford Tan</span>
-    <span class="muted"><a href="../index.html">Back to portfolio</a></span>
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Peek A Beak</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v">2023</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">P-09</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year">2026</span> Clifford Tan</span>
+    <span><a href="../index.html">Back to portfolio</a></span>
   </div>
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/demos.js"></script>
 </body>
 </html>

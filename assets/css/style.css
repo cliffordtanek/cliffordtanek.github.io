@@ -682,3 +682,167 @@ a { color: inherit; }
    would otherwise paint that text over the placeholder. Transparent colour
    hides it visually while leaving it in the accessibility tree. */
 .thumb img, .shot-frame img, .project-hero img { color: transparent; font-size: 0; }
+
+/* ============================================================
+   DRAFTING LANGUAGE
+   Conventions borrowed from architectural drawing sheets:
+   poché hatching, dimension lines, sheet numbers, a title block.
+   ============================================================ */
+
+/* ── poché: 45° hatching replaces the dot grid on empty image slots ── */
+.thumb::before, .shot-frame::before, .project-hero::before {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--line-soft) 0 1px,
+    transparent 1px 7px
+  );
+  background-size: auto;
+  -webkit-mask-image: linear-gradient(160deg, #000 10%, transparent 85%);
+          mask-image: linear-gradient(160deg, #000 10%, transparent 85%);
+  opacity: .9;
+}
+
+/* ── sheet number, top-right of a card's image slot ── */
+.thumb { position: relative; }
+.sheet-no {
+  position: absolute; top: 0; right: 0; z-index: 5;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em;
+  color: var(--text-dim); background: var(--bg);
+  padding: 4px 8px;
+  border-left: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── hero dimension annotation ──
+   Built from flexed elements rather than SVG so the ticks stay 1px
+   and the label stays readable at any width. */
+.dimension {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--text-dim);
+  max-width: 460px; margin: 0 0 30px;
+}
+.dimension .dim-rule { flex: 1; height: 1px; background: currentColor; opacity: .6; }
+.dimension .dim-end {
+  width: 1px; height: 10px; background: currentColor;
+  transform: skewX(-45deg); flex: none; opacity: .8;
+}
+.dimension .dim-label {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em;
+  text-transform: uppercase; white-space: nowrap;
+}
+@media (max-width: 520px) {
+  .dimension .dim-label { font-size: 8.5px; letter-spacing: .1em; }
+}
+
+/* ── title block: the footer, drawn as a drawing sheet block ── */
+.title-block {
+  border-top: 1px solid var(--line);
+  margin-top: 0;
+}
+.title-block .tb-grid {
+  max-width: var(--wrap); margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr 0.9fr;
+  gap: 1px; background: var(--line);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+.tb-cell { background: var(--bg); padding: 13px 16px; min-width: 0; }
+.tb-k {
+  display: block; font-family: var(--mono); font-size: 9px;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 5px;
+}
+.tb-v {
+  display: block; font-size: 13px; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.tb-cell--name .tb-v { font-weight: 600; letter-spacing: -0.01em; }
+.tb-scale { display: flex; align-items: center; gap: 7px; }
+.tb-scale svg { display: block; color: var(--text-dim); }
+.title-block .tb-foot {
+  max-width: var(--wrap); margin: 0 auto;
+  padding: 14px 16px 30px;
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
+  color: var(--text-dim);
+}
+.title-block .tb-foot a { color: inherit; text-decoration: none; }
+.title-block .tb-foot a:hover { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .title-block .tb-grid { grid-template-columns: 1fr 1fr; }
+  .tb-cell--name { grid-column: 1 / -1; }
+}
+@media (max-width: 460px) {
+  .title-block .tb-grid { grid-template-columns: 1fr; }
+}
+
+/* ── registration marks at the corners of the drawing area ── */
+.reg-mark {
+  position: fixed; width: 14px; height: 14px; z-index: 1;
+  pointer-events: none; color: var(--line);
+}
+.reg-mark::before, .reg-mark::after {
+  content: ''; position: absolute; background: currentColor;
+}
+.reg-mark::before { left: 0; top: 50%; width: 100%; height: 1px; }
+.reg-mark::after { top: 0; left: 50%; height: 100%; width: 1px; }
+.reg-tl { top: 74px; left: 12px; }
+.reg-tr { top: 74px; right: 12px; }
+@media (max-width: 900px) { .reg-mark { display: none; } }
+
+/* ============================================================
+   LIVE DEMOS
+   ============================================================ */
+
+.demo {
+  border: 1px solid var(--line); border-radius: var(--r);
+  overflow: hidden; background: var(--bg-alt);
+  margin-bottom: 14px;
+}
+.demo-canvas { display: block; width: 100%; aspect-ratio: 16 / 9; }
+.demo-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 13px; border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.demo-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--text-dim);
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.demo-label::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent);
+}
+.demo-note { font-size: 12.5px; color: var(--text-mid); flex: 1; min-width: 0; }
+.demo-again {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .06em;
+  padding: 5px 11px; border: 1px solid var(--line); border-radius: var(--r);
+  background: none; color: var(--text-mid); cursor: pointer; white-space: nowrap;
+  transition: border-color .2s var(--ease), color .2s var(--ease);
+}
+.demo-again:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 560px) {
+  .demo-bar { flex-wrap: wrap; }
+  .demo-note { order: 3; flex-basis: 100%; }
+}
+
+/* a card whose thumbnail is a running demo */
+.thumb-demo { padding: 0; }
+.thumb-demo canvas { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; }
+.card-demo-tag {
+  position: absolute; left: 0; bottom: 0; z-index: 4;
+  font-family: var(--mono); font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent); background: var(--bg);
+  padding: 4px 9px;
+  border-right: 1px solid var(--line); border-top: 1px solid var(--line);
+}
+
+.sheet-tag {
+  display: inline-block; margin-left: 10px; padding: 2px 8px;
+  border: 1px solid var(--line); border-radius: 2px;
+  color: var(--text-dim); font-size: 9.5px; letter-spacing: .14em;
+}
