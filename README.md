@@ -103,6 +103,34 @@ of the site that comes from your background rather than a template:
   architectural ticks.
 - **Registration marks** — the small crosses at the top corners.
 
+## Hero intro & motion
+
+`assets/js/hero.js` + the matching CSS blocks. The conceit is that the page
+drafts itself, in the order you'd actually draw a title:
+
+1. drafting grid fades up
+2. construction lines sweep out (the accent hairlines)
+3. the name strokes in a character at a time, blur to sharp
+4. the dimension annotation is added last
+
+Behind it, the **parcellation algorithm runs as the backdrop** — the same
+subdivision from the URA work, masked away from the text so it never fights
+the type. On a fine pointer the hero also gets a CAD crosshair with a live
+coordinate readout.
+
+**Theme toggle** is a circular wipe out of the button, not an instant flip.
+It uses the View Transitions API where available and an expanding disc
+everywhere else; both are in `hero.js`. A tiny inline script in `<head>`
+applies the saved theme before first paint, so there's no white flash.
+
+Also: a scroll-progress rule under the header, and registration ticks on the
+corners of a hovered card.
+
+**To turn the intro off**, delete the `<script src="assets/js/hero.js">` line.
+The hero renders in its final state without it — every animation is gated
+behind a class that only that file adds, so no-JS and `prefers-reduced-motion`
+visitors already see the static version.
+
 ## Images and covers
 
 Every project has its own folder, `assets/img/<slug>/`:

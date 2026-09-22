@@ -1002,3 +1002,173 @@ a { color: inherit; }
 /* a drawing that has to be readable gets the whole column */
 .shot--wide { grid-column: 1 / -1; }
 .shot--wide .shot-frame img { max-height: 640px; }
+
+/* ============================================================
+   HERO INTRO — the page drafts itself
+   Order of assembly: grid paper -> construction lines -> the
+   name strokes in -> the dimension annotation is added last.
+   All of it is gated behind body.intro-run, which only JS adds,
+   so no-JS and reduced-motion visitors get the finished state.
+   ============================================================ */
+
+/* the drafting-paper grid behind the hero */
+.hero { position: relative; overflow: hidden; }
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px),
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 22px 22px, 22px 22px, 110px 110px, 110px 110px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 30% 45%, #000 20%, transparent 78%);
+          mask-image: radial-gradient(ellipse 80% 70% at 30% 45%, #000 20%, transparent 78%);
+}
+.hero .wrap { position: relative; z-index: 2; }
+
+/* the parcellation running as a backdrop — the algorithm from the
+   URA work, subdividing the page it sits on. Masked away from the
+   text so it never fights the type. */
+.hero-plot {
+  position: absolute; top: 0; right: 0; bottom: 0; z-index: 1;
+  width: 62%; pointer-events: none; opacity: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 45%, #000 100%);
+}
+.hero-plot canvas { width: 100%; height: 100%; display: block; }
+@media (max-width: 900px) { .hero-plot { display: none; } }
+
+/* construction lines — the setting-out marks you draw before the object */
+.hero-cx {
+  position: absolute; z-index: 1; pointer-events: none;
+  background: var(--accent); opacity: 0;
+}
+.hero-cx--h { left: 0; right: 0; height: 1px; top: 50%; transform: scaleX(0); transform-origin: left; }
+.hero-cx--v { top: 0; bottom: 0; width: 1px; left: 13%; transform: scaleY(0); transform-origin: top; }
+
+/* ── the name ── */
+.hero h1 .ch {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+body.intro-run .hero-grid { animation: draftGrid .9s var(--ease) forwards; }
+body.intro-run .hero-plot { animation: draftGrid 1.6s var(--ease) .5s forwards; }
+body.intro-run .hero-cx--h { animation: cxH .85s var(--ease) .15s forwards; }
+body.intro-run .hero-cx--v { animation: cxV .85s var(--ease) .25s forwards; }
+body.intro-run .hero h1 .ch {
+  opacity: 0;
+  animation: strokeIn .62s var(--ease) forwards;
+  animation-delay: calc(.42s + var(--i) * .035s);
+}
+body.intro-run .hero .dimension { opacity: 0; animation: fadeUp .6s var(--ease) 1.15s forwards; }
+body.intro-run .hero .eyebrow  { opacity: 0; animation: fadeUp .5s var(--ease) 1.35s forwards; }
+
+@keyframes draftGrid { to { opacity: .85; } }
+@keyframes cxH { to { opacity: .22; transform: scaleX(1); } }
+@keyframes cxV { to { opacity: .22; transform: scaleY(1); } }
+@keyframes strokeIn {
+  0%   { opacity: 0; transform: translateY(.38em) scaleY(.82); filter: blur(3px); }
+  55%  { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* end state — animations removed so a backgrounded tab can't strand them */
+body.intro-done .hero-grid { opacity: .85; animation: none; }
+body.intro-done .hero-plot { opacity: .85; animation: none; }
+body.intro-done .hero-cx--h { opacity: .22; transform: scaleX(1); animation: none; }
+body.intro-done .hero-cx--v { opacity: .22; transform: scaleY(1); animation: none; }
+body.intro-done .hero h1 .ch,
+body.intro-done .hero .dimension,
+body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid, .hero-plot { opacity: .85; }
+  .hero-cx--h { opacity: .22; transform: scaleX(1); }
+  .hero-cx--v { opacity: .22; transform: scaleY(1); }
+  .hero h1 .ch { opacity: 1 !important; animation: none !important; }
+}
+
+/* ============================================================
+   CAD CROSSHAIR — hero only, fine pointers only
+   ============================================================ */
+
+.xhair { position: absolute; inset: 0; z-index: 3; pointer-events: none;
+         opacity: 0; transition: opacity .25s var(--ease); }
+.xhair.on { opacity: 1; }
+.xhair .xh-v, .xhair .xh-h { position: absolute; background: var(--accent); opacity: .30; }
+.xhair .xh-v { top: 0; bottom: 0; width: 1px; left: 0; }
+.xhair .xh-h { left: 0; right: 0; height: 1px; top: 0; }
+.xhair .xh-read {
+  position: absolute; top: 0; left: 0;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .1em;
+  color: var(--accent); opacity: .75; white-space: nowrap;
+}
+@media (pointer: coarse) { .xhair { display: none; } }
+
+/* ============================================================
+   THEME WIPE — a disc opening out of the toggle
+   ============================================================ */
+
+/* View Transitions path: kill the default cross-fade, the JS
+   clip-path animation does the work. Old sits under new. */
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+/* Fallback path: one disc, painted the colour we're moving to. */
+.theme-wipe {
+  position: fixed; z-index: 9999; pointer-events: none;
+  width: 0; height: 0; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #0e0e10;
+}
+.theme-wipe[data-to="light"] { background: #fbfbfa; }
+
+.theme-toggle { overflow: hidden; }
+.theme-toggle svg { transition: transform .5s var(--ease); }
+.theme-toggle:active svg { transform: rotate(180deg) scale(.9); }
+
+/* ============================================================
+   SCROLL RULE — how far through the drawing you are
+   ============================================================ */
+.scan {
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  display: block; pointer-events: none; overflow: hidden;
+}
+.scan i {
+  display: block; height: 100%; width: 100%;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .08s linear;
+}
+
+/* ============================================================
+   REGISTRATION TICKS on a hovered card — the corner marks you
+   put on a drawing so overlays line up
+   ============================================================ */
+.card { position: relative; }
+.card::before, .card::after {
+  content: ''; position: absolute; z-index: 6; pointer-events: none;
+  width: 9px; height: 9px;
+  border: 1px solid var(--accent);
+  opacity: 0; transition: opacity .25s var(--ease), transform .25s var(--ease);
+}
+.card::before {
+  top: 7px; left: 7px; border-right: 0; border-bottom: 0;
+  transform: translate(4px, 4px);
+}
+.card::after {
+  bottom: 7px; right: 7px; border-left: 0; border-top: 0;
+  transform: translate(-4px, -4px);
+}
+.card:hover::before, .card:hover::after { opacity: .7; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .card::before, .card::after { transition: none; }
+}

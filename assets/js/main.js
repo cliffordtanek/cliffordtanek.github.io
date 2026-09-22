@@ -12,24 +12,21 @@
     if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
   } catch (e) { /* private mode / blocked storage — fall back to OS preference */ }
 
-  var toggle = document.getElementById('themeToggle');
-  if (toggle) {
-    toggle.addEventListener('click', function () {
-      var current = root.getAttribute('data-theme');
-      if (!current) {
-        current = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      }
-      var next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem(STORE, next); } catch (e) { /* ignore */ }
-    });
-  }
+  /* The toggle itself is wired in hero.js, which animates the change
+     as a circular wipe. This file only restores the saved choice. */
 
   /* ---------- sticky header border ---------- */
   var header = document.querySelector('.site-header');
+  var scan = document.querySelector('.scan i');
   if (header) {
     var onScroll = function () {
       header.classList.toggle('stuck', window.scrollY > 8);
+      if (scan) {
+        // read position as a fraction of the drawing, like a dimension
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        var p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+        scan.style.transform = 'scaleX(' + p + ')';
+      }
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
