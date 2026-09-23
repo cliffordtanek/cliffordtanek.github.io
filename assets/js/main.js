@@ -18,18 +18,9 @@
   /* ---------- sticky header border ---------- */
   var header = document.querySelector('.site-header');
   var scan = document.querySelector('.scan i');
-  var hero = document.querySelector('.hero');
   if (header) {
     var onScroll = function () {
       header.classList.toggle('stuck', window.scrollY > 8);
-
-      /* The drafting grid belongs to the title sheet, so it fades out
-         as the hero leaves. Below it the projects sit on clean ground. */
-      if (hero) {
-        var span = (hero.offsetHeight || 1) * 0.8;
-        var left = 1 - Math.min(1, window.scrollY / span);
-        root.style.setProperty('--paper', left.toFixed(3));
-      }
 
       if (scan) {
         // read position as a fraction of the drawing, like a dimension

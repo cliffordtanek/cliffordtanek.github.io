@@ -154,8 +154,18 @@
      the fallback path it rides the wipe panel's own edge. */
   var SWEEP = 720;
 
+  /* Phones sit this one out. A View Transition snapshots the whole
+     page, and on mobile the visual viewport moves under it while the
+     browser's own toolbars collapse and expand — so the sweep showed
+     up as the page nudging sideways and settling back. The theme is
+     what the visitor asked for; the flourish is optional. */
+  function sweepWorthIt() {
+    return window.matchMedia('(min-width: 760px)').matches &&
+           window.matchMedia('(pointer: fine)').matches;
+  }
+
   function wipeTo(next) {
-    if (REDUCED) { applyTheme(next); return; }
+    if (REDUCED || !sweepWorthIt()) { applyTheme(next); return; }
 
     if (!document.startViewTransition) { fallbackSweep(next); return; }
 

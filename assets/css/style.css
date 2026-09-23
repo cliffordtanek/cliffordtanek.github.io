@@ -1126,40 +1126,16 @@ body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; anim
 }
 
 /* ============================================================
-   DRAFTING PAPER — a faint fixed grid under the whole page, so
-   the site reads as one continuous sheet rather than the hero
-   being the only drawn thing. Deliberately near-invisible: at
-   this opacity it registers as paper texture, not as lines.
-   ============================================================ */
-.paper {
-  position: fixed; inset: 0; z-index: 1; pointer-events: none;
-  /* --paper is driven by scroll in main.js: full strength over the
-     hero, gone by the time the title has left the screen. The grid
-     belongs to the title sheet; below it the work should sit on
-     clean ground. The crosshair carries on regardless — it's the
-     instrument, not the paper. */
-  opacity: calc(.5 * var(--paper, 1));
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 110px 110px, 110px 110px;
-}
-.paper::after {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 22px 22px, 22px 22px;
-  opacity: .55;
-}
-@media (prefers-reduced-motion: reduce) {
-  .paper { opacity: calc(.32 * var(--paper, 1)); }
-}
+   SHEET LAYERING
 
-/* Content sits above the paper. The header is NOT listed here — it is
-   position: sticky, and restating position would demote it to relative
-   and take the scroll rule off the top of the screen with it. Its own
-   z-index (50) already clears the paper. */
+   There used to be a second, viewport-fixed grid painted under the
+   whole page. Two grids of the same pitch with different origins
+   (this one started at the viewport top, the hero's starts below
+   the header) put every horizontal line a few pixels from its twin,
+   which read as an uneven grid. It also carried on past the hero
+   into the experience section, because a fixed overlay has no idea
+   where the hero ends. The hero now owns the only grid.
+   ============================================================ */
 main, .site-footer { position: relative; z-index: 2; }
 
 /* ============================================================
