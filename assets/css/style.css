@@ -1033,9 +1033,14 @@ a { color: inherit; }
 .hero .wrap { position: relative; z-index: 2; }
 
 /* construction lines — the setting-out marks you draw before the object */
+/* Setting-out lines, drawn before the lettering. Ink, not accent:
+   they sit under the name for the whole visit, and a saturated colour
+   there pulls the eye off the thing it is supposed to be framing.
+   --cx keeps the four end-state opacities in one place. */
 .hero-cx {
+  --cx: .16;
   position: absolute; z-index: 1; pointer-events: none;
-  background: var(--accent); opacity: 0;
+  background: var(--text); opacity: 0;
 }
 .hero-cx--h { left: 0; right: 0; height: 1px; top: 50%; transform: scaleX(0); transform-origin: left; }
 .hero-cx--v { top: 0; bottom: 0; width: 1px; left: 13%; transform: scaleY(0); transform-origin: top; }
@@ -1058,8 +1063,8 @@ body.intro-run .hero .dimension { opacity: 0; animation: fadeUp .6s var(--ease) 
 body.intro-run .hero .eyebrow  { opacity: 0; animation: fadeUp .5s var(--ease) 1.35s forwards; }
 
 @keyframes draftGrid { to { opacity: .85; } }
-@keyframes cxH { to { opacity: .22; transform: scaleX(1); } }
-@keyframes cxV { to { opacity: .22; transform: scaleY(1); } }
+@keyframes cxH { to { opacity: var(--cx); transform: scaleX(1); } }
+@keyframes cxV { to { opacity: var(--cx); transform: scaleY(1); } }
 @keyframes strokeIn {
   0%   { opacity: 0; transform: translateY(.38em) scaleY(.82); filter: blur(3px); }
   55%  { opacity: 1; filter: blur(0); }
@@ -1072,16 +1077,16 @@ body.intro-run .hero .eyebrow  { opacity: 0; animation: fadeUp .5s var(--ease) 1
 
 /* end state — animations removed so a backgrounded tab can't strand them */
 body.intro-done .hero-grid { opacity: .85; animation: none; }
-body.intro-done .hero-cx--h { opacity: .22; transform: scaleX(1); animation: none; }
-body.intro-done .hero-cx--v { opacity: .22; transform: scaleY(1); animation: none; }
+body.intro-done .hero-cx--h { opacity: var(--cx); transform: scaleX(1); animation: none; }
+body.intro-done .hero-cx--v { opacity: var(--cx); transform: scaleY(1); animation: none; }
 body.intro-done .hero h1 .ch,
 body.intro-done .hero .dimension,
 body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; animation: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-grid { opacity: .85; }
-  .hero-cx--h { opacity: .22; transform: scaleX(1); }
-  .hero-cx--v { opacity: .22; transform: scaleY(1); }
+  .hero-cx--h { opacity: var(--cx); transform: scaleX(1); }
+  .hero-cx--v { opacity: var(--cx); transform: scaleY(1); }
   .hero h1 .ch { opacity: 1 !important; animation: none !important; }
 }
 
