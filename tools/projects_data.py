@@ -121,8 +121,23 @@ PROJECTS = [
 
 {
   "slug": "multi-agent-pathfinding",
-  "demo": ("flowfield",
-           "An illustration of the technique, written in JavaScript for this page \u2014 the\n            project itself is C++/SFML, and the footage above is from it. One Dijkstra\n            sweep from the goal builds the integration field; each agent then reads its\n            own cell's gradient, so cost is O(grid) once rather than O(agents x path)."),
+  "wasm": {
+      "base": "../assets/demo/pathfinding/",
+      "loader": "pathfinding.js",
+      "export": "createPathfinding",
+      "title": "Run the actual program",
+      "weight": "~400 KB \u00b7 loads only when you ask",
+      "keys": [("Drag", "draw walls"),
+               ("Right-drag", "erase"),
+               ("W A S D", "pan"),
+               ("Wheel", "zoom"),
+               ("MapMaker \u2192 Generate Map", "procedural maze")],
+      "note": """This is the Visual Studio project itself \u2014 the same Grid, Factory and
+                 Editor sources \u2014 compiled to WebAssembly with Emscripten. SFML is
+                 replaced by a small compatibility layer over WebGL, and the ImGui
+                 panels, the map files and the docked layout are the ones from the
+                 desktop build.""",
+  },
   "title": "Multi-Agent Pathfinding",
   "category": "AI research project",
   "kind": "engineering",

@@ -1033,17 +1033,6 @@ a { color: inherit; }
 .hero .wrap { position: relative; z-index: 2; }
 
 /* construction lines — the setting-out marks you draw before the object */
-/* Setting-out lines, drawn before the lettering. Ink, not accent:
-   they sit under the name for the whole visit, and a saturated colour
-   there pulls the eye off the thing it is supposed to be framing.
-   --cx keeps the four end-state opacities in one place. */
-.hero-cx {
-  --cx: .16;
-  position: absolute; z-index: 1; pointer-events: none;
-  background: var(--text); opacity: 0;
-}
-.hero-cx--h { left: 0; right: 0; height: 1px; top: 50%; transform: scaleX(0); transform-origin: left; }
-.hero-cx--v { top: 0; bottom: 0; width: 1px; left: 13%; transform: scaleY(0); transform-origin: top; }
 
 /* ── the name ── */
 .hero h1 .ch {
@@ -1052,8 +1041,6 @@ a { color: inherit; }
 }
 
 body.intro-run .hero-grid { animation: draftGrid .9s var(--ease) forwards; }
-body.intro-run .hero-cx--h { animation: cxH .85s var(--ease) .15s forwards; }
-body.intro-run .hero-cx--v { animation: cxV .85s var(--ease) .25s forwards; }
 body.intro-run .hero h1 .ch {
   opacity: 0;
   animation: strokeIn .62s var(--ease) forwards;
@@ -1063,8 +1050,6 @@ body.intro-run .hero .dimension { opacity: 0; animation: fadeUp .6s var(--ease) 
 body.intro-run .hero .eyebrow  { opacity: 0; animation: fadeUp .5s var(--ease) 1.35s forwards; }
 
 @keyframes draftGrid { to { opacity: .85; } }
-@keyframes cxH { to { opacity: var(--cx); transform: scaleX(1); } }
-@keyframes cxV { to { opacity: var(--cx); transform: scaleY(1); } }
 @keyframes strokeIn {
   0%   { opacity: 0; transform: translateY(.38em) scaleY(.82); filter: blur(3px); }
   55%  { opacity: 1; filter: blur(0); }
@@ -1077,16 +1062,12 @@ body.intro-run .hero .eyebrow  { opacity: 0; animation: fadeUp .5s var(--ease) 1
 
 /* end state — animations removed so a backgrounded tab can't strand them */
 body.intro-done .hero-grid { opacity: .85; animation: none; }
-body.intro-done .hero-cx--h { opacity: var(--cx); transform: scaleX(1); animation: none; }
-body.intro-done .hero-cx--v { opacity: var(--cx); transform: scaleY(1); animation: none; }
 body.intro-done .hero h1 .ch,
 body.intro-done .hero .dimension,
 body.intro-done .hero .eyebrow { opacity: 1; transform: none; filter: none; animation: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-grid { opacity: .85; }
-  .hero-cx--h { opacity: var(--cx); transform: scaleX(1); }
-  .hero-cx--v { opacity: var(--cx); transform: scaleY(1); }
   .hero h1 .ch { opacity: 1 !important; animation: none !important; }
 }
 
@@ -1258,3 +1239,69 @@ body.cad-on [data-href] { cursor: none; }
 
 .theme-toggle svg { transition: transform .5s var(--ease); }
 .theme-toggle:active svg { transform: rotate(180deg) scale(.9); }
+
+/* ============================================================
+   WASM EMBED — the real program, compiled, running in the page.
+   Deliberately click-to-start: see wasmrun.js.
+   ============================================================ */
+
+.wasmrun {
+  border: 1px solid var(--line); border-radius: var(--r);
+  overflow: hidden; background: var(--bg-alt); margin-bottom: 14px;
+}
+.wasmrun-stage {
+  position: relative; aspect-ratio: 16 / 10; width: 100%;
+  background: #0b1d24;              /* the program's own clear colour */
+  display: grid; place-items: center;
+}
+.wasmrun-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: block; outline: none; touch-action: none;
+}
+.wasmrun-canvas[hidden] { display: none; }
+
+.wasmrun-start {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 22px 30px; cursor: pointer;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border: 1px solid var(--line); border-radius: var(--r);
+  color: var(--text); font: inherit;
+  transition: border-color .2s var(--ease), transform .2s var(--ease);
+}
+.wasmrun-start:hover { border-color: var(--accent); transform: translateY(-1px); }
+/* display:flex above would otherwise beat the hidden attribute */
+.wasmrun-start[hidden] { display: none; }
+.wasmrun-play {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent);
+}
+.wasmrun-title { font-size: 16px; font-weight: 600; }
+.wasmrun-meta {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: .04em;
+}
+
+.wasmrun-status {
+  position: absolute; z-index: 2; font-family: var(--mono);
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-dim);
+}
+.wasmrun.is-running .wasmrun-status { display: none; }
+
+.wasmrun-keys {
+  display: flex; flex-wrap: wrap; gap: 6px 18px;
+  padding: 11px 14px; border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: .04em;
+}
+.wasmrun-keys b {
+  color: var(--text); font-weight: 500;
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: 0 5px; margin-right: 5px;
+}
+
+@media (max-width: 680px) {
+  .wasmrun-stage { aspect-ratio: 4 / 3; }
+  .wasmrun-keys { display: none; }
+}

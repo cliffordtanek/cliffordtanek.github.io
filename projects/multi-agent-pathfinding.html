@@ -81,17 +81,27 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
       <p>The combination suits genres where a crowd has to look deliberate — RTS unit groups, stealth AI sweeping a space, open-world NPCs exploring terrain the player has also never seen.</p>
     </section>
     <section class="prose-block">
-      <h2>How it works</h2>
-      <div class="demo">
-        <canvas class="demo-canvas" data-demo="flowfield"
-                aria-label="Live algorithm demo for Multi-Agent Pathfinding"></canvas>
+      <h2>Run it here</h2>
+      <div class="wasmrun" data-wasm="../assets/demo/pathfinding/"
+           data-wasm-name="pathfinding.js" data-wasm-export="createPathfinding">
+        <div class="wasmrun-stage">
+          <canvas class="wasmrun-canvas" tabindex="0" hidden
+                  aria-label="Multi-Agent Pathfinding running in the browser"></canvas>
+          <span class="wasmrun-status" aria-live="polite"></span>
+          <button class="wasmrun-start" type="button">
+            <span class="wasmrun-play">&#9654; Run</span>
+            <span class="wasmrun-title">Run the actual program</span>
+            <span class="wasmrun-meta">~400 KB · loads only when you ask</span>
+          </button>
+        </div>
+        <div class="wasmrun-keys"><span><b>Drag</b>draw walls</span><span><b>Right-drag</b>erase</span><span><b>W A S D</b>pan</span><span><b>Wheel</b>zoom</span><span><b>MapMaker → Generate Map</b>procedural maze</span></div>
         <div class="demo-bar">
-          <span class="demo-label">Sketch</span>
-          <span class="demo-note">An illustration of the technique, written in JavaScript for this page — the project itself is C++/SFML, and the footage above is from it. One Dijkstra sweep from the goal builds the integration field; each agent then reads its own cell&#x27;s gradient, so cost is O(grid) once rather than O(agents x path).</span>
-          <button class="demo-again" type="button">Regenerate</button>
+          <span class="demo-label">Real build</span>
+          <span class="demo-note">This is the Visual Studio project itself — the same Grid, Factory and Editor sources — compiled to WebAssembly with Emscripten. SFML is replaced by a small compatibility layer over WebGL, and the ImGui panels, the map files and the docked layout are the ones from the desktop build.</span>
         </div>
       </div>
     </section>
+
     <section class="prose-block">
       <h2>Play &amp; watch</h2>
       <div class="embed embed-video">
@@ -177,5 +187,6 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/demos.js"></script>
 <script src="../assets/js/hero.js"></script>
+<script src="../assets/js/wasmrun.js"></script>
 </body>
 </html>

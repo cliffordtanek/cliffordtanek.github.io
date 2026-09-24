@@ -110,8 +110,14 @@
       if (!live) show(true);
       if (!raf) raf = requestAnimationFrame(draw);
 
-      // the pickbox reacts to what is under it, the way AutoCAD's does
+      // A running WebAssembly canvas draws its own cursor and wants the
+      // real pointer back — ours would sit on top of its UI.
       var t = e.target;
+      if (t && t.closest && t.closest('.wasmrun.is-running')) {
+        if (live) show(false);
+        return;
+      }
+      // the pickbox reacts to what is under it, the way AutoCAD's does
       var over = t && t.closest && t.closest('a, button, [data-href], .chip, .demo-again');
       el.classList.toggle('pick', !!over);
       hint.textContent = over ? 'SELECT' : 'SNAP';

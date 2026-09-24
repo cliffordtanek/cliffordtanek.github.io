@@ -197,6 +197,45 @@ def demo_block(p):
     </section>"""
 
 
+def wasm_script(p):
+    return '<script src="../assets/js/wasmrun.js"></script>' if p.get("wasm") else ""
+
+
+def wasm_block(p):
+    """The real program, compiled to WebAssembly and run in the page.
+
+    Kept separate from demo_block on purpose: that one is an illustration
+    written for the page, this one is the project's own source."""
+    w = p.get("wasm")
+    if not w:
+        return ""
+    note = re.sub(r"\s+", " ", w["note"]).strip()
+    keys = "".join(
+        f"<span><b>{E(k)}</b>{E(v)}</span>" for k, v in w.get("keys", [])
+    )
+    return f"""    <section class="prose-block">
+      <h2>Run it here</h2>
+      <div class="wasmrun" data-wasm="{E(w['base'])}"
+           data-wasm-name="{E(w['loader'])}" data-wasm-export="{E(w['export'])}">
+        <div class="wasmrun-stage">
+          <canvas class="wasmrun-canvas" tabindex="0" hidden
+                  aria-label="{E(p['title'])} running in the browser"></canvas>
+          <span class="wasmrun-status" aria-live="polite"></span>
+          <button class="wasmrun-start" type="button">
+            <span class="wasmrun-play">&#9654; Run</span>
+            <span class="wasmrun-title">{E(w['title'])}</span>
+            <span class="wasmrun-meta">{E(w['weight'])}</span>
+          </button>
+        </div>
+        <div class="wasmrun-keys">{keys}</div>
+        <div class="demo-bar">
+          <span class="demo-label">Real build</span>
+          <span class="demo-note">{E(note)}</span>
+        </div>
+      </div>
+    </section>"""
+
+
 def pager(i):
     prev_p = PROJECTS[i - 1] if i > 0 else None
     next_p = PROJECTS[i + 1] if i < len(PROJECTS) - 1 else None
@@ -261,6 +300,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
   <div class="project-layout">
     <div class="project-body">
 {body_sections(p)}
+{wasm_block(p)}
 {demo_block(p)}
 {embeds(p)}
 {gallery(p)}
@@ -313,6 +353,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/demos.js"></script>
 <script src="../assets/js/hero.js"></script>
+{wasm_script(p)}
 </body>
 </html>
 """
