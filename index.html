@@ -36,10 +36,10 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
   <nav class="nav" aria-label="Primary">
     <a class="mark" href="#top">CT<span class="dot">.</span></a>
     <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
+      <li><a href="#expertise">Expertise</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#work">Experience</a></li>
       <li><a href="#design">Design</a></li>
-      <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme" title="Toggle theme">
@@ -93,72 +93,56 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 </section>
 
 <!-- ───────────────────────────── WORK ───────────────────────────── -->
-<section class="section" id="work">
+<!-- ─────────────────────────── EXPERTISE ─────────────────────────── -->
+<section class="section section-alt" id="expertise">
   <div class="wrap">
     <div class="section-head">
-      <h2><span class="num">01</span> Experience</h2>
+      <h2><span class="num">01</span> Expertise</h2>
     </div>
 
-    <ol class="timeline">
-      <li class="tl-item reveal">
-        <div class="tl-when">Oct 2026 —<br><span class="muted">Present</span></div>
-        <div class="tl-what">
-          <h3>Robotics Software Engineer <span class="at">DSO National Laboratories</span></h3>
-          <p>
-            Full-time following an internship converted in October 2026. Work spans embedded and
-            robotics software — low-level bus protocols, redundancy and failover behaviour, and the
-            test tooling that proves a system keeps running when part of it doesn't.
-          </p>
-          <ul class="tags">
-            <li>Embedded systems</li><li>C / C++</li><li>Python</li><li>Robotics</li><li>Systems testing</li>
-          </ul>
-        </div>
-      </li>
+    <!-- A materials legend, the way a drawing sheet keys its hatches:
+         swatch, letter, what it denotes, and the tools in the set. -->
+    <div class="legend">
+      <div class="legend-head" aria-hidden="true">
+        <span>Key</span><span>Discipline</span><span>Scope</span><span>Toolset</span>
+      </div>
 
-      <li class="tl-item reveal">
-        <div class="tl-when">2025 —<br><span class="muted">2026</span></div>
-        <div class="tl-what">
-          <h3>Computational Designer <span class="at">Urban Redevelopment Authority</span></h3>
-          <p>
-            12-month Integrated Work Study Programme placement. Extended URA's internal
-            <strong>ePlanner</strong> planning platform with generative algorithms for automated road
-            network and land parcel generation — migrating legacy Rhino/Grasshopper parcellation logic
-            into Python, running spatial analysis over Singapore's road network data, and shipping it
-            end to end through a backend API, a frontend integration and a cloud deployment.
-          </p>
-          <ul class="tags">
-            <li>Python</li><li>Geospatial / GIS</li><li>Computational geometry</li><li>REST API</li><li>Cloud deployment</li>
-          </ul>
+      <div class="legend-row reveal">
+        <div class="legend-key">
+          <i class="swatch swatch--a"></i><b>A</b>
         </div>
-      </li>
+        <div class="legend-name">
+          Systems &amp; Robotics
+          <span>Embedded · Real-time</span>
+        </div>
+        <p class="legend-note">Software where the deadline is a clock edge, not a sprint.</p>
+        <p class="legend-tools">C · C++ · Python · Bus protocols · Redundancy &amp; failover</p>
+      </div>
 
-      <li class="tl-item reveal">
-        <div class="tl-when">2022 —<br><span class="muted">2026</span></div>
-        <div class="tl-what">
-          <h3>BSc (Hons) Computer Science <span class="at">SIT × DigiPen Singapore</span></h3>
-          <p>
-            Interactive Media and Game Development, a joint degree between the Singapore Institute of
-            Technology and DigiPen Institute of Technology. <strong>Valedictorian</strong> for the
-            graduating cohort.
-          </p>
-          <ul class="tags accent">
-            <li>Valedictorian</li><li>Provost's List ×2</li><li>Mighty Jaxx Scholarship</li>
-          </ul>
+      <div class="legend-row reveal">
+        <div class="legend-key">
+          <i class="swatch swatch--b"></i><b>B</b>
         </div>
-      </li>
+        <div class="legend-name">
+          Engines &amp; Games
+          <span>Gameplay · Tooling</span>
+        </div>
+        <p class="legend-note">Engines written from scratch, and the editors that make them usable.</p>
+        <p class="legend-tools">C++ · SFML · OpenGL · ImGui · Pathfinding / AI</p>
+      </div>
 
-      <li class="tl-item reveal">
-        <div class="tl-when">Earlier</div>
-        <div class="tl-what">
-          <h3>Architectural Assistant <span class="at">Diploma in Architecture · Ngee Ann Polytechnic</span></h3>
-          <p>
-            Trained and worked in architecture before moving into computer science. The spatial
-            reasoning stayed — it's why parcellation algorithms and level design both feel like the
-            same problem to me.
-          </p>
+      <div class="legend-row reveal">
+        <div class="legend-key">
+          <i class="swatch swatch--c"></i><b>C</b>
         </div>
-      </li>
-    </ol>
+        <div class="legend-name">
+          Computational Design
+          <span>Geometry · Geospatial</span>
+        </div>
+        <p class="legend-note">Drawing rules turned into algorithms — a habit kept from architecture.</p>
+        <p class="legend-tools">Python · GIS · Computational geometry · Rhino / Grasshopper · REST APIs</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -172,15 +156,14 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 
     <div class="filters" role="group" aria-label="Filter projects">
       <button class="chip is-active" data-filter="all">All</button>
-      <button class="chip" data-filter="systems">Systems</button>
-      <button class="chip" data-filter="games">Games &amp; engines</button>
-      <button class="chip" data-filter="algorithms">Algorithms</button>
+      <button class="chip" data-filter="algorithm">Algorithm</button>
+      <button class="chip" data-filter="gamedev">Game Development</button>
       <button class="chip" data-filter="mobile">Mobile</button>
     </div>
 
     <div class="grid" id="projectGrid">
 
-      <article class="card reveal" data-href="projects/road-network-parcellation.html" data-cat="systems algorithms">
+      <article class="card reveal" data-href="projects/road-network-parcellation.html" data-cat="algorithm">
         <div class="cover has-media" data-label="Parcellation">
           <span class="sheet-no">P-01</span>
           <span class="card-demo-tag">Sketch</span>
@@ -203,7 +186,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
           </div>
         </article>
 
-      <article class="card reveal" data-href="projects/magique.html" data-cat="games systems">
+      <article class="card reveal" data-href="projects/magique.html" data-cat="gamedev">
         <div class="cover has-media" data-label="Magique">
           <span class="sheet-no">P-02</span>
           <video class="cover-media" autoplay muted loop playsinline preload="metadata"
@@ -232,7 +215,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
         </div>
       </article>
 
-      <article class="card reveal" data-href="projects/multi-agent-pathfinding.html" data-cat="algorithms games">
+      <article class="card reveal" data-href="projects/multi-agent-pathfinding.html" data-cat="algorithm">
         <div class="cover has-media" data-label="Multi-Agent Pathfinding">
           <span class="sheet-no">P-03</span>
           <span class="card-demo-tag">Playable</span>
@@ -262,7 +245,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
         </div>
       </article>
 
-      <article class="card reveal" data-href="projects/seam-carving.html" data-cat="algorithms systems">
+      <article class="card reveal" data-href="projects/seam-carving.html" data-cat="algorithm">
         <div class="cover has-media" data-label="Content-Aware Image Resizing with Seam Carving">
           <span class="sheet-no">P-04</span>
           <video class="cover-media" autoplay muted loop playsinline preload="metadata"
@@ -290,7 +273,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
           </div>
         </article>
 
-      <article class="card reveal" data-href="projects/hole-in-the-wall.html" data-cat="mobile games">
+      <article class="card reveal" data-href="projects/hole-in-the-wall.html" data-cat="mobile">
         <div class="cover has-media" data-label="Hole In The Wall">
           <span class="sheet-no">P-05</span>
           <video class="cover-media" autoplay muted loop playsinline preload="metadata"
@@ -318,7 +301,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
           </div>
         </article>
 
-      <article class="card reveal" data-href="projects/astro-cow.html" data-cat="games">
+      <article class="card reveal" data-href="projects/astro-cow.html" data-cat="gamedev">
         <div class="cover has-media" data-label="Astro Cow">
           <span class="sheet-no">P-06</span>
           <video class="cover-media" autoplay muted loop playsinline preload="metadata"
@@ -346,7 +329,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
         </div>
       </article>
 
-      <article class="card reveal" data-href="projects/makan-mania.html" data-cat="games">
+      <article class="card reveal" data-href="projects/makan-mania.html" data-cat="gamedev">
         <div class="cover has-media" data-label="Makan Mania">
           <span class="sheet-no">P-07</span>
           <video class="cover-media" autoplay muted loop playsinline preload="metadata"
@@ -377,10 +360,112 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 </section>
 
 <!-- ───────────────────────────── DESIGN ───────────────────────────── -->
-<section class="section section-alt" id="design">
+<!-- ─────────────────────────── EXPERIENCE ─────────────────────────── -->
+<section class="section section-alt" id="work">
   <div class="wrap">
     <div class="section-head">
-      <h2><span class="num">03</span> Design</h2>
+      <h2><span class="num">03</span> Experience</h2>
+      <p class="section-sub">Click a row to expand it.</p>
+    </div>
+
+    <ol class="xp">
+      <li class="reveal">
+        <details class="xp-item" open>
+          <summary class="xp-head">
+            <span class="xp-no">E-01</span>
+            <span class="xp-role">Robotics Software Engineer</span>
+            <span class="xp-org">DSO National Laboratories</span>
+            <span class="xp-when">Oct 2026 — Present</span>
+            <span class="xp-mark" aria-hidden="true"></span>
+          </summary>
+          <div class="xp-body">
+            <p>
+              Full-time following an internship converted in October 2026. Work spans embedded and
+              robotics software — low-level bus protocols, redundancy and failover behaviour, and the
+              test tooling that proves a system keeps running when part of it doesn't.
+            </p>
+            <ul class="tags">
+              <li>Embedded systems</li><li>C / C++</li><li>Python</li><li>Robotics</li><li>Systems testing</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="reveal">
+        <details class="xp-item">
+          <summary class="xp-head">
+            <span class="xp-no">E-02</span>
+            <span class="xp-role">Computational Designer</span>
+            <span class="xp-org">Urban Redevelopment Authority</span>
+            <span class="xp-when">2025 — 2026</span>
+            <span class="xp-mark" aria-hidden="true"></span>
+          </summary>
+          <div class="xp-body">
+            <p>
+              12-month Integrated Work Study Programme placement. Extended URA's internal
+              <strong>ePlanner</strong> planning platform with generative algorithms for automated road
+              network and land parcel generation — migrating legacy Rhino/Grasshopper parcellation logic
+              into Python, running spatial analysis over Singapore's road network data, and shipping it
+              end to end through a backend API, a frontend integration and a cloud deployment.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>Geospatial / GIS</li><li>Computational geometry</li><li>REST API</li><li>Cloud deployment</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="reveal">
+        <details class="xp-item">
+          <summary class="xp-head">
+            <span class="xp-no">E-03</span>
+            <span class="xp-role">BSc (Hons) Computer Science</span>
+            <span class="xp-org">SIT × DigiPen Singapore</span>
+            <span class="xp-when">2022 — 2026</span>
+            <span class="xp-mark" aria-hidden="true"></span>
+          </summary>
+          <div class="xp-body">
+            <p>
+              Interactive Media and Game Development, a joint degree between the Singapore Institute of
+              Technology and DigiPen Institute of Technology. <strong>Valedictorian</strong> for the
+              graduating cohort.
+            </p>
+            <ul class="tags accent">
+              <li>Valedictorian</li><li>Provost's List ×2</li><li>Mighty Jaxx Scholarship</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="reveal">
+        <details class="xp-item">
+          <summary class="xp-head">
+            <span class="xp-no">E-04</span>
+            <span class="xp-role">Architectural Assistant</span>
+            <span class="xp-org">Diploma in Architecture · Ngee Ann Polytechnic</span>
+            <span class="xp-when">Earlier</span>
+            <span class="xp-mark" aria-hidden="true"></span>
+          </summary>
+          <div class="xp-body">
+            <p>
+              Trained and worked in architecture before moving into computer science. The spatial
+              reasoning stayed — it's why parcellation algorithms and level design both feel like the
+              same problem to me.
+            </p>
+            <ul class="tags">
+              <li>Architectural drafting</li><li>Spatial planning</li><li>Rhino</li><li>Adobe Suite</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="design">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">04</span> Design</h2>
       <p class="section-sub">Game design, level design and graphic work — the half of the degree that isn't code.</p>
     </div>
 
@@ -500,49 +585,6 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 </section>
 
 <!-- ───────────────────────────── ABOUT ───────────────────────────── -->
-<section class="section" id="about">
-  <div class="wrap">
-    <div class="about-layout">
-      <div class="about-text">
-        <div class="section-head">
-          <h2><span class="num">04</span> About</h2>
-        </div>
-        <p class="reveal">
-          I started in architecture — a diploma at Ngee Ann, then National Service, then a full-time
-          job as an architectural assistant. It took working in the field to realise it wasn't the
-          right fit, so I switched into computer science and went back to being a first-year.
-        </p>
-        <p class="reveal">
-          That detour turned out to be useful. A lot of what I work on now is spatial: parcelling land
-          into buildable plots, moving a crowd of agents through terrain, laying out a level so a
-          player learns a mechanic without being told. The tools changed; the way of thinking didn't.
-        </p>
-        <p class="reveal">
-          These days I write robotics and embedded software at DSO. I like the parts of engineering
-          where you can't hand-wave — where a bus either syncs or it doesn't, a frame either lands in
-          16ms or it doesn't. Outside work I'm usually on a basketball or badminton court, in the gym,
-          or somewhere I haven't been before.
-        </p>
-      </div>
-
-      <aside class="about-side">
-        <div class="skill-block reveal">
-          <h4>Languages</h4>
-          <ul class="tags"><li>C</li><li>C++</li><li>C#</li><li>Python</li><li>Kotlin</li><li>JavaScript</li></ul>
-        </div>
-        <div class="skill-block reveal">
-          <h4>Engineering</h4>
-          <ul class="tags"><li>Game engine architecture</li><li>Physics &amp; collision</li><li>Pathfinding / AI</li><li>Computer vision</li><li>Geospatial analysis</li><li>Backend APIs</li><li>Cloud deployment</li><li>Embedded / bus protocols</li></ul>
-        </div>
-        <div class="skill-block reveal">
-          <h4>Design</h4>
-          <ul class="tags"><li>Figma</li><li>Adobe Suite</li><li>Rhino / Grasshopper</li><li>Level design</li><li>Systems design</li><li>UI/UX</li></ul>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
 <!-- ───────────────────────────── CONTACT ───────────────────────────── -->
 <section class="section section-alt" id="contact">
   <div class="wrap">
@@ -555,19 +597,30 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
     </p>
     <div class="contact-links reveal">
       <a class="contact-link" href="mailto:cliffordtanek@gmail.com">
+        <span class="cl-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="m3 7 9 6 9-6"/></svg>
+        </span>
         <span class="cl-k">Email</span><span class="cl-v">cliffordtanek@gmail.com</span>
       </a>
       <a class="contact-link" href="https://www.linkedin.com/in/cliffordtanek/" target="_blank" rel="noopener">
-        <span class="cl-k">LinkedIn</span><span class="cl-v">in/cliffordtanek ↗</span>
+        <span class="cl-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="2"/><path d="M7 10.5V17M7 7.4v.1M11.5 17v-4a2.5 2.5 0 0 1 5 0v4"/></svg>
+        </span>
+        <span class="cl-k">LinkedIn</span><span class="cl-v">in/cliffordtanek <span class="cl-ext">&#8599;</span></span>
       </a>
       <a class="contact-link" href="https://github.com/cliffordtanek" target="_blank" rel="noopener">
-        <span class="cl-k">GitHub</span><span class="cl-v">@cliffordtanek ↗</span>
+        <span class="cl-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="6.5" cy="5.5" r="2.2"/><circle cx="6.5" cy="18.5" r="2.2"/><circle cx="17.5" cy="7.5" r="2.2"/><path d="M6.5 7.7v8.6M17.5 9.7v1.8a3 3 0 0 1-3 3H9"/></svg>
+        </span>
+        <span class="cl-k">GitHub</span><span class="cl-v">@cliffordtanek <span class="cl-ext">&#8599;</span></span>
       </a>
       <a class="contact-link" href="https://www.youtube.com/channel/UCNuAJ0KHZoYychuGc1SitcA" target="_blank" rel="noopener">
-        <span class="cl-k">YouTube</span><span class="cl-v">Project demos ↗</span>
+        <span class="cl-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="m10.2 9.1 5 2.9-5 2.9z"/></svg>
+        </span>
+        <span class="cl-k">YouTube</span><span class="cl-v">Project demos <span class="cl-ext">&#8599;</span></span>
       </a>
     </div>
-  </div>
 </section>
 
 </main>

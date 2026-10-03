@@ -141,7 +141,8 @@ a { color: inherit; }
   .nav { gap: 14px; }
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 12.5px; }
-  .nav-links li:nth-child(3), .nav-links li:nth-child(4) { display: none; }
+  /* keep Projects, Experience and Contact on a phone */
+  .nav-links li:nth-child(1), .nav-links li:nth-child(4) { display: none; }
 }
 
 /* ───────────── hero ───────────── */
@@ -240,42 +241,6 @@ a { color: inherit; }
   font-size: 13px; font-family: var(--mono); letter-spacing: .12em;
   text-transform: uppercase; color: var(--text-dim);
   margin: 64px 0 24px; font-weight: 400;
-}
-
-/* ───────────── timeline ───────────── */
-
-.timeline { list-style: none; margin: 0; padding: 0; }
-
-.tl-item {
-  display: grid;
-  grid-template-columns: 132px 1fr;
-  gap: 32px;
-  padding: 30px 0;
-  border-top: 1px solid var(--line-soft);
-}
-.tl-item:first-child { border-top: none; padding-top: 0; }
-
-.tl-when {
-  font-family: var(--mono); font-size: 12.5px;
-  color: var(--text); letter-spacing: .02em; line-height: 1.7;
-  padding-top: 3px;
-}
-
-.tl-what h3 {
-  font-size: 17px; font-weight: 600; margin: 0 0 8px;
-  letter-spacing: -0.01em;
-}
-.tl-what .at {
-  display: block; font-weight: 400; font-size: 14px;
-  color: var(--accent); margin-top: 3px;
-}
-.tl-what p { margin: 0 0 14px; color: var(--text-mid); font-size: 15px; max-width: 680px; }
-.tl-what strong { color: var(--text); font-weight: 500; }
-
-@media (max-width: 680px) {
-  .tl-item { grid-template-columns: 1fr; gap: 10px; }
-  .tl-when { font-size: 11.5px; color: var(--text-dim); }
-  .tl-when br { display: none; }
 }
 
 /* ───────────── tags ───────────── */
@@ -379,7 +344,14 @@ a { color: inherit; }
 .card-body h3 { font-size: 18px; font-weight: 600; margin: 0; letter-spacing: -0.015em; }
 .card-desc { margin: 0; font-size: 14.2px; color: var(--text-mid); line-height: 1.6; flex: 1; }
 
-.links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+/* margin-top:auto pins the link row to the bottom of the card, so the
+   "View project" line agrees across a row whatever the description and tag
+   wrapping do above it. align-items:baseline keeps a second link (itch.io,
+   a trailer) sitting on the same line rather than riding half a pixel high. */
+.links {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  align-items: baseline; margin-top: auto; padding-top: 6px;
+}
 .links a {
   font-family: var(--mono); font-size: 12px; color: var(--accent);
   text-decoration: none; border-bottom: 1px solid transparent;
@@ -409,21 +381,6 @@ a { color: inherit; }
 
 /* ───────────── about ───────────── */
 
-.about-layout { display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; }
-@media (max-width: 860px) { .about-layout { grid-template-columns: 1fr; gap: 40px; } }
-
-.about-text p {
-  font-size: 16px; color: var(--text-mid); max-width: 620px; margin: 0 0 20px;
-}
-.about-text p:first-of-type { font-size: 17px; color: var(--text); }
-
-.about-side { display: flex; flex-direction: column; gap: 28px; padding-top: 4px; }
-.skill-block h4 {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .13em;
-  text-transform: uppercase; color: var(--text-dim);
-  margin: 0 0 12px; font-weight: 400;
-}
-
 /* ───────────── contact ───────────── */
 
 .contact-lede {
@@ -437,8 +394,9 @@ a { color: inherit; }
   overflow: hidden; max-width: 640px;
 }
 .contact-link {
-  background: var(--bg-alt); padding: 16px 20px;
-  display: flex; gap: 20px; align-items: baseline;
+  background: var(--bg-alt); padding: 15px 20px;
+  display: grid; grid-template-columns: 20px 78px 1fr;
+  gap: 16px; align-items: center;
   text-decoration: none;
   transition: background-color .2s var(--ease);
 }
@@ -446,7 +404,7 @@ a { color: inherit; }
 .contact-link:hover .cl-v { color: var(--accent); }
 .cl-k {
   font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--text-dim); min-width: 78px;
+  text-transform: uppercase; color: var(--text-dim);
 }
 .cl-v { font-size: 15px; color: var(--text); transition: color .2s var(--ease); }
 
@@ -1305,3 +1263,191 @@ body.cad-on [data-href] { cursor: none; }
   .wasmrun-stage { aspect-ratio: 4 / 3; }
   .wasmrun-keys { display: none; }
 }
+
+/* ============================================================
+   EXPERTISE — a materials legend.
+
+   Every drawing sheet carries one: a hatch swatch, a letter, and
+   what that hatch denotes. Three columns of icon-topped cards is
+   the shape every portfolio uses; this is the shape Clifford's
+   own drawings use.
+   ============================================================ */
+
+.legend {
+  border: 1px solid var(--line); border-radius: var(--r); overflow: hidden;
+}
+
+.legend-head, .legend-row {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1.15fr);
+  gap: 24px; align-items: start;
+}
+
+.legend-head {
+  padding: 10px 20px; background: var(--bg-alt);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono); font-size: 10px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+
+.legend-row {
+  padding: 22px 20px; border-top: 1px solid var(--line-soft);
+  transition: background-color .2s var(--ease);
+}
+.legend-row:first-of-type { border-top: none; }
+.legend-row:hover { background: var(--bg-alt); }
+
+/* ── the key: a hatched square and its letter ── */
+.legend-key { display: flex; align-items: center; gap: 10px; }
+.legend-key b {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--text-dim);
+}
+.swatch {
+  width: 34px; height: 34px; flex: none;
+  border: 1px solid var(--text-dim);
+  background-color: transparent;
+}
+/* poché — the diagonal fill for a cut solid */
+.swatch--a {
+  background-image: repeating-linear-gradient(45deg,
+    var(--text-mid) 0 1px, transparent 1px 5px);
+}
+/* cross-hatch */
+.swatch--b {
+  background-image:
+    repeating-linear-gradient(45deg,  var(--text-mid) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(-45deg, var(--text-mid) 0 1px, transparent 1px 6px);
+}
+/* stipple — how you shade ground on a section */
+.swatch--c {
+  background-image: radial-gradient(var(--text-mid) 0.9px, transparent 1px);
+  background-size: 5px 5px;
+}
+
+.legend-name {
+  font-size: 16px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.35;
+  padding-top: 2px;
+}
+.legend-name span {
+  display: block; margin-top: 5px;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 400;
+  letter-spacing: .11em; text-transform: uppercase; color: var(--accent);
+}
+
+.legend-note {
+  margin: 0; padding-top: 2px;
+  font-size: 14.5px; color: var(--text-mid); line-height: 1.6;
+}
+.legend-tools {
+  margin: 0; padding-top: 4px;
+  font-family: var(--mono); font-size: 11.5px; line-height: 1.85;
+  color: var(--text-dim); letter-spacing: .01em;
+}
+
+@media (max-width: 900px) {
+  .legend-head { display: none; }
+  .legend-row {
+    grid-template-columns: 62px minmax(0, 1fr);
+    grid-template-areas: "key name" "note note" "tools tools";
+    gap: 12px 24px;
+  }
+  .legend-key   { grid-area: key; }
+  .legend-name  { grid-area: name; }
+  .legend-note  { grid-area: note; }
+  .legend-tools { grid-area: tools; }
+}
+
+/* ============================================================
+   EXPERIENCE — collapsible rows in the CAD idiom: a sheet
+   number, a pickbox-style +/- marker, and a hairline per row.
+   Built on <details> so it still opens with JavaScript off.
+   ============================================================ */
+
+.xp { list-style: none; margin: 0; padding: 0;
+      border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.xp > li + li { border-top: 1px solid var(--line); }
+
+.xp-item { background: var(--bg); }
+.xp-head {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1.25fr) minmax(0, 1fr) 152px 26px;
+  align-items: center; gap: 18px;
+  padding: 16px 18px; cursor: pointer; list-style: none;
+  transition: background-color .18s var(--ease);
+}
+.xp-head::-webkit-details-marker { display: none; }
+.xp-head:hover { background: var(--bg-alt); }
+.xp-item[open] .xp-head { background: var(--bg-alt); }
+.xp-head:focus-visible { outline: 1px solid var(--accent); outline-offset: -2px; }
+
+.xp-no {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em;
+  color: var(--text-dim);
+}
+.xp-role { font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em; }
+.xp-org  { font-size: 14px; color: var(--accent); }
+.xp-when {
+  font-family: var(--mono); font-size: 11.5px; color: var(--text-mid);
+  letter-spacing: .02em; text-align: right;
+}
+
+/* the marker is the pickbox again: a square that holds a + until the row
+   is open, then a - */
+.xp-mark {
+  position: relative; width: 15px; height: 15px; justify-self: end;
+  border: 1px solid var(--line-strong, var(--line));
+  transition: border-color .18s var(--ease);
+}
+.xp-head:hover .xp-mark { border-color: var(--accent); }
+.xp-mark::before, .xp-mark::after {
+  content: ''; position: absolute; background: var(--text-mid);
+  transition: opacity .18s var(--ease), background-color .18s var(--ease);
+}
+.xp-mark::before { left: 3px; right: 3px; top: 50%; height: 1px; transform: translateY(-50%); }
+.xp-mark::after  { top: 3px; bottom: 3px; left: 50%; width: 1px; transform: translateX(-50%); }
+.xp-head:hover .xp-mark::before,
+.xp-head:hover .xp-mark::after { background: var(--accent); }
+.xp-item[open] .xp-mark::after { opacity: 0; }
+
+.xp-body {
+  padding: 2px 18px 22px calc(58px + 18px + 18px);
+  border-top: 1px solid var(--line-soft);
+  background: var(--bg-alt);
+}
+.xp-body p {
+  margin: 14px 0 14px; color: var(--text-mid); font-size: 15px; max-width: 760px;
+}
+.xp-body strong { color: var(--text); font-weight: 500; }
+
+@media (max-width: 860px) {
+  .xp-head {
+    grid-template-columns: 1fr 26px;
+    grid-template-areas: "no mark" "role mark" "org ." "when .";
+    gap: 4px 12px; padding: 14px 16px;
+  }
+  .xp-no   { grid-area: no; }
+  .xp-role { grid-area: role; }
+  .xp-org  { grid-area: org; }
+  .xp-when { grid-area: when; text-align: left; }
+  .xp-mark { grid-area: mark; align-self: start; margin-top: 2px; }
+  .xp-body { padding: 2px 16px 20px; }
+}
+
+/* ============================================================
+   CONTACT ICONS
+   Drawn in the page's own line style rather than dropped-in
+   brand marks, so the row reads as part of the sheet.
+   ============================================================ */
+
+.cl-icon {
+  width: 20px; height: 20px; display: grid; place-items: center;
+  color: var(--text-dim); transition: color .2s var(--ease);
+}
+.cl-icon svg {
+  width: 18px; height: 18px;
+  fill: none; stroke: currentColor; stroke-width: 1.3;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.contact-link:hover .cl-icon { color: var(--accent); }
+.cl-ext { color: var(--text-dim); font-size: 12px; }
