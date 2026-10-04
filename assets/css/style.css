@@ -142,7 +142,7 @@ a { color: inherit; }
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 12.5px; }
   /* keep Projects, Experience and Contact on a phone */
-  .nav-links li:nth-child(1), .nav-links li:nth-child(4) { display: none; }
+  .nav-links li:nth-child(1), .nav-links li:nth-child(3) { display: none; }
 }
 
 /* ───────────── hero ───────────── */
