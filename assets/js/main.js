@@ -126,6 +126,66 @@
     }
   }
 
+  /* ---------- experience accordion ----------
+     <details> gives the semantics and works with JavaScript off, but it
+     cannot animate: a closed <details> sets its children to display:none,
+     so there is no height to transition from. So we take the click, open
+     the element, measure the body, and run the height ourselves.
+
+     The element stays open for the whole closing animation and only flips
+     shut on finish — otherwise the content vanishes on frame one and you
+     animate an empty box. */
+  var panels = document.querySelectorAll('.xp-item');
+
+  if (panels.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var OPEN_MS = 300, SHUT_MS = 230;
+    var EASE_OUT = 'cubic-bezier(.22,.61,.36,1)';
+    var EASE_IN  = 'cubic-bezier(.55,.06,.68,.19)';
+
+    Array.prototype.forEach.call(panels, function (d) {
+      var summary = d.querySelector('summary');
+      var body = d.querySelector('.xp-body');
+      if (!summary || !body || typeof body.animate !== 'function') return;
+
+      var running = null;
+
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // mid-flight click: take the current height as the new start so the
+        // row reverses from where it is rather than snapping
+        var from = running ? body.getBoundingClientRect().height : null;
+        if (running) { running.cancel(); running = null; }
+
+        if (!d.open) {
+          d.open = true;
+          var to = body.scrollHeight;
+          running = body.animate(
+            { height: [(from === null ? 0 : from) + 'px', to + 'px'], opacity: [from ? 1 : 0, 1] },
+            { duration: OPEN_MS, easing: EASE_OUT }
+          );
+          running.onfinish = function () { running = null; };
+        } else {
+          var start = from === null ? body.getBoundingClientRect().height : from;
+          // fill:forwards holds the row at zero for the frame between the
+          // animation finishing and the element actually closing — without it
+          // the body snaps back to full height for one frame, which reads as
+          // a flicker on every close.
+          running = body.animate(
+            { height: [start + 'px', '0px'], opacity: [1, 0] },
+            { duration: SHUT_MS, easing: EASE_IN, fill: 'forwards' }
+          );
+          running.onfinish = function () {
+            var done = running;
+            d.open = false;
+            if (done) done.cancel();
+            running = null;
+          };
+        }
+      });
+    });
+  }
+
   /* ---------- footer year ---------- */
   var y = new Date().getFullYear();
   Array.prototype.forEach.call(document.querySelectorAll('#year, #year2'), function (el) {

@@ -25,8 +25,8 @@ E = html.escape
 
 
 def nav(active=""):
-    items = [("../index.html#expertise", "Expertise"), ("../index.html#projects", "Projects"),
-             ("../index.html#design", "Design"), ("../index.html#work", "Experience"),
+    items = [("../index.html#expertise", "Expertise"), ("../index.html#work", "Experience"),
+             ("../index.html#projects", "Projects"), ("../index.html#design", "Design"),
              ("../index.html#contact", "Contact")]
     lis = "\n".join(f'      <li><a href="{h}">{t}</a></li>' for h, t in items)
     return f"""<header class="site-header">

@@ -142,7 +142,7 @@ a { color: inherit; }
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 12.5px; }
   /* keep Projects, Experience and Contact on a phone */
-  .nav-links li:nth-child(1), .nav-links li:nth-child(3) { display: none; }
+  .nav-links li:nth-child(1), .nav-links li:nth-child(4) { display: none; }
 }
 
 /* ───────────── hero ───────────── */
@@ -1411,6 +1411,9 @@ body.cad-on [data-href] { cursor: none; }
 .xp-item[open] .xp-mark::after { opacity: 0; }
 
 .xp-body {
+  /* height is animated in main.js; border-box keeps the padding inside the
+     animated height, and overflow:hidden clips it on the way. */
+  overflow: hidden;
   padding: 2px 18px 22px calc(58px + 18px + 18px);
   border-top: 1px solid var(--line-soft);
   background: var(--bg-alt);
