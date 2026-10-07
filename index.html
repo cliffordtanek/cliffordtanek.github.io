@@ -1,1213 +1,667 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Clifford Tan — Software Engineer</title>
-    <meta
-      name="description"
-      content="Clifford Tan — software engineer working on robotics, game engines and computational design. Singapore."
-    />
-    <meta name="author" content="Clifford Tan" />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clifford Tan — Software Engineer</title>
+<meta name="description" content="Clifford Tan — software engineer working on robotics, game engines and computational design. Singapore.">
+<meta name="author" content="Clifford Tan">
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Clifford Tan — Software Engineer" />
-    <meta
-      property="og:description"
-      content="Robotics software, game engines and computational design. Singapore."
-    />
-    <meta property="og:url" content="https://cliffordtanek.github.io/" />
-    <meta name="twitter:card" content="summary_large_image" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clifford Tan — Software Engineer">
+<meta property="og:description" content="Robotics software, game engines and computational design. Singapore.">
+<meta property="og:url" content="https://cliffordtanek.github.io/">
+<meta name="twitter:card" content="summary_large_image">
 
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='monospace'>C</text></svg>"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <script>
-      /* Applied before first paint so a dark-mode visitor never sees a white flash. */
-      (function () {
-        try {
-          var t = localStorage.getItem("ct-theme");
-          if (t === "light" || t === "dark")
-            document.documentElement.setAttribute("data-theme", t);
-        } catch (e) {}
-      })();
-    </script>
-  </head>
-  <body>
-    <a class="skip" href="#main">Skip to content</a>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='monospace'>C</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+/* Applied before first paint so a dark-mode visitor never sees a white flash. */
+(function(){try{var t=localStorage.getItem('ct-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+</head>
+<body>
 
-    <span class="reg-mark reg-tl" aria-hidden="true"></span>
-    <span class="reg-mark reg-tr" aria-hidden="true"></span>
+<a class="skip" href="#main">Skip to content</a>
 
-    <header class="site-header">
-      <nav class="nav" aria-label="Primary">
-        <a class="mark" href="#top">CT<span class="dot">.</span></a>
-        <ul class="nav-links">
-          <li><a href="#expertise">Expertise</a></li>
-          <li><a href="#work">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#design">Design</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button
-          class="theme-toggle"
-          id="themeToggle"
-          aria-label="Toggle colour theme"
-          title="Toggle theme"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16">
-            <path
-              class="sun"
-              d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m11.32 0 1.41 1.41M4.93 4.93l1.41 1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
-            />
-            <path
-              class="moon"
-              d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"
-            />
-          </svg>
-        </button>
-      </nav>
-      <span class="scan" aria-hidden="true"><i></i></span>
-    </header>
 
-    <main id="main">
-      <!-- ───────────────────────────── HERO ───────────────────────────── -->
-      <section class="hero" id="top">
-        <span class="hero-grid" aria-hidden="true"></span>
-        <div class="wrap">
-          <p class="eyebrow reveal">Singapore</p>
-          <h1 class="reveal">Clifford Tan</h1>
-          <div class="dimension reveal" aria-hidden="true">
-            <span class="dim-end"></span>
-            <span class="dim-rule"></span>
-            <span class="dim-label">Software Engineer &middot; Singapore</span>
-            <span class="dim-rule"></span>
-            <span class="dim-end"></span>
-          </div>
-          <p class="lede reveal">
-            Software engineer building <em>robotics systems</em>,
-            <em>game engines</em> and <em>computational design tools</em>. I
-            like problems where the constraint is the hardware, the clock, or
-            the geometry.
-          </p>
-          <!-- <div class="hero-meta reveal">
-            <div>
-              <span class="k">Now</span>
-              <span class="v"
-                >Robotics Software Engineer · DSO National Laboratories</span
-              >
-            </div>
-            <div>
-              <span class="k">Before</span>
-              <span class="v"
-                >Computational Designer · Urban Redevelopment Authority</span
-              >
-            </div>
-            <div>
-              <span class="k">Degree</span>
-              <span class="v">BSc (Hons) Computer Science · SIT × DigiPen</span>
-            </div>
-          </div> -->
-          <div class="hero-cta reveal">
-            <a class="btn btn-primary" href="#projects">View work</a>
-            <a class="btn" href="#contact">Get in touch</a>
-          </div>
-        </div>
-      </section>
+<span class="reg-mark reg-tl" aria-hidden="true"></span>
+<span class="reg-mark reg-tr" aria-hidden="true"></span>
 
-      <!-- ─────────────────────────── EXPERTISE ─────────────────────────── -->
-      <!-- <section class="section section-alt" id="expertise">
-        <div class="wrap">
-          <div class="section-head">
-            <h2><span class="num">01</span> Expertise</h2>
-          </div>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="mark" href="#top">CT<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#work">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#design">Design</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme" title="Toggle theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16"><path class="sun" d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m11.32 0 1.41 1.41M4.93 4.93l1.41 1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/><path class="moon" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+  </nav>
+  <span class="scan" aria-hidden="true"><i></i></span>
+</header>
 
-          <div class="legend">
-            <div class="legend-head" aria-hidden="true">
-              <span>Key</span><span>Discipline</span><span>Scope</span
-              ><span>Toolset</span>
-            </div>
+<main id="main">
 
-            <div class="legend-row reveal">
-              <div class="legend-key">
-                <i class="swatch swatch--a"></i><b>A</b>
-              </div>
-              <div class="legend-name">
-                Systems &amp; Robotics
-                <span>Embedded · Real-time</span>
-              </div>
-              <p class="legend-note">
-                Software where the deadline is a clock edge, not a sprint.
-              </p>
-              <p class="legend-tools">
-                C · C++ · Python · Bus protocols · Redundancy &amp; failover
-              </p>
-            </div>
-
-            <div class="legend-row reveal">
-              <div class="legend-key">
-                <i class="swatch swatch--b"></i><b>B</b>
-              </div>
-              <div class="legend-name">
-                Engines &amp; Games
-                <span>Gameplay · Tooling</span>
-              </div>
-              <p class="legend-note">
-                Engines written from scratch, and the editors that make them
-                usable.
-              </p>
-              <p class="legend-tools">
-                C++ · SFML · OpenGL · ImGui · Pathfinding / AI
-              </p>
-            </div>
-
-            <div class="legend-row reveal">
-              <div class="legend-key">
-                <i class="swatch swatch--c"></i><b>C</b>
-              </div>
-              <div class="legend-name">
-                Computational Design
-                <span>Geometry · Geospatial</span>
-              </div>
-              <p class="legend-note">
-                Drawing rules turned into algorithms — a habit kept from
-                architecture.
-              </p>
-              <p class="legend-tools">
-                Python · GIS · Computational geometry · Rhino / Grasshopper ·
-                REST APIs
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- ─────────────────────────── EXPERIENCE ─────────────────────────── -->
-      <section class="section" id="work">
-        <div class="wrap">
-          <div class="section-head">
-            <h2><span class="num">02</span> Experience</h2>
-          </div>
-
-          <ol class="xp">
-            <li class="reveal">
-              <details class="xp-item" open>
-                <summary class="xp-head">
-                  <span class="xp-no">E-01</span>
-                  <span class="xp-role">Robotics Software Engineer</span>
-                  <span class="xp-org">DSO National Laboratories</span>
-                  <span class="xp-when">Oct 2026 — Present</span>
-                  <span class="xp-mark" aria-hidden="true"></span>
-                </summary>
-                <div class="xp-body">
-                  <p>
-                    Full-time following an internship converted in October 2026.
-                    Work spans embedded and robotics software — low-level bus
-                    protocols, redundancy and failover behaviour, and the test
-                    tooling that proves a system keeps running when part of it
-                    doesn't.
-                  </p>
-                  <ul class="tags">
-                    <li>C / C++</li>
-                    <!-- <li>Python</li> -->
-                    <li>Robotics</li>
-                    <li>Embedded Systems</li>
-                    <li>Systems Testing</li>
-                  </ul>
-                </div>
-              </details>
-            </li>
-
-            <li class="reveal">
-              <details class="xp-item">
-                <summary class="xp-head">
-                  <span class="xp-no">E-02</span>
-                  <span class="xp-role">Computational Designer</span>
-                  <span class="xp-org">Urban Redevelopment Authority</span>
-                  <span class="xp-when">2025 — 2026</span>
-                  <span class="xp-mark" aria-hidden="true"></span>
-                </summary>
-                <div class="xp-body">
-                  <p>
-                    12-month Integrated Work Study Programme placement. Extended
-                    URA's internal
-                    <strong>ePlanner</strong> planning platform with generative
-                    algorithms for automated road network and land parcel
-                    generation — migrating legacy Rhino/Grasshopper parcellation
-                    logic into Python, running spatial analysis over Singapore's
-                    road network data, and shipping it end to end through a
-                    backend API, a frontend integration and a cloud deployment.
-                  </p>
-                  <ul class="tags">
-                    <li>Python</li>
-                    <li>Geospatial / GIS</li>
-                    <li>Computational Geometry</li>
-                    <!-- <li>REST API</li>
-                    <li>Cloud deployment</li> -->
-                  </ul>
-                </div>
-              </details>
-            </li>
-
-            <li class="reveal">
-              <details class="xp-item">
-                <summary class="xp-head">
-                  <span class="xp-no">E-03</span>
-                  <span class="xp-role"
-                    >BSc (Hons) Computer Science in Interactive Media and Game
-                    Development</span
-                  >
-                  <span class="xp-org"
-                    >Singapore Institute of Technology - DigiPen Singapore</span
-                  >
-                  <span class="xp-when">2022 — 2026</span>
-                  <span class="xp-mark" aria-hidden="true"></span>
-                </summary>
-                <div class="xp-body">
-                  <p>
-                    Interactive Media and Game Development, a joint degree
-                    between the Singapore Institute of Technology and DigiPen
-                    Institute of Technology. <strong>Valedictorian</strong> for
-                    the graduating cohort.
-                  </p>
-                  <ul class="tags accent">
-                    <li>Valedictorian</li>
-                    <li>Provost's List AY 2023/2024/2026</li>
-                    <li>Mighty Jaxx Scholarship</li>
-                  </ul>
-                </div>
-              </details>
-            </li>
-
-            <li class="reveal">
-              <details class="xp-item">
-                <summary class="xp-head">
-                  <span class="xp-no">E-04</span>
-                  <span class="xp-role">Architectural Assistant</span>
-                  <span class="xp-org">EML Architects</span>
-                  <span class="xp-when">2021 — 2022</span>
-                  <span class="xp-mark" aria-hidden="true"></span>
-                </summary>
-                <div class="xp-body">
-                  <p>
-                    Trained and worked in architecture before moving into
-                    computer science. The spatial reasoning stayed — it's why
-                    parcellation algorithms and level design both feel like the
-                    same problem to me.
-                  </p>
-                  <ul class="tags">
-                    <li>Architectural drafting</li>
-                    <li>Spatial planning</li>
-                    <li>Rhino</li>
-                    <li>Adobe Suite</li>
-                  </ul>
-                </div>
-              </details>
-            </li>
-
-            <li class="reveal">
-              <details class="xp-item">
-                <summary class="xp-head">
-                  <span class="xp-no">E-05</span>
-                  <span class="xp-role"
-                    >Diploma in Sustainable Urban Design and Engineering
-                    (Architecture)</span
-                  >
-                  <span class="xp-org">Ngee Ann Polytechnic</span>
-                  <span class="xp-when">2016-2019</span>
-                  <span class="xp-mark" aria-hidden="true"></span>
-                </summary>
-                <div class="xp-body">
-                  <p>
-                    Led design development and tender documentation for a
-                    hospitality project, delivering approved drawings on
-                    schedule while coordinating client requirements under the
-                    Architect-in-Char
-                  </p>
-                  <ul class="tags">
-                    <li>Architectural drafting</li>
-                    <li>Spatial planning</li>
-                    <li>Rhino</li>
-                    <li>Adobe Suite</li>
-                  </ul>
-                </div>
-              </details>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- ───────────────────────────── PROJECTS ───────────────────────────── -->
-      <section class="section section-alt" id="projects">
-        <div class="wrap">
-          <div class="section-head">
-            <h2><span class="num">03</span> Selected projects</h2>
-            <p class="section-sub">
-              Engineering work — systems, engines, algorithms.
-            </p>
-          </div>
-
-          <div class="filters" role="group" aria-label="Filter projects">
-            <button class="chip is-active" data-filter="all">All</button>
-            <button class="chip" data-filter="algorithm">Algorithm</button>
-            <button class="chip" data-filter="gamedev">Game Development</button>
-            <button class="chip" data-filter="mobile">Mobile</button>
-          </div>
-
-          <div class="grid" id="projectGrid">
-            <article
-              class="card reveal"
-              data-href="projects/road-network-parcellation.html"
-              data-cat="algorithm"
-            >
-              <div class="cover has-media" data-label="Parcellation">
-                <span class="sheet-no">P-01</span>
-                <span class="card-demo-tag">Sketch</span>
-                <canvas
-                  class="cover-media"
-                  data-demo="parcellation"
-                  aria-label="Live demo: a site boundary subdividing into land parcels"
-                ></canvas>
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">URA · Capstone</p>
-                <h3>
-                  <a href="projects/road-network-parcellation.html"
-                    >Road Network for Urban Parcellation</a
-                  >
-                </h3>
-                <p class="card-desc">
-                  Generative algorithms that take a raw land boundary and
-                  produce a viable road network and subdivided land parcels
-                  automatically. Legacy Rhino/Grasshopper logic was rewritten in
-                  Python, driven by spatial analysis over Singapore's road
-                  network, and served to URA's ePlanner through a backend API
-                  and cloud deployment.
-                </p>
-                <ul class="tags">
-                  <li>Python</li>
-                  <li>GIS</li>
-                  <li>Computational geometry</li>
-                  <li>API</li>
-                </ul>
-                <div class="links">
-                  <a
-                    class="card-more"
-                    href="projects/road-network-parcellation.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="card reveal"
-              data-href="projects/magique.html"
-              data-cat="gamedev"
-            >
-              <div class="cover has-media" data-label="Magique">
-                <span class="sheet-no">P-02</span>
-                <video
-                  class="cover-media"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  poster="assets/img/magique/cover.jpg"
-                  aria-label="Magique gameplay"
-                >
-                  <source
-                    src="assets/img/magique/cover.webm"
-                    type="video/webm"
-                  />
-                  <source src="assets/img/magique/cover.mp4" type="video/mp4" />
-                </video>
-                <span class="cover-veil" aria-hidden="true"></span>
-                <img
-                  class="cover-logo"
-                  src="assets/img/magique/logo.png"
-                  alt="Magique"
-                  loading="lazy"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">
-                  Product Manager · Lead Physics Programmer
-                </p>
-                <h3><a href="projects/magique.html">Magique</a></h3>
-                <p class="card-desc">
-                  A 2D thriller platformer running on a game engine we wrote
-                  from scratch in C/C++ — no Unity, no Unreal, just our own
-                  physics, rendering and asset pipeline. Two semesters, seven
-                  people across UX, game design and CS. I owned the physics
-                  system and ran the project.
-                </p>
-                <ul class="tags">
-                  <li>C / C++</li>
-                  <li>Custom engine</li>
-                  <li>Physics</li>
-                  <li>Team of 7</li>
-                </ul>
-                <div class="links">
-                  <a class="card-more" href="projects/magique.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                  <a
-                    href="https://itch.io/embed/3039191"
-                    target="_blank"
-                    rel="noopener"
-                    >itch.io ↗</a
-                  >
-                  <a
-                    href="https://www.youtube.com/watch?v=PIk9CnEE8X8"
-                    target="_blank"
-                    rel="noopener"
-                    >Trailer ↗</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="card reveal"
-              data-href="projects/multi-agent-pathfinding.html"
-              data-cat="algorithm"
-            >
-              <div class="cover has-media" data-label="Multi-Agent Pathfinding">
-                <span class="sheet-no">P-03</span>
-                <span class="card-demo-tag">Playable</span>
-                <video
-                  class="cover-media"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  poster="assets/img/multi-agent-pathfinding/cover.jpg"
-                  aria-label="Multi-Agent Pathfinding gameplay"
-                >
-                  <source
-                    src="assets/img/multi-agent-pathfinding/cover.webm"
-                    type="video/webm"
-                  />
-                  <source
-                    src="assets/img/multi-agent-pathfinding/cover.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-                <span class="cover-veil" aria-hidden="true"></span>
-                <img
-                  class="cover-logo"
-                  src="assets/img/multi-agent-pathfinding/logo.png"
-                  alt="Multi-Agent Pathfinding"
-                  loading="lazy"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">AI research project</p>
-                <h3>
-                  <a href="projects/multi-agent-pathfinding.html"
-                    >Multi-Agent Pathfinding</a
-                  >
-                </h3>
-                <p class="card-desc">
-                  Navigation for large groups of NPCs across procedurally
-                  generated terrain under fog of war. Combines flow fields for
-                  collaborative movement, potential fields for dynamic obstacle
-                  avoidance, and heat maps for area prioritisation — aimed at
-                  RTS, stealth and open-world exploration.
-                </p>
-                <ul class="tags">
-                  <li>C++</li>
-                  <li>SFML</li>
-                  <li>ImGui</li>
-                  <li>Flow fields</li>
-                  <li>Potential fields</li>
-                </ul>
-                <div class="links">
-                  <a
-                    class="card-more"
-                    href="projects/multi-agent-pathfinding.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                  <a
-                    href="https://www.youtube.com/watch?v=O11_lbwOUPo"
-                    target="_blank"
-                    rel="noopener"
-                    >Demo ↗</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="card reveal"
-              data-href="projects/seam-carving.html"
-              data-cat="algorithm"
-            >
-              <div
-                class="cover has-media"
-                data-label="Content-Aware Image Resizing with Seam Carving"
-              >
-                <span class="sheet-no">P-04</span>
-                <video
-                  class="cover-media"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  poster="assets/img/seam-carving/cover.jpg"
-                  aria-label="Content-Aware Image Resizing with Seam Carving gameplay"
-                >
-                  <source
-                    src="assets/img/seam-carving/cover.webm"
-                    type="video/webm"
-                  />
-                  <source
-                    src="assets/img/seam-carving/cover.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-                <span class="cover-veil" aria-hidden="true"></span>
-                <img
-                  class="cover-logo"
-                  src="assets/img/seam-carving/logo.png"
-                  alt="Content-Aware Image Resizing with Seam Carving"
-                  loading="lazy"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">Algorithms study</p>
-                <h3><a href="projects/seam-carving.html">Seam Carving</a></h3>
-                <p class="card-desc">
-                  Content-aware image resizing that removes low-energy pixel
-                  paths instead of scaling. Three approaches benchmarked against
-                  each other — dynamic programming, greedy, and graph cuts via
-                  max-flow/min-cut — with a Sobel energy map and a live GUI for
-                  object removal. Dynamic programming won on the
-                  quality-per-millisecond trade.
-                </p>
-                <ul class="tags">
-                  <li>C++</li>
-                  <li>OpenCV</li>
-                  <li>OpenGL</li>
-                  <li>Graph cuts</li>
-                  <li>Dynamic programming</li>
-                </ul>
-                <div class="links">
-                  <a class="card-more" href="projects/seam-carving.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="card reveal"
-              data-href="projects/hole-in-the-wall.html"
-              data-cat="mobile"
-            >
-              <div class="cover has-media" data-label="Hole In The Wall">
-                <span class="sheet-no">P-05</span>
-                <video
-                  class="cover-media"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  poster="assets/img/hole-in-the-wall/cover.jpg"
-                  aria-label="Hole In The Wall gameplay"
-                >
-                  <source
-                    src="assets/img/hole-in-the-wall/cover.webm"
-                    type="video/webm"
-                  />
-                  <source
-                    src="assets/img/hole-in-the-wall/cover.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-                <span class="cover-veil" aria-hidden="true"></span>
-                <img
-                  class="cover-logo"
-                  src="assets/img/hole-in-the-wall/logo.png"
-                  alt="Hole In The Wall"
-                  loading="lazy"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">Team Lead · Game Designer</p>
-                <h3>
-                  <a href="projects/hole-in-the-wall.html">Hole In The Wall</a>
-                </h3>
-                <p class="card-desc">
-                  A two-player Android party game: one player calls out
-                  instructions, the other contorts to match a moving cutout
-                  while the camera judges them in real time. Pose detection
-                  through ML Kit with exponential smoothing for stability,
-                  collision via bitmap alpha analysis, and a global leaderboard
-                  on Firebase.
-                </p>
-                <ul class="tags">
-                  <li>Kotlin</li>
-                  <li>Jetpack Compose</li>
-                  <li>ML Kit</li>
-                  <li>CameraX</li>
-                  <li>Firebase</li>
-                </ul>
-                <div class="links">
-                  <a class="card-more" href="projects/hole-in-the-wall.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="card reveal"
-              data-href="projects/astro-cow.html"
-              data-cat="gamedev"
-            >
-              <div class="cover has-media" data-label="Astro Cow">
-                <span class="sheet-no">P-06</span>
-                <video
-                  class="cover-media"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  poster="assets/img/astro-cow/cover.jpg"
-                  aria-label="Astro Cow gameplay"
-                >
-                  <source
-                    src="assets/img/astro-cow/cover.webm"
-                    type="video/webm"
-                  />
-                  <source
-                    src="assets/img/astro-cow/cover.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-                <span class="cover-veil" aria-hidden="true"></span>
-                <img
-                  class="cover-logo"
-                  src="assets/img/astro-cow/logo.png"
-                  alt="Astro Cow"
-                  loading="lazy"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">Lead Programmer · UI/UX</p>
-                <h3><a href="projects/astro-cow.html">Astro Cow</a></h3>
-                <p class="card-desc">
-                  Pilot a UFO across rotating planets, abduct livestock, dodge
-                  asteroids. Built on DigiPen's Alpha Engine in C/C++ with three
-                  difficulty tiers that scale planet rotation speed, planet
-                  count and herd size.
-                </p>
-                <ul class="tags">
-                  <li>C / C++</li>
-                  <li>Alpha Engine</li>
-                  <li>Team of 5</li>
-                </ul>
-                <div class="links">
-                  <a class="card-more" href="projects/astro-cow.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                  <a
-                    href="https://itch.io/embed/2202573"
-                    target="_blank"
-                    rel="noopener"
-                    >itch.io ↗</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="card reveal"
-              data-href="projects/makan-mania.html"
-              data-cat="gamedev"
-            >
-              <div class="cover has-media" data-label="Makan Mania">
-                <span class="sheet-no">P-07</span>
-                <video
-                  class="cover-media"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  poster="assets/img/makan-mania/cover.jpg"
-                  aria-label="Makan Mania gameplay"
-                >
-                  <source
-                    src="assets/img/makan-mania/cover.webm"
-                    type="video/webm"
-                  />
-                  <source
-                    src="assets/img/makan-mania/cover.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-                <span class="cover-veil" aria-hidden="true"></span>
-                <img
-                  class="cover-logo"
-                  src="assets/img/makan-mania/logo.png"
-                  alt="Makan Mania"
-                  loading="lazy"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">UI/UX Designer</p>
-                <h3><a href="projects/makan-mania.html">Makan Mania</a></h3>
-                <p class="card-desc">
-                  A pixel-art cooking arcade game in pure C on CProcessing. Two
-                  modes — static prep, and a "spicy" mode where ingredients ride
-                  a moving conveyor — each with three difficulty levels.
-                </p>
-                <ul class="tags">
-                  <li>C</li>
-                  <li>CProcessing</li>
-                  <li>Pixel art UI</li>
-                </ul>
-                <div class="links">
-                  <a class="card-more" href="projects/makan-mania.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ───────────────────────────── DESIGN ───────────────────────────── -->
-      <section class="section" id="design">
-        <div class="wrap">
-          <div class="section-head">
-            <h2><span class="num">04</span> Design</h2>
-            <p class="section-sub">
-              Game design, level design and graphic work — the half of the
-              degree that isn't code.
-            </p>
-          </div>
-
-          <div class="grid grid-2">
-            <article
-              class="card reveal"
-              data-href="projects/destination-dash.html"
-              data-cat="design"
-            >
-              <div class="cover has-media" data-label="Destination Dash">
-                <span class="sheet-no">P-08</span>
-                <img
-                  class="cover-media"
-                  src="assets/img/destination-dash/cover.jpg"
-                  alt=""
-                  loading="lazy"
-                />
-                <span class="cover-veil" aria-hidden="true"></span>
-                <img
-                  class="cover-logo"
-                  src="assets/img/destination-dash/logo.png"
-                  alt="Destination Dash"
-                  loading="lazy"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">Game Designer · Graphic Designer</p>
-                <h3>
-                  <a href="projects/destination-dash.html">Destination Dash</a>
-                </h3>
-                <p class="card-desc">
-                  A tabletop card game where you run a private jet company,
-                  managing fuel and a finite fleet across eight destinations.
-                  The whole physical object carries the theme — luggage-styled
-                  packaging, a rulebook formatted as a passport, tokens shaped
-                  like planes and passengers.
-                </p>
-                <ul class="tags">
-                  <li>Figma</li>
-                  <li>Adobe Suite</li>
-                  <li>Systems design</li>
-                </ul>
-                <div class="links">
-                  <a class="card-more" href="projects/destination-dash.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="card reveal"
-              data-href="projects/peek-a-beak.html"
-              data-cat="design"
-            >
-              <div class="cover has-media" data-label="Peek A Beak">
-                <span class="sheet-no">P-09</span>
-                <img
-                  class="cover-media"
-                  src="assets/img/peek-a-beak/cover.jpg"
-                  alt=""
-                  loading="lazy"
-                />
-                <span class="cover-veil" aria-hidden="true"></span>
-                <img
-                  class="cover-logo"
-                  src="assets/img/peek-a-beak/logo.png"
-                  alt="Peek A Beak"
-                  loading="lazy"
-                />
-              </div>
-              <div class="card-body">
-                <p class="card-kicker">Game Designer · Developer</p>
-                <h3><a href="projects/peek-a-beak.html">Peek A Beak</a></h3>
-                <p class="card-desc">
-                  A birdwatching competition set in Sungei Buloh. Eight in-game
-                  days to photograph fifteen elusive species, with dice rolls
-                  gating which trails open and bird-eating snakes punishing
-                  greedy routes. Proximity is the core tension — get close
-                  enough to shoot, not close enough to spook.
-                </p>
-                <ul class="tags">
-                  <li>Figma</li>
-                  <li>Adobe Suite</li>
-                  <li>Board game design</li>
-                </ul>
-                <div class="links">
-                  <a class="card-more" href="projects/peek-a-beak.html"
-                    >View project <span class="arr">→</span></a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <h3 class="sub-head reveal">Level design</h3>
-          <div class="level-grid">
-            <a class="level-link reveal" href="projects/12x16.html">
-              <div class="level">
-                <div class="level-cover cover has-media" data-label="12 × 16">
-                  <img
-                    class="cover-media"
-                    src="assets/img/12x16/cover.jpg"
-                    alt=""
-                    loading="lazy"
-                  />
-                  <span class="cover-veil" aria-hidden="true"></span>
-                  <img
-                    class="cover-logo"
-                    src="assets/img/12x16/logo.png"
-                    alt="12 × 16"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="level-body">
-                  <span class="lv-name">12 × 16</span
-                  ><span class="lv-tool">RPG Mapmaker</span>
-                  <p>
-                    A 12m × 16m isolation residence for a work-from-home
-                    landscape architect — layered workspace privacy, a garden
-                    reachable from both bedroom and living room, windows placed
-                    for light and view at every desk.
-                  </p>
-                </div>
-              </div></a
-            >
-            <a class="level-link reveal" href="projects/1000m2.html">
-              <div class="level">
-                <div class="level-cover cover has-media" data-label="1000 m²">
-                  <img
-                    class="cover-media"
-                    src="assets/img/1000m2/cover.jpg"
-                    alt=""
-                    loading="lazy"
-                  />
-                  <span class="cover-veil" aria-hidden="true"></span>
-                  <img
-                    class="cover-logo"
-                    src="assets/img/1000m2/logo.png"
-                    alt="1000 m²"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="level-body">
-                  <span class="lv-name">1000 m²</span
-                  ><span class="lv-tool">RPG Mapmaker</span>
-                  <p>Spatial planning exercise in a fixed floor-area budget.</p>
-                </div>
-              </div></a
-            >
-            <a class="level-link reveal" href="projects/portal-planet.html">
-              <div class="level">
-                <div
-                  class="level-cover cover has-media"
-                  data-label="Portal Planet"
-                >
-                  <img
-                    class="cover-media"
-                    src="assets/img/portal-planet/cover.jpg"
-                    alt=""
-                    loading="lazy"
-                  />
-                  <span class="cover-veil" aria-hidden="true"></span>
-                  <img
-                    class="cover-logo"
-                    src="assets/img/portal-planet/logo.png"
-                    alt="Portal Planet"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="level-body">
-                  <span class="lv-name">Portal Planet</span
-                  ><span class="lv-tool">Megaman Maker</span>
-                  <p>
-                    Teleport-driven platforming level built around a repeating
-                    traversal cadence.
-                  </p>
-                </div>
-              </div></a
-            >
-            <a class="level-link reveal" href="projects/swinging-skyway.html">
-              <div class="level">
-                <div
-                  class="level-cover cover has-media"
-                  data-label="Swinging Skyway"
-                >
-                  <img
-                    class="cover-media"
-                    src="assets/img/swinging-skyway/cover.jpg"
-                    alt=""
-                    loading="lazy"
-                  />
-                  <span class="cover-veil" aria-hidden="true"></span>
-                  <img
-                    class="cover-logo"
-                    src="assets/img/swinging-skyway/logo.png"
-                    alt="Swinging Skyway"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="level-body">
-                  <span class="lv-name">Swinging Skyway</span
-                  ><span class="lv-tool">Megaman Maker</span>
-                  <p>
-                    Momentum and rhythm level — grapple timing as the difficulty
-                    curve.
-                  </p>
-                </div>
-              </div></a
-            >
-            <a class="level-link reveal" href="projects/pirate-adventure.html">
-              <div class="level">
-                <div
-                  class="level-cover cover has-media"
-                  data-label="Pirate Adventure"
-                >
-                  <img
-                    class="cover-media"
-                    src="assets/img/pirate-adventure/cover.jpg"
-                    alt=""
-                    loading="lazy"
-                  />
-                  <span class="cover-veil" aria-hidden="true"></span>
-                  <img
-                    class="cover-logo"
-                    src="assets/img/pirate-adventure/logo.png"
-                    alt="Pirate Adventure"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="level-body">
-                  <span class="lv-name">Pirate Adventure</span
-                  ><span class="lv-tool">Level editor</span>
-                  <p>Themed exploration level with branching routes.</p>
-                </div>
-              </div></a
-            >
-            <a class="level-link reveal" href="projects/bouncy-balloon.html">
-              <div class="level">
-                <div
-                  class="level-cover cover has-media"
-                  data-label="Bouncy Balloon"
-                >
-                  <img
-                    class="cover-media"
-                    src="assets/img/bouncy-balloon/cover.jpg"
-                    alt=""
-                    loading="lazy"
-                  />
-                  <span class="cover-veil" aria-hidden="true"></span>
-                  <img
-                    class="cover-logo"
-                    src="assets/img/bouncy-balloon/logo.png"
-                    alt="Bouncy Balloon"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="level-body">
-                  <span class="lv-name">Bouncy Balloon</span
-                  ><span class="lv-tool">Level editor</span>
-                  <p>
-                    Vertical platforming built around a single bounce mechanic.
-                  </p>
-                </div>
-              </div></a
-            >
-          </div>
-        </div>
-      </section>
-
-      <!-- ───────────────────────────── CONTACT ───────────────────────────── -->
-      <section class="section section-alt" id="contact">
-        <div class="wrap">
-          <div class="section-head">
-            <h2><span class="num">05</span> Contact</h2>
-          </div>
-          <p class="contact-lede reveal">
-            Open to conversations about robotics, engine work, computational
-            design — or anything that needs someone who'll read the spec
-            properly.
-          </p>
-          <div class="contact-links reveal">
-            <a class="contact-link" href="mailto:cliffordtanek@gmail.com">
-              <span class="cl-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="2.5" y="5" width="19" height="14" rx="1.5" />
-                  <path d="m3 7 9 6 9-6" />
-                </svg>
-              </span>
-              <span class="cl-k">Email</span
-              ><span class="cl-v">cliffordtanek@gmail.com</span>
-            </a>
-            <a
-              class="contact-link"
-              href="https://www.linkedin.com/in/cliffordtanek/"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="cl-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="2.5" y="2.5" width="19" height="19" rx="2" />
-                  <path
-                    d="M7 10.5V17M7 7.4v.1M11.5 17v-4a2.5 2.5 0 0 1 5 0v4"
-                  />
-                </svg>
-              </span>
-              <span class="cl-k">LinkedIn</span
-              ><span class="cl-v"
-                >in/cliffordtanek <span class="cl-ext">&#8599;</span></span
-              >
-            </a>
-            <a
-              class="contact-link"
-              href="https://github.com/cliffordtanek"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="cl-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="6.5" cy="5.5" r="2.2" />
-                  <circle cx="6.5" cy="18.5" r="2.2" />
-                  <circle cx="17.5" cy="7.5" r="2.2" />
-                  <path d="M6.5 7.7v8.6M17.5 9.7v1.8a3 3 0 0 1-3 3H9" />
-                </svg>
-              </span>
-              <span class="cl-k">GitHub</span
-              ><span class="cl-v"
-                >@cliffordtanek <span class="cl-ext">&#8599;</span></span
-              >
-            </a>
-            <a
-              class="contact-link"
-              href="https://www.youtube.com/channel/UCNuAJ0KHZoYychuGc1SitcA"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="cl-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="2.5" y="5" width="19" height="14" rx="3" />
-                  <path d="m10.2 9.1 5 2.9-5 2.9z" />
-                </svg>
-              </span>
-              <span class="cl-k">YouTube</span
-              ><span class="cl-v"
-                >Project demos <span class="cl-ext">&#8599;</span></span
-              >
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer title-block">
-      <div class="tb-grid">
-        <div class="tb-cell tb-cell--name">
-          <span class="tb-k">Project</span>
-          <span class="tb-v">Clifford Tan &mdash; Portfolio</span>
-        </div>
-        <div class="tb-cell">
-          <span class="tb-k">Drawn by</span>
-          <span class="tb-v">C. Tan</span>
-        </div>
-        <div class="tb-cell">
-          <span class="tb-k">Scale</span>
-          <span class="tb-v tb-scale">
-            <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
-              <rect x="0" y="0" width="10.5" height="6" fill="currentColor" />
-              <rect
-                x="10.5"
-                y="0"
-                width="10.5"
-                height="6"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1"
-              />
-              <rect x="21" y="0" width="10.5" height="6" fill="currentColor" />
-              <rect
-                x="31.5"
-                y="0"
-                width="10.5"
-                height="6"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1"
-              /></svg
-            >1:1
-          </span>
-        </div>
-        <div class="tb-cell">
-          <span class="tb-k">Date</span>
-          <span class="tb-v"><span id="year">2026</span></span>
-        </div>
-        <div class="tb-cell">
-          <span class="tb-k">Sheet</span>
-          <span class="tb-v">A-00</span>
-        </div>
+<!-- ───────────────────────────── HERO ───────────────────────────── -->
+<section class="hero" id="top">
+  <span class="hero-grid" aria-hidden="true"></span>
+  <div class="wrap">
+    <p class="eyebrow reveal">Singapore · Available for work</p>
+    <h1 class="reveal">
+      Clifford Tan
+    </h1>
+    <div class="dimension reveal" aria-hidden="true">
+      <span class="dim-end"></span>
+      <span class="dim-rule"></span>
+      <span class="dim-label">Software Engineer &middot; Singapore</span>
+      <span class="dim-rule"></span>
+      <span class="dim-end"></span>
+    </div>
+    <p class="lede reveal">
+      Software engineer building <em>robotics systems</em>, <em>game engines</em> and
+      <em>computational design tools</em>. I like problems where the constraint is the
+      hardware, the clock, or the geometry.
+    </p>
+    <div class="hero-meta reveal">
+      <div>
+        <span class="k">Now</span>
+        <span class="v">Robotics Software Engineer · DSO National Laboratories</span>
       </div>
-      <div class="tb-foot">
-        <span>&copy; <span id="year2">2026</span> Clifford Tan</span>
-        <span>Hand-written HTML, CSS &amp; JS &middot; no frameworks</span>
+      <div>
+        <span class="k">Before</span>
+        <span class="v">Computational Designer · Urban Redevelopment Authority</span>
       </div>
-    </footer>
+      <div>
+        <span class="k">Degree</span>
+        <span class="v">BSc (Hons) Computer Science · SIT × DigiPen</span>
+      </div>
+    </div>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary" href="#projects">View work</a>
+      <a class="btn" href="mailto:cliffordtanek@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</section>
 
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/demos.js"></script>
-    <script src="assets/js/hero.js"></script>
-  </body>
+<!-- ─────────────────────────── EXPERTISE ─────────────────────────── -->
+<section class="section section-alt" id="expertise">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">01</span> Expertise</h2>
+    </div>
+
+    <!-- A materials legend, the way a drawing sheet keys its hatches:
+         swatch, letter, what it denotes, and the tools in the set. -->
+    <div class="legend">
+      <div class="legend-head" aria-hidden="true">
+        <span>Key</span><span>Discipline</span><span>Scope</span><span>Toolset</span>
+      </div>
+
+      <div class="legend-row reveal">
+        <div class="legend-key">
+          <i class="swatch swatch--a"></i><b>A</b>
+        </div>
+        <div class="legend-name">
+          Systems &amp; Robotics
+          <span>Embedded · Real-time</span>
+        </div>
+        <p class="legend-note">Software where the deadline is a clock edge, not a sprint.</p>
+        <p class="legend-tools">C · C++ · Python · Bus protocols · Redundancy &amp; failover</p>
+      </div>
+
+      <div class="legend-row reveal">
+        <div class="legend-key">
+          <i class="swatch swatch--b"></i><b>B</b>
+        </div>
+        <div class="legend-name">
+          Engines &amp; Games
+          <span>Gameplay · Tooling</span>
+        </div>
+        <p class="legend-note">Engines written from scratch, and the editors that make them usable.</p>
+        <p class="legend-tools">C++ · SFML · OpenGL · ImGui · Pathfinding / AI</p>
+      </div>
+
+      <div class="legend-row reveal">
+        <div class="legend-key">
+          <i class="swatch swatch--c"></i><b>C</b>
+        </div>
+        <div class="legend-name">
+          Computational Design
+          <span>Geometry · Geospatial</span>
+        </div>
+        <p class="legend-note">Drawing rules turned into algorithms — a habit kept from architecture.</p>
+        <p class="legend-tools">Python · GIS · Computational geometry · Rhino / Grasshopper · REST APIs</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── EXPERIENCE ─────────────────────────── -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">02</span> Experience</h2>
+      <p class="section-sub">Click a row to expand it.</p>
+    </div>
+
+    <ol class="xp">
+      <li class="reveal">
+        <details class="xp-item" open>
+          <summary class="xp-head">
+            <span class="xp-no">E-01</span>
+            <b class="xp-role">Robotics Software Engineer</b>
+            <span class="xp-org"><span class="xp-org-name">DSO National Laboratories</span><span class="xp-logo" data-mark="DSO" aria-hidden="true"><!-- drop the real mark in as: <img src="assets/img/org/dso.svg" alt=""> --></span></span>
+            <span class="xp-when">Oct 2026 — Present</span>
+            <span class="xp-mark" aria-hidden="true"></span>
+          </summary>
+          <div class="xp-body">
+            <p>
+              Full-time following an internship converted in October 2026. Work spans embedded and
+              robotics software — low-level bus protocols, redundancy and failover behaviour, and the
+              test tooling that proves a system keeps running when part of it doesn't.
+            </p>
+            <ul class="tags">
+              <li>Embedded systems</li><li>C / C++</li><li>Python</li><li>Robotics</li><li>Systems testing</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="reveal">
+        <details class="xp-item">
+          <summary class="xp-head">
+            <span class="xp-no">E-02</span>
+            <b class="xp-role">Computational Designer</b>
+            <span class="xp-org"><span class="xp-org-name">Urban Redevelopment Authority</span><span class="xp-logo" data-mark="URA" aria-hidden="true"><!-- drop the real mark in as: <img src="assets/img/org/ura.svg" alt=""> --></span></span>
+            <span class="xp-when">2025 — 2026</span>
+            <span class="xp-mark" aria-hidden="true"></span>
+          </summary>
+          <div class="xp-body">
+            <p>
+              12-month Integrated Work Study Programme placement. Extended URA's internal
+              <strong>ePlanner</strong> planning platform with generative algorithms for automated road
+              network and land parcel generation — migrating legacy Rhino/Grasshopper parcellation logic
+              into Python, running spatial analysis over Singapore's road network data, and shipping it
+              end to end through a backend API, a frontend integration and a cloud deployment.
+            </p>
+            <ul class="tags">
+              <li>Python</li><li>Geospatial / GIS</li><li>Computational geometry</li><li>REST API</li><li>Cloud deployment</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="reveal">
+        <details class="xp-item">
+          <summary class="xp-head">
+            <span class="xp-no">E-03</span>
+            <b class="xp-role">BSc (Hons) Computer Science</b>
+            <span class="xp-org"><span class="xp-org-name">SIT × DigiPen Singapore</span><span class="xp-logo" data-mark="SIT" aria-hidden="true"><!-- drop the real mark in as: <img src="assets/img/org/sit-digipen.svg" alt=""> --></span></span>
+            <span class="xp-when">2022 — 2026</span>
+            <span class="xp-mark" aria-hidden="true"></span>
+          </summary>
+          <div class="xp-body">
+            <p>
+              Interactive Media and Game Development, a joint degree between the Singapore Institute of
+              Technology and DigiPen Institute of Technology. <strong>Valedictorian</strong> for the
+              graduating cohort.
+            </p>
+            <ul class="tags accent">
+              <li>Valedictorian</li><li>Provost's List ×2</li><li>Mighty Jaxx Scholarship</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+
+      <li class="reveal">
+        <details class="xp-item">
+          <summary class="xp-head">
+            <span class="xp-no">E-04</span>
+            <b class="xp-role">Architectural Assistant</b>
+            <span class="xp-org"><span class="xp-org-name">Diploma in Architecture · Ngee Ann Polytechnic</span><span class="xp-logo" data-mark="NP" aria-hidden="true"><!-- drop the real mark in as: <img src="assets/img/org/ngee-ann.svg" alt=""> --></span></span>
+            <span class="xp-when">Earlier</span>
+            <span class="xp-mark" aria-hidden="true"></span>
+          </summary>
+          <div class="xp-body">
+            <p>
+              Trained and worked in architecture before moving into computer science. The spatial
+              reasoning stayed — it's why parcellation algorithms and level design both feel like the
+              same problem to me.
+            </p>
+            <ul class="tags">
+              <li>Architectural drafting</li><li>Spatial planning</li><li>Rhino</li><li>Adobe Suite</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ───────────────────────────── PROJECTS ───────────────────────────── -->
+<section class="section section-alt" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">03</span> Selected projects</h2>
+      <p class="section-sub">Engineering work — systems, engines, algorithms.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="chip is-active" data-filter="all">All</button>
+      <button class="chip" data-filter="algorithm">Algorithm</button>
+      <button class="chip" data-filter="gamedev">Game Development</button>
+      <button class="chip" data-filter="mobile">Mobile</button>
+    </div>
+
+    <div class="grid" id="projectGrid">
+
+      <article class="card reveal" data-href="projects/road-network-parcellation.html" data-cat="algorithm">
+        <div class="cover has-media" data-label="Parcellation">
+          <span class="sheet-no">P-01</span>
+          <span class="card-demo-tag">Sketch</span>
+          <canvas class="cover-media" data-demo="parcellation"
+                  aria-label="Live demo: a site boundary subdividing into land parcels"></canvas>
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">URA · Capstone</p>
+          <h3><a href="projects/road-network-parcellation.html">Road Network for Urban Parcellation</a></h3>
+          <p class="card-desc">
+            Generative algorithms that take a raw land boundary and produce a viable road network and
+            subdivided land parcels automatically. Legacy Rhino/Grasshopper logic was rewritten in
+            Python, driven by spatial analysis over Singapore's road network, and served to URA's
+            ePlanner through a backend API and cloud deployment.
+          </p>
+          <ul class="tags"><li>Python</li><li>GIS</li><li>Computational geometry</li><li>API</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/road-network-parcellation.html">View project <span class="arr">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-href="projects/magique.html" data-cat="gamedev">
+        <div class="cover has-media" data-label="Magique">
+          <span class="sheet-no">P-02</span>
+          <video class="cover-media" autoplay muted loop playsinline preload="metadata"
+                 poster="assets/img/magique/cover.jpg" aria-label="Magique gameplay">
+            <source src="assets/img/magique/cover.webm" type="video/webm">
+            <source src="assets/img/magique/cover.mp4" type="video/mp4">
+          </video>
+          <span class="cover-veil" aria-hidden="true"></span>
+          <img class="cover-logo" src="assets/img/magique/logo.png"
+               alt="Magique" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">Product Manager · Lead Physics Programmer</p>
+          <h3><a href="projects/magique.html">Magique</a></h3>
+          <p class="card-desc">
+            A 2D thriller platformer running on a game engine we wrote from scratch in C/C++ — no
+            Unity, no Unreal, just our own physics, rendering and asset pipeline. Two semesters, seven
+            people across UX, game design and CS. I owned the physics system and ran the project.
+          </p>
+          <ul class="tags"><li>C / C++</li><li>Custom engine</li><li>Physics</li><li>Team of 7</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/magique.html">View project <span class="arr">→</span></a>
+            <a href="https://itch.io/embed/3039191" target="_blank" rel="noopener">itch.io ↗</a>
+            <a href="https://www.youtube.com/watch?v=PIk9CnEE8X8" target="_blank" rel="noopener">Trailer ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-href="projects/multi-agent-pathfinding.html" data-cat="algorithm">
+        <div class="cover has-media" data-label="Multi-Agent Pathfinding">
+          <span class="sheet-no">P-03</span>
+          <span class="card-demo-tag">Playable</span>
+          <video class="cover-media" autoplay muted loop playsinline preload="metadata"
+                 poster="assets/img/multi-agent-pathfinding/cover.jpg" aria-label="Multi-Agent Pathfinding gameplay">
+            <source src="assets/img/multi-agent-pathfinding/cover.webm" type="video/webm">
+            <source src="assets/img/multi-agent-pathfinding/cover.mp4" type="video/mp4">
+          </video>
+          <span class="cover-veil" aria-hidden="true"></span>
+          <img class="cover-logo" src="assets/img/multi-agent-pathfinding/logo.png"
+               alt="Multi-Agent Pathfinding" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">AI research project</p>
+          <h3><a href="projects/multi-agent-pathfinding.html">Multi-Agent Pathfinding</a></h3>
+          <p class="card-desc">
+            Navigation for large groups of NPCs across procedurally generated terrain under fog of war.
+            Combines flow fields for collaborative movement, potential fields for dynamic obstacle
+            avoidance, and heat maps for area prioritisation — aimed at RTS, stealth and open-world
+            exploration.
+          </p>
+          <ul class="tags"><li>C++</li><li>SFML</li><li>ImGui</li><li>Flow fields</li><li>Potential fields</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/multi-agent-pathfinding.html">View project <span class="arr">→</span></a>
+            <a href="https://www.youtube.com/watch?v=O11_lbwOUPo" target="_blank" rel="noopener">Demo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-href="projects/seam-carving.html" data-cat="algorithm">
+        <div class="cover has-media" data-label="Content-Aware Image Resizing with Seam Carving">
+          <span class="sheet-no">P-04</span>
+          <video class="cover-media" autoplay muted loop playsinline preload="metadata"
+                 poster="assets/img/seam-carving/cover.jpg" aria-label="Content-Aware Image Resizing with Seam Carving gameplay">
+            <source src="assets/img/seam-carving/cover.webm" type="video/webm">
+            <source src="assets/img/seam-carving/cover.mp4" type="video/mp4">
+          </video>
+          <span class="cover-veil" aria-hidden="true"></span>
+          <img class="cover-logo" src="assets/img/seam-carving/logo.png"
+               alt="Content-Aware Image Resizing with Seam Carving" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">Algorithms study</p>
+          <h3><a href="projects/seam-carving.html">Seam Carving</a></h3>
+          <p class="card-desc">
+            Content-aware image resizing that removes low-energy pixel paths instead of scaling. Three
+            approaches benchmarked against each other — dynamic programming, greedy, and graph cuts via
+            max-flow/min-cut — with a Sobel energy map and a live GUI for object removal. Dynamic
+            programming won on the quality-per-millisecond trade.
+          </p>
+          <ul class="tags"><li>C++</li><li>OpenCV</li><li>OpenGL</li><li>Graph cuts</li><li>Dynamic programming</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/seam-carving.html">View project <span class="arr">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-href="projects/hole-in-the-wall.html" data-cat="mobile">
+        <div class="cover has-media" data-label="Hole In The Wall">
+          <span class="sheet-no">P-05</span>
+          <video class="cover-media" autoplay muted loop playsinline preload="metadata"
+                 poster="assets/img/hole-in-the-wall/cover.jpg" aria-label="Hole In The Wall gameplay">
+            <source src="assets/img/hole-in-the-wall/cover.webm" type="video/webm">
+            <source src="assets/img/hole-in-the-wall/cover.mp4" type="video/mp4">
+          </video>
+          <span class="cover-veil" aria-hidden="true"></span>
+          <img class="cover-logo" src="assets/img/hole-in-the-wall/logo.png"
+               alt="Hole In The Wall" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">Team Lead · Game Designer</p>
+          <h3><a href="projects/hole-in-the-wall.html">Hole In The Wall</a></h3>
+          <p class="card-desc">
+            A two-player Android party game: one player calls out instructions, the other contorts to
+            match a moving cutout while the camera judges them in real time. Pose detection through ML
+            Kit with exponential smoothing for stability, collision via bitmap alpha analysis, and a
+            global leaderboard on Firebase.
+          </p>
+          <ul class="tags"><li>Kotlin</li><li>Jetpack Compose</li><li>ML Kit</li><li>CameraX</li><li>Firebase</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/hole-in-the-wall.html">View project <span class="arr">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-href="projects/astro-cow.html" data-cat="gamedev">
+        <div class="cover has-media" data-label="Astro Cow">
+          <span class="sheet-no">P-06</span>
+          <video class="cover-media" autoplay muted loop playsinline preload="metadata"
+                 poster="assets/img/astro-cow/cover.jpg" aria-label="Astro Cow gameplay">
+            <source src="assets/img/astro-cow/cover.webm" type="video/webm">
+            <source src="assets/img/astro-cow/cover.mp4" type="video/mp4">
+          </video>
+          <span class="cover-veil" aria-hidden="true"></span>
+          <img class="cover-logo" src="assets/img/astro-cow/logo.png"
+               alt="Astro Cow" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">Lead Programmer · UI/UX</p>
+          <h3><a href="projects/astro-cow.html">Astro Cow</a></h3>
+          <p class="card-desc">
+            Pilot a UFO across rotating planets, abduct livestock, dodge asteroids. Built on DigiPen's
+            Alpha Engine in C/C++ with three difficulty tiers that scale planet rotation speed, planet
+            count and herd size.
+          </p>
+          <ul class="tags"><li>C / C++</li><li>Alpha Engine</li><li>Team of 5</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/astro-cow.html">View project <span class="arr">→</span></a>
+            <a href="https://itch.io/embed/2202573" target="_blank" rel="noopener">itch.io ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-href="projects/makan-mania.html" data-cat="gamedev">
+        <div class="cover has-media" data-label="Makan Mania">
+          <span class="sheet-no">P-07</span>
+          <video class="cover-media" autoplay muted loop playsinline preload="metadata"
+                 poster="assets/img/makan-mania/cover.jpg" aria-label="Makan Mania gameplay">
+            <source src="assets/img/makan-mania/cover.webm" type="video/webm">
+            <source src="assets/img/makan-mania/cover.mp4" type="video/mp4">
+          </video>
+          <span class="cover-veil" aria-hidden="true"></span>
+          <img class="cover-logo" src="assets/img/makan-mania/logo.png"
+               alt="Makan Mania" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">UI/UX Designer</p>
+          <h3><a href="projects/makan-mania.html">Makan Mania</a></h3>
+          <p class="card-desc">
+            A pixel-art cooking arcade game in pure C on CProcessing. Two modes — static prep, and a
+            "spicy" mode where ingredients ride a moving conveyor — each with three difficulty levels.
+          </p>
+          <ul class="tags"><li>C</li><li>CProcessing</li><li>Pixel art UI</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/makan-mania.html">View project <span class="arr">→</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────── DESIGN ───────────────────────────── -->
+<section class="section" id="design">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">04</span> Design</h2>
+      <p class="section-sub">Game design, level design and graphic work — the half of the degree that isn't code.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="card reveal" data-href="projects/destination-dash.html" data-cat="design">
+        <div class="cover has-media" data-label="Destination Dash">
+          <span class="sheet-no">P-08</span>
+          <img class="cover-media" src="assets/img/destination-dash/cover.jpg" alt="" loading="lazy">
+          <span class="cover-veil" aria-hidden="true"></span>
+          <img class="cover-logo" src="assets/img/destination-dash/logo.png"
+               alt="Destination Dash" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">Game Designer · Graphic Designer</p>
+          <h3><a href="projects/destination-dash.html">Destination Dash</a></h3>
+          <p class="card-desc">
+            A tabletop card game where you run a private jet company, managing fuel and a finite fleet
+            across eight destinations. The whole physical object carries the theme — luggage-styled
+            packaging, a rulebook formatted as a passport, tokens shaped like planes and passengers.
+          </p>
+          <ul class="tags"><li>Figma</li><li>Adobe Suite</li><li>Systems design</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/destination-dash.html">View project <span class="arr">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-href="projects/peek-a-beak.html" data-cat="design">
+        <div class="cover has-media" data-label="Peek A Beak">
+          <span class="sheet-no">P-09</span>
+          <img class="cover-media" src="assets/img/peek-a-beak/cover.jpg" alt="" loading="lazy">
+          <span class="cover-veil" aria-hidden="true"></span>
+          <img class="cover-logo" src="assets/img/peek-a-beak/logo.png"
+               alt="Peek A Beak" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-kicker">Game Designer · Developer</p>
+          <h3><a href="projects/peek-a-beak.html">Peek A Beak</a></h3>
+          <p class="card-desc">
+            A birdwatching competition set in Sungei Buloh. Eight in-game days to photograph fifteen
+            elusive species, with dice rolls gating which trails open and bird-eating snakes punishing
+            greedy routes. Proximity is the core tension — get close enough to shoot, not close enough
+            to spook.
+          </p>
+          <ul class="tags"><li>Figma</li><li>Adobe Suite</li><li>Board game design</li></ul>
+          <div class="links">
+            <a class="card-more" href="projects/peek-a-beak.html">View project <span class="arr">→</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub-head reveal">Level design</h3>
+    <div class="level-grid">
+      <a class="level-link reveal" href="projects/12x16.html">
+        <div class="level">
+          <div class="level-cover cover has-media" data-label="12 × 16">
+            <img class="cover-media" src="assets/img/12x16/cover.jpg" alt="" loading="lazy">
+            <span class="cover-veil" aria-hidden="true"></span>
+            <img class="cover-logo" src="assets/img/12x16/logo.png"
+                 alt="12 × 16" loading="lazy">
+          </div>
+          <div class="level-body"><span class="lv-name">12 × 16</span><span class="lv-tool">RPG Mapmaker</span><p>A 12m × 16m isolation residence for a work-from-home landscape architect — layered workspace privacy, a garden reachable from both bedroom and living room, windows placed for light and view at every desk.</p></div>
+        </div></a>
+      <a class="level-link reveal" href="projects/1000m2.html">
+        <div class="level">
+          <div class="level-cover cover has-media" data-label="1000 m²">
+            <img class="cover-media" src="assets/img/1000m2/cover.jpg" alt="" loading="lazy">
+            <span class="cover-veil" aria-hidden="true"></span>
+            <img class="cover-logo" src="assets/img/1000m2/logo.png"
+                 alt="1000 m²" loading="lazy">
+          </div>
+          <div class="level-body"><span class="lv-name">1000 m²</span><span class="lv-tool">RPG Mapmaker</span><p>Spatial planning exercise in a fixed floor-area budget.</p></div>
+        </div></a>
+      <a class="level-link reveal" href="projects/portal-planet.html">
+        <div class="level">
+          <div class="level-cover cover has-media" data-label="Portal Planet">
+            <img class="cover-media" src="assets/img/portal-planet/cover.jpg" alt="" loading="lazy">
+            <span class="cover-veil" aria-hidden="true"></span>
+            <img class="cover-logo" src="assets/img/portal-planet/logo.png"
+                 alt="Portal Planet" loading="lazy">
+          </div>
+          <div class="level-body"><span class="lv-name">Portal Planet</span><span class="lv-tool">Megaman Maker</span><p>Teleport-driven platforming level built around a repeating traversal cadence.</p></div>
+        </div></a>
+      <a class="level-link reveal" href="projects/swinging-skyway.html">
+        <div class="level">
+          <div class="level-cover cover has-media" data-label="Swinging Skyway">
+            <img class="cover-media" src="assets/img/swinging-skyway/cover.jpg" alt="" loading="lazy">
+            <span class="cover-veil" aria-hidden="true"></span>
+            <img class="cover-logo" src="assets/img/swinging-skyway/logo.png"
+                 alt="Swinging Skyway" loading="lazy">
+          </div>
+          <div class="level-body"><span class="lv-name">Swinging Skyway</span><span class="lv-tool">Megaman Maker</span><p>Momentum and rhythm level — grapple timing as the difficulty curve.</p></div>
+        </div></a>
+      <a class="level-link reveal" href="projects/pirate-adventure.html">
+        <div class="level">
+          <div class="level-cover cover has-media" data-label="Pirate Adventure">
+            <img class="cover-media" src="assets/img/pirate-adventure/cover.jpg" alt="" loading="lazy">
+            <span class="cover-veil" aria-hidden="true"></span>
+            <img class="cover-logo" src="assets/img/pirate-adventure/logo.png"
+                 alt="Pirate Adventure" loading="lazy">
+          </div>
+          <div class="level-body"><span class="lv-name">Pirate Adventure</span><span class="lv-tool">Level editor</span><p>Themed exploration level with branching routes.</p></div>
+        </div></a>
+      <a class="level-link reveal" href="projects/bouncy-balloon.html">
+        <div class="level">
+          <div class="level-cover cover has-media" data-label="Bouncy Balloon">
+            <img class="cover-media" src="assets/img/bouncy-balloon/cover.jpg" alt="" loading="lazy">
+            <span class="cover-veil" aria-hidden="true"></span>
+            <img class="cover-logo" src="assets/img/bouncy-balloon/logo.png"
+                 alt="Bouncy Balloon" loading="lazy">
+          </div>
+          <div class="level-body"><span class="lv-name">Bouncy Balloon</span><span class="lv-tool">Level editor</span><p>Vertical platforming built around a single bounce mechanic.</p></div>
+        </div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────── CONTACT ───────────────────────────── -->
+<section class="section section-alt" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">05</span> Contact</h2>
+    </div>
+    <p class="contact-lede reveal">
+      Open to conversations about robotics, engine work, computational design — or anything that needs
+      someone who'll read the spec properly.
+    </p>
+    <div class="contact-links reveal">
+      <a class="contact-link" href="mailto:cliffordtanek@gmail.com">
+        <span class="cl-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="m3 7 9 6 9-6"/></svg>
+        </span>
+        <span class="cl-k">Email</span><span class="cl-v">cliffordtanek@gmail.com</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/cliffordtanek/" target="_blank" rel="noopener">
+        <span class="cl-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="2"/><path d="M7 10.5V17M7 7.4v.1M11.5 17v-4a2.5 2.5 0 0 1 5 0v4"/></svg>
+        </span>
+        <span class="cl-k">LinkedIn</span><span class="cl-v">in/cliffordtanek <span class="cl-ext">&#8599;</span></span>
+      </a>
+      <a class="contact-link" href="https://github.com/cliffordtanek" target="_blank" rel="noopener">
+        <span class="cl-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="6.5" cy="5.5" r="2.2"/><circle cx="6.5" cy="18.5" r="2.2"/><circle cx="17.5" cy="7.5" r="2.2"/><path d="M6.5 7.7v8.6M17.5 9.7v1.8a3 3 0 0 1-3 3H9"/></svg>
+        </span>
+        <span class="cl-k">GitHub</span><span class="cl-v">@cliffordtanek <span class="cl-ext">&#8599;</span></span>
+      </a>
+      <a class="contact-link" href="https://www.youtube.com/channel/UCNuAJ0KHZoYychuGc1SitcA" target="_blank" rel="noopener">
+        <span class="cl-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="m10.2 9.1 5 2.9-5 2.9z"/></svg>
+        </span>
+        <span class="cl-k">YouTube</span><span class="cl-v">Project demos <span class="cl-ext">&#8599;</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer title-block">
+  <div class="tb-grid">
+    <div class="tb-cell tb-cell--name">
+      <span class="tb-k">Project</span>
+      <span class="tb-v">Clifford Tan &mdash; Portfolio</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Drawn by</span>
+      <span class="tb-v">C. Tan</span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Scale</span>
+      <span class="tb-v tb-scale">
+        <svg width="42" height="7" viewBox="0 0 42 7" aria-hidden="true">
+          <rect x="0" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="10.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+          <rect x="21" y="0" width="10.5" height="6" fill="currentColor"/>
+          <rect x="31.5" y="0" width="10.5" height="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>1:1
+      </span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Date</span>
+      <span class="tb-v"><span id="year">2026</span></span>
+    </div>
+    <div class="tb-cell">
+      <span class="tb-k">Sheet</span>
+      <span class="tb-v">A-00</span>
+    </div>
+  </div>
+  <div class="tb-foot">
+    <span>&copy; <span id="year2">2026</span> Clifford Tan</span>
+    <span>Hand-written HTML, CSS &amp; JS &middot; no frameworks</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/demos.js"></script>
+<script src="assets/js/hero.js"></script>
+</body>
 </html>
